@@ -34,6 +34,8 @@ namespace _03.SoftUniBarIncome
             }
 
             Console.WriteLine($"Total income: {totalPrice:f2}");
+
+            // TEST CHANGE
         }
     }
 }
