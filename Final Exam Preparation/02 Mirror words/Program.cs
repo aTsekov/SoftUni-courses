@@ -43,6 +43,7 @@ namespace _02_Mirror_words
                 Console.WriteLine("The mirror words are:");
                 Console.WriteLine(string.Join(", ",messages));
                 
+                
             }
 
             

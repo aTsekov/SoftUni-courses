@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01 Secret Chat", "01 Secret
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02 Mirror words", "02 Mirror words\02 Mirror words.csproj", "{DCEBE554-52C0-4AFF-880B-A7B048AA3B43}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03 Need for Speed III", "03 Need for Speed III\03 Need for Speed III.csproj", "{FDF84CCC-5744-4AA8-8FB0-DED32C7834AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{DCEBE554-52C0-4AFF-880B-A7B048AA3B43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DCEBE554-52C0-4AFF-880B-A7B048AA3B43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DCEBE554-52C0-4AFF-880B-A7B048AA3B43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF84CCC-5744-4AA8-8FB0-DED32C7834AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF84CCC-5744-4AA8-8FB0-DED32C7834AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF84CCC-5744-4AA8-8FB0-DED32C7834AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF84CCC-5744-4AA8-8FB0-DED32C7834AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
