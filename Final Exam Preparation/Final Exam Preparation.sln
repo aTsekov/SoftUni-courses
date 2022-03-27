@@ -9,11 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02 Ad Astra", "02 Ad Astra\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03 The Pianist", "03 The Pianist\03 The Pianist.csproj", "{5575ADD5-9299-4A11-9FA8-F316DCC33F59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "001 World Tour", "001 World Tour\001 World Tour.csproj", "{B4BA3764-01C5-4600-A81D-0D7570F8037F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "001 World Tour", "001 World Tour\001 World Tour.csproj", "{B4BA3764-01C5-4600-A81D-0D7570F8037F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "002 Destination Mapper", "002 Destination Mapper\002 Destination Mapper.csproj", "{0E1D44FD-6B7D-4EF2-979F-653BCD96E842}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "002 Destination Mapper", "002 Destination Mapper\002 Destination Mapper.csproj", "{0E1D44FD-6B7D-4EF2-979F-653BCD96E842}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plant Discovery", "Plant Discovery\Plant Discovery.csproj", "{232B7485-0C1F-4F1A-ACB8-0DC78E268549}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plant Discovery", "Plant Discovery\Plant Discovery.csproj", "{232B7485-0C1F-4F1A-ACB8-0DC78E268549}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01 Secret Chat", "01 Secret Chat\01 Secret Chat.csproj", "{CF6309B3-20F9-49CA-9D79-274CCF3F9928}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{232B7485-0C1F-4F1A-ACB8-0DC78E268549}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{232B7485-0C1F-4F1A-ACB8-0DC78E268549}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{232B7485-0C1F-4F1A-ACB8-0DC78E268549}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF6309B3-20F9-49CA-9D79-274CCF3F9928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF6309B3-20F9-49CA-9D79-274CCF3F9928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF6309B3-20F9-49CA-9D79-274CCF3F9928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF6309B3-20F9-49CA-9D79-274CCF3F9928}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
