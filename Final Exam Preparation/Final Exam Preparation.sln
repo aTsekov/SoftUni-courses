@@ -3,23 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01 The Imitation Game", "01 The Imitation Game\01 The Imitation Game.csproj", "{AD0381D2-F1B3-4F0A-9FCD-3D62A91741B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "5 The Imitation Game", "01 The Imitation Game\5 The Imitation Game.csproj", "{AD0381D2-F1B3-4F0A-9FCD-3D62A91741B7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "02 Ad Astra", "02 Ad Astra\02 Ad Astra.csproj", "{3295922B-FD3A-4856-A9D1-27E6B8CFAA61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6 Ad Astra", "02 Ad Astra\6 Ad Astra.csproj", "{3295922B-FD3A-4856-A9D1-27E6B8CFAA61}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03 The Pianist", "03 The Pianist\03 The Pianist.csproj", "{5575ADD5-9299-4A11-9FA8-F316DCC33F59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "9 The Pianist", "03 The Pianist\9 The Pianist.csproj", "{5575ADD5-9299-4A11-9FA8-F316DCC33F59}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "001 World Tour", "001 World Tour\001 World Tour.csproj", "{B4BA3764-01C5-4600-A81D-0D7570F8037F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1 World Tour", "001 World Tour\1 World Tour.csproj", "{B4BA3764-01C5-4600-A81D-0D7570F8037F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "002 Destination Mapper", "002 Destination Mapper\002 Destination Mapper.csproj", "{0E1D44FD-6B7D-4EF2-979F-653BCD96E842}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2 Destination Mapper", "002 Destination Mapper\2 Destination Mapper.csproj", "{0E1D44FD-6B7D-4EF2-979F-653BCD96E842}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plant Discovery", "Plant Discovery\Plant Discovery.csproj", "{232B7485-0C1F-4F1A-ACB8-0DC78E268549}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "3 Plant Discovery", "Plant Discovery\3 Plant Discovery.csproj", "{232B7485-0C1F-4F1A-ACB8-0DC78E268549}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01 Secret Chat", "01 Secret Chat\01 Secret Chat.csproj", "{CF6309B3-20F9-49CA-9D79-274CCF3F9928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4 Secret Chat", "01 Secret Chat\4 Secret Chat.csproj", "{CF6309B3-20F9-49CA-9D79-274CCF3F9928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02 Mirror words", "02 Mirror words\02 Mirror words.csproj", "{DCEBE554-52C0-4AFF-880B-A7B048AA3B43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "7 Mirror words", "02 Mirror words\7 Mirror words.csproj", "{DCEBE554-52C0-4AFF-880B-A7B048AA3B43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03 Need for Speed III", "03 Need for Speed III\03 Need for Speed III.csproj", "{FDF84CCC-5744-4AA8-8FB0-DED32C7834AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "8 Need for Speed III", "03 Need for Speed III\8 Need for Speed III.csproj", "{FDF84CCC-5744-4AA8-8FB0-DED32C7834AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10 Password Reset", "10 Password Reset\10 Password Reset.csproj", "{41872723-902B-4A1A-B24B-9F977283F505}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{FDF84CCC-5744-4AA8-8FB0-DED32C7834AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FDF84CCC-5744-4AA8-8FB0-DED32C7834AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FDF84CCC-5744-4AA8-8FB0-DED32C7834AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41872723-902B-4A1A-B24B-9F977283F505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41872723-902B-4A1A-B24B-9F977283F505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41872723-902B-4A1A-B24B-9F977283F505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41872723-902B-4A1A-B24B-9F977283F505}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
