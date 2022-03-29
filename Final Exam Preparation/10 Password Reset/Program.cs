@@ -24,7 +24,7 @@ namespace _10_Password_Reset
                 }
                 else if (commandType == "Cut")
                 {
-                    int index = int.Parse(parts[2]);
+                    int index = int.Parse(parts[1]);
                     int lenght = int.Parse(parts[2]);
                     password= password.Remove(index, lenght);
                     Console.WriteLine(password);
