@@ -1,2 +1,2 @@
-# SoftUni-courses-C-Fundamentals
+# SoftUni-courses
 SoftUni Courses - Fundamentals module
