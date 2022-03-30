@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10 Password Reset", "10 Pas
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11 Fancy Barcodes", "11 Fancy Barcodes\11 Fancy Barcodes.csproj", "{0D6DA1C0-C0C8-4DFA-9711-4BCA71E30ED2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12 Heroes of Code and Logic VII", "12 Heroes of Code and Logic VII\12 Heroes of Code and Logic VII.csproj", "{75C91719-B9BA-4E7B-B2EE-942AAB47C49D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{0D6DA1C0-C0C8-4DFA-9711-4BCA71E30ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0D6DA1C0-C0C8-4DFA-9711-4BCA71E30ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D6DA1C0-C0C8-4DFA-9711-4BCA71E30ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75C91719-B9BA-4E7B-B2EE-942AAB47C49D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75C91719-B9BA-4E7B-B2EE-942AAB47C49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75C91719-B9BA-4E7B-B2EE-942AAB47C49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75C91719-B9BA-4E7B-B2EE-942AAB47C49D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

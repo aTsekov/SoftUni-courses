@@ -21,7 +21,7 @@ namespace _11_Fancy_Barcodes
 
                     if (digits.Length == 0)
                     {
-                        Console.WriteLine("00");
+                        Console.WriteLine("Product group: 00");
                     }
                     else
                     {
