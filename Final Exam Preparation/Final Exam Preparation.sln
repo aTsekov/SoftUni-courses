@@ -21,11 +21,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "7 Mirror words", "02 Mirror
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "8 Need for Speed III", "03 Need for Speed III\8 Need for Speed III.csproj", "{FDF84CCC-5744-4AA8-8FB0-DED32C7834AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "10 Password Reset", "10 Password Reset\10 Password Reset.csproj", "{41872723-902B-4A1A-B24B-9F977283F505}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "10 Password Reset", "10 Password Reset\10 Password Reset.csproj", "{41872723-902B-4A1A-B24B-9F977283F505}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "11 Fancy Barcodes", "11 Fancy Barcodes\11 Fancy Barcodes.csproj", "{0D6DA1C0-C0C8-4DFA-9711-4BCA71E30ED2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "11 Fancy Barcodes", "11 Fancy Barcodes\11 Fancy Barcodes.csproj", "{0D6DA1C0-C0C8-4DFA-9711-4BCA71E30ED2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "12 Heroes of Code and Logic VII", "12 Heroes of Code and Logic VII\12 Heroes of Code and Logic VII.csproj", "{75C91719-B9BA-4E7B-B2EE-942AAB47C49D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "12 Heroes of Code and Logic VII", "12 Heroes of Code and Logic VII\12 Heroes of Code and Logic VII.csproj", "{75C91719-B9BA-4E7B-B2EE-942AAB47C49D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "13 Activation Keys", "13 Activation Keys\13 Activation Keys.csproj", "{503B49FD-9AA7-4F3B-801A-ADBC045A69D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "14 Emoji Detector", "14 Emoji Detector\14 Emoji Detector.csproj", "{81E5DC04-6BC4-40E2-BBFB-C2F43C2712F9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +85,14 @@ Global
 		{75C91719-B9BA-4E7B-B2EE-942AAB47C49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75C91719-B9BA-4E7B-B2EE-942AAB47C49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75C91719-B9BA-4E7B-B2EE-942AAB47C49D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{503B49FD-9AA7-4F3B-801A-ADBC045A69D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{503B49FD-9AA7-4F3B-801A-ADBC045A69D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{503B49FD-9AA7-4F3B-801A-ADBC045A69D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{503B49FD-9AA7-4F3B-801A-ADBC045A69D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81E5DC04-6BC4-40E2-BBFB-C2F43C2712F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81E5DC04-6BC4-40E2-BBFB-C2F43C2712F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81E5DC04-6BC4-40E2-BBFB-C2F43C2712F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81E5DC04-6BC4-40E2-BBFB-C2F43C2712F9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
