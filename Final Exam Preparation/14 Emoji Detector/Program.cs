@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Numerics;
 using System.Text.RegularExpressions;
 
 namespace _14_Emoji_Detector
@@ -12,19 +13,19 @@ namespace _14_Emoji_Detector
             string emojiPattern = @"(\:\:|\*\*)([A-Z])([a-z]{2,})\1";
             string coolDigitPattern = @"(?<digits>\d)";
 
-            long coolThreshhold = 1;
+            BigInteger coolThreshhold = 1;
 
             MatchCollection coolDigitMatches = Regex.Matches(text, coolDigitPattern);
 
             foreach (Match digit in coolDigitMatches)
             {
-                long currentDigit = long.Parse(digit.Groups["digits"].ToString());
+                BigInteger currentDigit = long.Parse(digit.Groups["digits"].ToString());
                 coolThreshhold *= currentDigit;
             }
             MatchCollection matchEmoji =Regex.Matches(text,emojiPattern);
             int matchedEmojies = 0;
             List<string> coolEmojiesList = new List<string>();
-            long charSum = 0;
+            BigInteger charSum = 0;
             foreach (Match matchedEmoji in matchEmoji)
             {
                 matchedEmojies++;
