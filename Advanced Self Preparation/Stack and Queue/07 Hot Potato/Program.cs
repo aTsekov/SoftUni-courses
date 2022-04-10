@@ -30,7 +30,7 @@ namespace _07_Hot_Potato
 
                 Console.WriteLine($"Removed {circle.Dequeue()}");// махаме новото първо дете/слаге го първо на опашката
             }
-            Console.WriteLine($"Last is{circle.Dequeue()}");
+            Console.WriteLine($"Last is {circle.Dequeue()}");
             
         }
     }
