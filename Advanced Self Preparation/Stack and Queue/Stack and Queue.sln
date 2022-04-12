@@ -19,13 +19,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "07 Hot Potato", "07 Hot Pot
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08 Traffic Jam", "08 Traffic Jam\08 Traffic Jam.csproj", "{EDADA927-873B-48A0-9343-B8E7E79FD66E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E01 Basic Stack Operations", "E01 Basic Stack Operations\E01 Basic Stack Operations.csproj", "{000EB04E-5D4A-4AB5-B138-59E778E1FBC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E01 Basic Stack Operations", "E01 Basic Stack Operations\E01 Basic Stack Operations.csproj", "{000EB04E-5D4A-4AB5-B138-59E778E1FBC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E02 Basic Queue Operations", "E02 Basic Queue Operations\E02 Basic Queue Operations.csproj", "{BDA980BD-CCF3-4714-B32C-69DD9B256E91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E02 Basic Queue Operations", "E02 Basic Queue Operations\E02 Basic Queue Operations.csproj", "{BDA980BD-CCF3-4714-B32C-69DD9B256E91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E03 Maximum and Minimum Element", "E03 Maximum and Minimum Element\E03 Maximum and Minimum Element.csproj", "{45FE5778-9E41-4B5D-8E04-9B794BE35165}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E03 Maximum and Minimum Element", "E03 Maximum and Minimum Element\E03 Maximum and Minimum Element.csproj", "{45FE5778-9E41-4B5D-8E04-9B794BE35165}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E04 Fast Food", "E04 Fast Food\E04 Fast Food.csproj", "{82BB693A-8E33-4396-8708-7206FC40A43E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E04 Fast Food", "E04 Fast Food\E04 Fast Food.csproj", "{82BB693A-8E33-4396-8708-7206FC40A43E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E05 Fashion Boutique", "E05 Fashion Boutique\E05 Fashion Boutique.csproj", "{E9AA5A85-6878-492E-97ED-C2176CC985F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{82BB693A-8E33-4396-8708-7206FC40A43E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82BB693A-8E33-4396-8708-7206FC40A43E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82BB693A-8E33-4396-8708-7206FC40A43E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9AA5A85-6878-492E-97ED-C2176CC985F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9AA5A85-6878-492E-97ED-C2176CC985F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9AA5A85-6878-492E-97ED-C2176CC985F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9AA5A85-6878-492E-97ED-C2176CC985F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
