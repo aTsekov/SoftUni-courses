@@ -16,7 +16,7 @@ namespace L01_Sum_Matrix_Elements
             for (int row =  0; row < matrix.GetLength(0); row++)
             {
                 int [] currentRow = Console.ReadLine()
-                    .Split(", ")
+                    .Split(" ")
                     .Select(int.Parse)
                     .ToArray();
 
