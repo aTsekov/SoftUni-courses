@@ -17,17 +17,13 @@ namespace L03_Primary_Diagonal
                 for (int col = 0; col < n; col++)
                 {
                     matrix[row, col] = input[col];
-                    //int currDigit = matrix[row, col];
 
-                    //sum += currDigit;
                     
                 }
-            }
-            for (int i = 0; i < n; i++)
-            {
-                int currDigit = matrix[i,i];
+                int currDigit = matrix[row, row];
                 sum += currDigit;
             }
+            
 
             Console.WriteLine(sum);
         }
