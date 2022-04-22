@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L01 Sum Matrix Elements", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L02 Sum Matrix Columns", "L02 Sum Matrix Columns\L02 Sum Matrix Columns.csproj", "{806D3538-174A-4311-B042-05B0D00B0C47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L03 Primary Diagonal", "L03 Primary Diagonal\L03 Primary Diagonal.csproj", "{2554E75D-A437-4657-A5AB-45BD355C7188}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L03 Primary Diagonal", "L03 Primary Diagonal\L03 Primary Diagonal.csproj", "{2554E75D-A437-4657-A5AB-45BD355C7188}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L04 Symbol in Matrix", "L04 Symbol in Matrix\L04 Symbol in Matrix.csproj", "{8EE093FC-59EF-4E57-A9EB-32DCDCF46DBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L04 Symbol in Matrix", "L04 Symbol in Matrix\L04 Symbol in Matrix.csproj", "{8EE093FC-59EF-4E57-A9EB-32DCDCF46DBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L05 Square with Maximum Sum", "L05 Square with Maximum Sum\L05 Square with Maximum Sum.csproj", "{1F52ABB0-C57C-4C68-9C8F-7800DA498571}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8EE093FC-59EF-4E57-A9EB-32DCDCF46DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8EE093FC-59EF-4E57-A9EB-32DCDCF46DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8EE093FC-59EF-4E57-A9EB-32DCDCF46DBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F52ABB0-C57C-4C68-9C8F-7800DA498571}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F52ABB0-C57C-4C68-9C8F-7800DA498571}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F52ABB0-C57C-4C68-9C8F-7800DA498571}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F52ABB0-C57C-4C68-9C8F-7800DA498571}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
