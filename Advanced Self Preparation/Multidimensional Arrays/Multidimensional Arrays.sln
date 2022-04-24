@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L07 Pascal Triangle", "L07 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E01 Diagonal Difference", "E01 Diagonal Difference\E01 Diagonal Difference.csproj", "{4060BAFA-D69E-4D7A-9D15-B218742BB63F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E02 2X2 Squares in Matrix", "E02 2X2 Squares in Matrix\E02 2X2 Squares in Matrix.csproj", "{615ACD85-6F06-442E-BAAB-14BCB38EFFBB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{4060BAFA-D69E-4D7A-9D15-B218742BB63F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4060BAFA-D69E-4D7A-9D15-B218742BB63F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4060BAFA-D69E-4D7A-9D15-B218742BB63F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{615ACD85-6F06-442E-BAAB-14BCB38EFFBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{615ACD85-6F06-442E-BAAB-14BCB38EFFBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{615ACD85-6F06-442E-BAAB-14BCB38EFFBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{615ACD85-6F06-442E-BAAB-14BCB38EFFBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

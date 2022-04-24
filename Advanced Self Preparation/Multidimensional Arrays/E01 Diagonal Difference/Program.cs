@@ -33,8 +33,8 @@ namespace E01_Diagonal_Difference
 
 
 
-            Console.WriteLine(sumFirstDiag);
-            Console.WriteLine(sumSecondDiag);
+            //Console.WriteLine(sumFirstDiag); added just for test purposes
+            //Console.WriteLine(sumSecondDiag);
             Console.WriteLine(difference);
         }
     }
