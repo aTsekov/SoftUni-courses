@@ -17,13 +17,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L06 Jagged-Array Modificati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L07 Pascal Triangle", "L07 Pascal Triangle\L07 Pascal Triangle.csproj", "{B8694F84-7F5C-4A67-9251-971FD265EC02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E01 Diagonal Difference", "E01 Diagonal Difference\E01 Diagonal Difference.csproj", "{4060BAFA-D69E-4D7A-9D15-B218742BB63F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E01 Diagonal Difference", "E01 Diagonal Difference\E01 Diagonal Difference.csproj", "{4060BAFA-D69E-4D7A-9D15-B218742BB63F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E02 2X2 Squares in Matrix", "E02 2X2 Squares in Matrix\E02 2X2 Squares in Matrix.csproj", "{615ACD85-6F06-442E-BAAB-14BCB38EFFBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E02 2X2 Squares in Matrix", "E02 2X2 Squares in Matrix\E02 2X2 Squares in Matrix.csproj", "{615ACD85-6F06-442E-BAAB-14BCB38EFFBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E03 Maximal Sum", "E03 Maximal Sum\E03 Maximal Sum.csproj", "{AC2BC83E-A63F-49D5-95E5-7C890286EBAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E03 Maximal Sum", "E03 Maximal Sum\E03 Maximal Sum.csproj", "{AC2BC83E-A63F-49D5-95E5-7C890286EBAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E04 Matrix Shuffling", "E04 Matrix Shuffling\E04 Matrix Shuffling.csproj", "{95AB5838-82B5-4A66-896B-1B6C3FE4ACC8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E04 Matrix Shuffling", "E04 Matrix Shuffling\E04 Matrix Shuffling.csproj", "{95AB5838-82B5-4A66-896B-1B6C3FE4ACC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E05 Snake Moves", "E05 Snake Moves\E05 Snake Moves.csproj", "{177D5362-9B83-42C8-B3B9-FE76119B8F20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E06 Jagged Array Manipulator", "E06 Jagged Array Manipulator\E06 Jagged Array Manipulator.csproj", "{F4EF64C6-7EE2-4ADB-839A-E04E7000E712}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{95AB5838-82B5-4A66-896B-1B6C3FE4ACC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95AB5838-82B5-4A66-896B-1B6C3FE4ACC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95AB5838-82B5-4A66-896B-1B6C3FE4ACC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{177D5362-9B83-42C8-B3B9-FE76119B8F20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{177D5362-9B83-42C8-B3B9-FE76119B8F20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{177D5362-9B83-42C8-B3B9-FE76119B8F20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{177D5362-9B83-42C8-B3B9-FE76119B8F20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4EF64C6-7EE2-4ADB-839A-E04E7000E712}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4EF64C6-7EE2-4ADB-839A-E04E7000E712}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4EF64C6-7EE2-4ADB-839A-E04E7000E712}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4EF64C6-7EE2-4ADB-839A-E04E7000E712}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
