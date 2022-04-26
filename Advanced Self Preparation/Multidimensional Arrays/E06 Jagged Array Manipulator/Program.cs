@@ -7,23 +7,23 @@ namespace E06_Jagged_Array_Manipulator
     {
         static void Main(string[] args)
         {
-            int rows = int.Parse(Console.ReadLine());
+            byte rows = byte.Parse(Console.ReadLine());
 
-            int[][] jaggedArr = new int[rows][];
+            double[][] jaggedArr = new double[rows][];
 
             for (int i = 0; i < rows; i++)
             {
                 jaggedArr[i] = Console.ReadLine() // пълним всеки ред с нов масив по стандартния начин. На ред i  четем от конзолата малки масив и го слагаме в големия. 
                     .Split(' ')
-                    .Select(int.Parse)
+                    .Select(double.Parse)
                     .ToArray();
             }
 
             for (int row = 0; row < jaggedArr.Length-1; row++)
             {
                 
-               int [] rowOne = jaggedArr[row];
-               int [] rowTwo = jaggedArr[row +1];
+               double [] rowOne = jaggedArr[row];
+               double [] rowTwo = jaggedArr[row +1];
                 if (rowOne.Length == rowTwo.Length)
                 {
                     jaggedArr[row] = rowOne.Select(e => e * 2).ToArray();
@@ -75,7 +75,7 @@ namespace E06_Jagged_Array_Manipulator
 
             }
 
-            foreach (int[] el in jaggedArr)
+            foreach (double[] el in jaggedArr)
             {
                 Console.WriteLine(string.Join(" ", el));
             }
