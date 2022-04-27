@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L08 SoftUni Party", "L08 So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E01 Unique Usernames", "E01 Unique Usernames\E01 Unique Usernames.csproj", "{F7786241-CB4A-48B7-9ED9-244CDD5777B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E02 Sets of Elements", "E02 Sets of Elements\E02 Sets of Elements.csproj", "{B06221BD-0B5C-4B99-82D1-9F3DCAC7A70D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{F7786241-CB4A-48B7-9ED9-244CDD5777B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7786241-CB4A-48B7-9ED9-244CDD5777B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7786241-CB4A-48B7-9ED9-244CDD5777B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B06221BD-0B5C-4B99-82D1-9F3DCAC7A70D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B06221BD-0B5C-4B99-82D1-9F3DCAC7A70D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B06221BD-0B5C-4B99-82D1-9F3DCAC7A70D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B06221BD-0B5C-4B99-82D1-9F3DCAC7A70D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
