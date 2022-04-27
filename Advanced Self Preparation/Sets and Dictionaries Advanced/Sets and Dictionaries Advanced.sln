@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L02 Average Student Grades"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L04 Product Shop", "L04 Product Shop\L04 Product Shop.csproj", "{A995766E-2027-4BFB-9A9D-1A76D0280FB3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L06 Record Unique Names", "L06 Record Unique Names\L06 Record Unique Names.csproj", "{1E4C967D-3F9E-4241-A9F6-A1E1FBDB440C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A995766E-2027-4BFB-9A9D-1A76D0280FB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A995766E-2027-4BFB-9A9D-1A76D0280FB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A995766E-2027-4BFB-9A9D-1A76D0280FB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E4C967D-3F9E-4241-A9F6-A1E1FBDB440C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E4C967D-3F9E-4241-A9F6-A1E1FBDB440C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E4C967D-3F9E-4241-A9F6-A1E1FBDB440C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E4C967D-3F9E-4241-A9F6-A1E1FBDB440C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
