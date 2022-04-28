@@ -21,9 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E02 Sets of Elements", "E02
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E03 Periodic Table", "E03 Periodic Table\E03 Periodic Table.csproj", "{1A033222-0659-450C-A605-56931E2294A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E04 Even Times", "E04 Even Times\E04 Even Times.csproj", "{6445808C-8333-430A-A287-0CC072E92125}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E04 Even Times", "E04 Even Times\E04 Even Times.csproj", "{6445808C-8333-430A-A287-0CC072E92125}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E05 Count Symbols", "E05 Count Symbols\E05 Count Symbols.csproj", "{139EC0F7-D238-4EB3-ACA3-AD2441133543}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E05 Count Symbols", "E05 Count Symbols\E05 Count Symbols.csproj", "{139EC0F7-D238-4EB3-ACA3-AD2441133543}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E06 Wardrobe", "E06 Wardrobe\E06 Wardrobe.csproj", "{1F6860CB-D85A-4B25-9166-8D63AF2B8065}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +77,10 @@ Global
 		{139EC0F7-D238-4EB3-ACA3-AD2441133543}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{139EC0F7-D238-4EB3-ACA3-AD2441133543}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{139EC0F7-D238-4EB3-ACA3-AD2441133543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F6860CB-D85A-4B25-9166-8D63AF2B8065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F6860CB-D85A-4B25-9166-8D63AF2B8065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F6860CB-D85A-4B25-9166-8D63AF2B8065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F6860CB-D85A-4B25-9166-8D63AF2B8065}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
