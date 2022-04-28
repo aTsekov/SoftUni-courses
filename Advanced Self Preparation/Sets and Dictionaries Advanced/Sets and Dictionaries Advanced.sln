@@ -15,11 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L07 Parking Lot", "L07 Park
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L08 SoftUni Party", "L08 SoftUni Party\L08 SoftUni Party.csproj", "{B5705229-3460-4950-AFF2-C3224499CB5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E01 Unique Usernames", "E01 Unique Usernames\E01 Unique Usernames.csproj", "{F7786241-CB4A-48B7-9ED9-244CDD5777B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E01 Unique Usernames", "E01 Unique Usernames\E01 Unique Usernames.csproj", "{F7786241-CB4A-48B7-9ED9-244CDD5777B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E02 Sets of Elements", "E02 Sets of Elements\E02 Sets of Elements.csproj", "{B06221BD-0B5C-4B99-82D1-9F3DCAC7A70D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E02 Sets of Elements", "E02 Sets of Elements\E02 Sets of Elements.csproj", "{B06221BD-0B5C-4B99-82D1-9F3DCAC7A70D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E03 Periodic Table", "E03 Periodic Table\E03 Periodic Table.csproj", "{1A033222-0659-450C-A605-56931E2294A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E03 Periodic Table", "E03 Periodic Table\E03 Periodic Table.csproj", "{1A033222-0659-450C-A605-56931E2294A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E04 Even Times", "E04 Even Times\E04 Even Times.csproj", "{6445808C-8333-430A-A287-0CC072E92125}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{1A033222-0659-450C-A605-56931E2294A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A033222-0659-450C-A605-56931E2294A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A033222-0659-450C-A605-56931E2294A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6445808C-8333-430A-A287-0CC072E92125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6445808C-8333-430A-A287-0CC072E92125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6445808C-8333-430A-A287-0CC072E92125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6445808C-8333-430A-A287-0CC072E92125}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
