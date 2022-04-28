@@ -10,7 +10,7 @@ namespace E04_Even_Times
             int n = int.Parse(Console.ReadLine());
 
             int counter = 1;
-            int numToSave = 0;
+            double numToSave = int.MinValue;
 
             HashSet<int> nums = new HashSet<int>();
 
