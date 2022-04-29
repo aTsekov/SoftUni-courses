@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E04 Even Times", "E04 Even 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E05 Count Symbols", "E05 Count Symbols\E05 Count Symbols.csproj", "{139EC0F7-D238-4EB3-ACA3-AD2441133543}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E06 Wardrobe", "E06 Wardrobe\E06 Wardrobe.csproj", "{1F6860CB-D85A-4B25-9166-8D63AF2B8065}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E06 Wardrobe", "E06 Wardrobe\E06 Wardrobe.csproj", "{1F6860CB-D85A-4B25-9166-8D63AF2B8065}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E07 The V-Logger", "E07 The V-Logger\E07 The V-Logger.csproj", "{468CB253-F790-49D1-AE18-1643163EC2FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{1F6860CB-D85A-4B25-9166-8D63AF2B8065}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F6860CB-D85A-4B25-9166-8D63AF2B8065}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F6860CB-D85A-4B25-9166-8D63AF2B8065}.Release|Any CPU.Build.0 = Release|Any CPU
+		{468CB253-F790-49D1-AE18-1643163EC2FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{468CB253-F790-49D1-AE18-1643163EC2FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{468CB253-F790-49D1-AE18-1643163EC2FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{468CB253-F790-49D1-AE18-1643163EC2FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
