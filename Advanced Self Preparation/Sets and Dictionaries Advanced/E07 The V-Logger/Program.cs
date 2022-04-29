@@ -2,81 +2,63 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace E07_The_V_Logger
+namespace Vlogger
 {
-    internal class Program
+    class Vlogger
     {
         static void Main(string[] args)
         {
-            Dictionary<string,HashSet<string>> vloggerWithHisFollowers = new Dictionary<string,HashSet<string>>();
-            Dictionary<string,HashSet<string>> vloggerWithHisFollowings = new Dictionary<string,HashSet<string>>();
-            string command;
+            Dictionary<string, Dictionary<string, HashSet<string>>> database = new Dictionary<string, Dictionary<string, HashSet<string>>>();
 
-            while ((command = Console.ReadLine()) != "Statistics")
+            string input = Console.ReadLine();
+
+            while (input != "Statistics")
             {
-                string[] commandArgs =command.Split(' ', StringSplitOptions.RemoveEmptyEntries).ToArray();
+                string[] data = input.Split();
 
-                string cmdType = commandArgs[1];
+                string vlogger = data[0];
+                string command = data[1];
 
-                if (cmdType == "joined")
+                if (command == "joined")
                 {
-                    Joined(vloggerWithHisFollowers, vloggerWithHisFollowings, commandArgs);
-
+                    if (database.ContainsKey(vlogger) == false)
+                    {
+                        database.Add(vlogger, new Dictionary<string, HashSet<string>>());
+                        database[vlogger].Add("followers", new HashSet<string>());
+                        database[vlogger].Add("following", new HashSet<string>());
+                    }
                 }
-                else if (cmdType == "followed")
+                else if (command == "followed")
                 {
-                    Followed(vloggerWithHisFollowers, vloggerWithHisFollowings, commandArgs);
+                    string member = data[2];
 
-                }
-            }
-
-            vloggerWithHisFollowers = vloggerWithHisFollowers.OrderByDescending(kvp =>kvp.Value.Count).ThenBy(kvp =>vloggerWithHisFollowings[kvp.Key].Count).ToDictionary(a => a.Key, b => b.Value);
-
-            int cnt = 1;
-               
-            Console.WriteLine($"The V-Logger has a total of {vloggerWithHisFollowings.Count} vloggers in its logs.");
-
-            KeyValuePair<string, HashSet<string>> mostFamousVlogger = vloggerWithHisFollowers.First();
-
-            string famounsVloggerName = mostFamousVlogger.Key;
-            HashSet<string> mostFamousVloggerFollowers = mostFamousVlogger.Value.OrderBy(m => m).ToHashSet();
-            Console.WriteLine($"{cnt++}{famounsVloggerName} : {mostFamousVloggerFollowers.Count} followers, {vloggerWithHisFollowings[famounsVloggerName]} following");
-
-            foreach (var follower in mostFamousVloggerFollowers)
-            {
-                Console.WriteLine($"*  {follower}");
-            }
-            
-            foreach (var vloggerFollowersPair in vloggerWithHisFollowers.Skip(1))
-            {
-                HashSet<string> followers = vloggerFollowersPair.Value;
-                Console.WriteLine($"{cnt++}. {vloggerFollowersPair.Key} : {followers.Count} followers, {vloggerWithHisFollowings[vloggerFollowersPair.Key].Count} following");
-            }
-
-        }
-
-        private static void Followed(Dictionary<string, HashSet<string>> vloggerWithHisFollowers, Dictionary<string, HashSet<string>> vloggerWithHisFollowings, string[] commandArgs)
-        {
-            string follower = commandArgs[0];
-            string toBeFollowed = commandArgs[2];
-            if (follower != toBeFollowed)
-            {
-                if (vloggerWithHisFollowers.ContainsKey(toBeFollowed) && vloggerWithHisFollowings.ContainsKey(follower))
-                {
-                    vloggerWithHisFollowers[toBeFollowed].Add(follower);
-                    vloggerWithHisFollowings[follower].Add(toBeFollowed);
+                    if (vlogger != member && database.ContainsKey(vlogger) && database.ContainsKey(member))
+                    {
+                        database[vlogger]["following"].Add(member);
+                        database[member]["followers"].Add(vlogger);
+                    }
                 }
 
+                input = Console.ReadLine();
             }
-        }
 
-        private static void Joined(Dictionary<string, HashSet<string>> vloggerWithHisFollowers, Dictionary<string, HashSet<string>> vloggerWithHisFollowings, string[] commandArgs)
-        {
-            string vloggerToJoin = commandArgs[0];
-            if (vloggerWithHisFollowers.ContainsKey(vloggerToJoin))
+            Console.WriteLine($"The V-Logger has a total of {database.Count} vloggers in its logs.");
+
+            int number = 1;
+
+            foreach (var vlogger in database.OrderByDescending(v => v.Value["followers"].Count).ThenBy(v => v.Value["following"].Count))
             {
-                vloggerWithHisFollowings[vloggerToJoin] = new HashSet<string>();
-                vloggerWithHisFollowers[vloggerToJoin] = new HashSet<string>();
+                Console.WriteLine($"{number}. {vlogger.Key} : {vlogger.Value["followers"].Count} followers, {vlogger.Value["following"].Count} following");
+
+                if (number == 1)
+                {
+                    foreach (string follower in vlogger.Value["followers"].OrderBy(f => f))
+                    {
+                        Console.WriteLine($"*  {follower}");
+                    }
+                }
+
+                number++;
             }
         }
     }
