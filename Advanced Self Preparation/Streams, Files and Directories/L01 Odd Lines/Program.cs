@@ -10,7 +10,7 @@ namespace L01_Odd_Lines
             var path = Path.Combine("data", "input.txt");
             var dest = Path.Combine("data", "output.txt");
 
-            using (FileStream file = new FileStream(path, FileMode.Open))// We define the stream and the patch from where we will read it. 
+            using (FileStream file = new FileStream(path, FileMode.Open))// We define the stream and the path from where we will read it. We reach the file input in the folder "data". "FileMode.Open" means that we open the file.
             {
 
                 using (TextReader text = new StreamReader(file))
