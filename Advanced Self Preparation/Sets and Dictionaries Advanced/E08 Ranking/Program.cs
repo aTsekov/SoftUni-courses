@@ -46,7 +46,7 @@ namespace E08_Ranking
                 }
                 else
                 {
-                    Dictionary<string, int> temp = submissionResults[username];
+                    
                     if (!submissionResults[username].ContainsKey(contest))
                     {
                         submissionResults[username].Add(contest, points);
