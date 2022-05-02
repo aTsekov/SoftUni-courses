@@ -21,7 +21,7 @@ namespace L01_Odd_Line
                     {
                         if (count % 2 != 0)
                         {
-                            output.WriteLine(line);
+                            output.WriteLine(line);// Why my input is written only in bit>debug folder, but it is not copied in the app location where the .cs files is. 
                         }
 
                         count++;
