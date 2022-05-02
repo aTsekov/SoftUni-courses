@@ -6,4 +6,13 @@
     <RootNamespace>L02_Line_Numbers</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="Data\input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\output.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

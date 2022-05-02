@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L01 Odd Lines", "L01 Odd Lines\L01 Odd Lines.csproj", "{DE85337B-E70A-40B6-A43D-605A2AA92FA7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L02 Line Numbers", "L02 Line Numbers\L02 Line Numbers.csproj", "{14A2A636-CCF9-4C87-A00D-FDDAA8AC36E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L01 Odd Line", "L01 Odd Line\L01 Odd Line.csproj", "{7F36275C-7A19-4589-A6BF-66797EA0A018}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DE85337B-E70A-40B6-A43D-605A2AA92FA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE85337B-E70A-40B6-A43D-605A2AA92FA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE85337B-E70A-40B6-A43D-605A2AA92FA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE85337B-E70A-40B6-A43D-605A2AA92FA7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14A2A636-CCF9-4C87-A00D-FDDAA8AC36E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14A2A636-CCF9-4C87-A00D-FDDAA8AC36E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14A2A636-CCF9-4C87-A00D-FDDAA8AC36E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
