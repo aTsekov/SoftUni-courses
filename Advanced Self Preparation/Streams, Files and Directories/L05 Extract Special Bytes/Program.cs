@@ -12,25 +12,27 @@ namespace L05_Extract_Special_Bytes
             string bytes = Path.Combine("bytes.txt");
             string output = Path.Combine("output.bin");
 
-            using (StreamReader image = new StreamReader(exampleImage))
+            using FileStream readFileStream = new FileStream(exampleImage, FileMode.Open);
+            using FileStream readFileStream2 = new FileStream(bytes, FileMode.Open);
+
+            using FileStream writeFileStream = new FileStream(output, FileMode.Create);
+            byte[] buffer = new byte[4096];
+
+
+            while (readFileStream.CanRead)
             {
-                string imageOutput = image.ReadToEnd();
-
-                using (StreamReader textoutput = new StreamReader(bytes))
+                int counter = readFileStream.Read(buffer, 0, buffer.Length);
+                readFileStream2.Read(buffer, 0, buffer.Length);
+                if (counter == 0)
                 {
-                    string text = textoutput.ReadToEnd();
-
-
-                    using (StreamWriter writeOutputInBytes = new StreamWriter(output))
-                    {
-                        writeOutputInBytes.WriteLine(imageOutput);
-                        writeOutputInBytes.WriteLine(text);
-
-                    }
+                    break;
 
                 }
 
+                writeFileStream.Write(buffer, 0, buffer.Length);
+                
             }
+            
 
 
         }
