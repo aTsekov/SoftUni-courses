@@ -4,34 +4,16 @@ using System.IO;
 namespace L05_Extract_Special_Bytes
 {
     internal class Program  
-    {
+    { 
         static void Main(string[] args)
         {
 
-            string exampleImage = Path.Combine("exampleimage.png");
-            string bytes = Path.Combine("bytes.txt");
-            string output = Path.Combine("output.bin");
+            using  FileStream fileReader =  new FileStream("output.txt",FileMode.OpenOrCreate);
+            byte[] buffer = new byte[100];
+            fileReader.Read(buffer, 0, 10); // Write in the buffer, start from the 0 (from the very begining) and put 10 bytes in the buffer
 
-            using FileStream readFileStream = new FileStream(exampleImage, FileMode.Open);
-            using FileStream readFileStream2 = new FileStream(bytes, FileMode.Open);
+            //We aread as bytes the text that we have in the "output" file. and we are doing it with a buffer of 10 bytes. 
 
-            using FileStream writeFileStream = new FileStream(output, FileMode.Create);
-            byte[] buffer = new byte[4096];
-
-
-            while (readFileStream.CanRead)
-            {
-                int counter = readFileStream.Read(buffer, 0, buffer.Length);
-                readFileStream2.Read(buffer, 0, buffer.Length);
-                if (counter == 0)
-                {
-                    break;
-
-                }
-
-                writeFileStream.Write(buffer, 0, buffer.Length);
-                
-            }
             
 
 
