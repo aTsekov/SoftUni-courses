@@ -5,7 +5,7 @@ namespace L02_Line_Numbers
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             var inputPath = Path.Combine("Data", "input.txt");
             var outputPath = Path.Combine("Data", "output.txt");

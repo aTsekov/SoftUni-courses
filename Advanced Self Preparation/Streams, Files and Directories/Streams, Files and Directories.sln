@@ -5,9 +5,13 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L02 Line Numbers", "L02 Line Numbers\L02 Line Numbers.csproj", "{14A2A636-CCF9-4C87-A00D-FDDAA8AC36E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L01 Odd Line", "L01 Odd Line\L01 Odd Line.csproj", "{7F36275C-7A19-4589-A6BF-66797EA0A018}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L01 Odd Line", "L01 Odd Line\L01 Odd Line.csproj", "{7F36275C-7A19-4589-A6BF-66797EA0A018}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L03 Word Count", "L03 Word Count\L03 Word Count.csproj", "{59B88480-A180-4EDF-A62F-21F39981C8F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L03 Word Count", "L03 Word Count\L03 Word Count.csproj", "{59B88480-A180-4EDF-A62F-21F39981C8F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L04 Merge Files", "L04 Merge Files\L04 Merge Files.csproj", "{7986DF8A-F690-43F4-B828-08DDD84648F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L05 Extract Special Bytes", "L05 Extract Special Bytes\L05 Extract Special Bytes.csproj", "{C1E5DD46-A667-4D7A-991A-AE3D2A1E800B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,14 @@ Global
 		{59B88480-A180-4EDF-A62F-21F39981C8F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59B88480-A180-4EDF-A62F-21F39981C8F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59B88480-A180-4EDF-A62F-21F39981C8F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7986DF8A-F690-43F4-B828-08DDD84648F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7986DF8A-F690-43F4-B828-08DDD84648F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7986DF8A-F690-43F4-B828-08DDD84648F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7986DF8A-F690-43F4-B828-08DDD84648F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1E5DD46-A667-4D7A-991A-AE3D2A1E800B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1E5DD46-A667-4D7A-991A-AE3D2A1E800B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1E5DD46-A667-4D7A-991A-AE3D2A1E800B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1E5DD46-A667-4D7A-991A-AE3D2A1E800B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,7 +3,7 @@ using System.IO;
 
 namespace L05_Extract_Special_Bytes
 {
-    internal class Program
+    internal class Program  
     {
         static void Main(string[] args)
         {
