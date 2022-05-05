@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E05 Slice a File", "E05 Sli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L07 Folder Size", "L07 Folder Size\L07 Folder Size.csproj", "{9B36B23D-DCB7-4CC6-A69B-81339FD7EA8B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E01 Even Lines", "E01 Even Lines\E01 Even Lines.csproj", "{CCF80982-472E-4BC2-8612-A64F0A0B61AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{9B36B23D-DCB7-4CC6-A69B-81339FD7EA8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B36B23D-DCB7-4CC6-A69B-81339FD7EA8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B36B23D-DCB7-4CC6-A69B-81339FD7EA8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCF80982-472E-4BC2-8612-A64F0A0B61AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF80982-472E-4BC2-8612-A64F0A0B61AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCF80982-472E-4BC2-8612-A64F0A0B61AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCF80982-472E-4BC2-8612-A64F0A0B61AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
