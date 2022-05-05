@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L05 Extract Special Bytes",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E05 Slice a File", "E05 Slice a File\E05 Slice a File.csproj", "{42AF503A-5556-441E-90E1-FD4AA3C00588}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L07 Folder Size", "L07 Folder Size\L07 Folder Size.csproj", "{9B36B23D-DCB7-4CC6-A69B-81339FD7EA8B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{42AF503A-5556-441E-90E1-FD4AA3C00588}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42AF503A-5556-441E-90E1-FD4AA3C00588}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42AF503A-5556-441E-90E1-FD4AA3C00588}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B36B23D-DCB7-4CC6-A69B-81339FD7EA8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B36B23D-DCB7-4CC6-A69B-81339FD7EA8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B36B23D-DCB7-4CC6-A69B-81339FD7EA8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B36B23D-DCB7-4CC6-A69B-81339FD7EA8B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
