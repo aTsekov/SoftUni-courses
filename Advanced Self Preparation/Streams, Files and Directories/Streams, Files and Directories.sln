@@ -9,9 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L01 Odd Line", "L01 Odd Lin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L03 Word Count", "L03 Word Count\L03 Word Count.csproj", "{59B88480-A180-4EDF-A62F-21F39981C8F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L04 Merge Files", "L04 Merge Files\L04 Merge Files.csproj", "{7986DF8A-F690-43F4-B828-08DDD84648F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L04 Merge Files", "L04 Merge Files\L04 Merge Files.csproj", "{7986DF8A-F690-43F4-B828-08DDD84648F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L05 Extract Special Bytes", "L05 Extract Special Bytes\L05 Extract Special Bytes.csproj", "{C1E5DD46-A667-4D7A-991A-AE3D2A1E800B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L05 Extract Special Bytes", "L05 Extract Special Bytes\L05 Extract Special Bytes.csproj", "{C1E5DD46-A667-4D7A-991A-AE3D2A1E800B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E05 Slice a File", "E05 Slice a File\E05 Slice a File.csproj", "{42AF503A-5556-441E-90E1-FD4AA3C00588}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{C1E5DD46-A667-4D7A-991A-AE3D2A1E800B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C1E5DD46-A667-4D7A-991A-AE3D2A1E800B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C1E5DD46-A667-4D7A-991A-AE3D2A1E800B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42AF503A-5556-441E-90E1-FD4AA3C00588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42AF503A-5556-441E-90E1-FD4AA3C00588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42AF503A-5556-441E-90E1-FD4AA3C00588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42AF503A-5556-441E-90E1-FD4AA3C00588}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
