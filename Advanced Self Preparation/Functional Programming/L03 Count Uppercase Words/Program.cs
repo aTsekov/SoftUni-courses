@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace L03_Count_Uppercase_Words
@@ -7,9 +8,9 @@ namespace L03_Count_Uppercase_Words
     {
         static void Main(string[] args)
         {
-            var words = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] words = Console.ReadLine().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-            var upperLetterWords = words.Where(word => char.IsUpper(word[0]));
+            List<string> upperLetterWords = words.Where(word => char.IsUpper(word[0])).ToList();
             foreach (var word  in upperLetterWords)
             {
                 Console.WriteLine(word);
