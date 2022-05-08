@@ -13,13 +13,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L04 Add VAT", "L04 Add VAT\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L05 Filter By Age", "L05 Filter By Age\L05 Filter By Age.csproj", "{E5DA3E1D-B9F9-4CD0-9CD7-16EFD6EF96A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E01 Action Point", "E01 Action Point\E01 Action Point.csproj", "{A08D2E89-B8F3-45E3-9EE0-A15C006DE885}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E01 Action Point", "E01 Action Point\E01 Action Point.csproj", "{A08D2E89-B8F3-45E3-9EE0-A15C006DE885}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E02 Knights of Honor", "E02 Knights of Honor\E02 Knights of Honor.csproj", "{865E0463-B67E-4F96-A65A-E96912251321}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E02 Knights of Honor", "E02 Knights of Honor\E02 Knights of Honor.csproj", "{865E0463-B67E-4F96-A65A-E96912251321}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E03 Custom Min Function", "E03 Custom Min Function\E03 Custom Min Function.csproj", "{45E5EBA6-BAB9-4E40-BCE5-C05F9D6E6698}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E03 Custom Min Function", "E03 Custom Min Function\E03 Custom Min Function.csproj", "{45E5EBA6-BAB9-4E40-BCE5-C05F9D6E6698}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E04 Find Evens or Odds", "E04 Find Evens or Odds\E04 Find Evens or Odds.csproj", "{794CE927-A7E1-4838-966F-80CCAAF49A58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E04 Find Evens or Odds", "E04 Find Evens or Odds\E04 Find Evens or Odds.csproj", "{794CE927-A7E1-4838-966F-80CCAAF49A58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E05 Applied Arithmetics", "E05 Applied Arithmetics\E05 Applied Arithmetics.csproj", "{98C2BBC3-1755-411D-BDF0-E0E0BB749FFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{794CE927-A7E1-4838-966F-80CCAAF49A58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{794CE927-A7E1-4838-966F-80CCAAF49A58}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{794CE927-A7E1-4838-966F-80CCAAF49A58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98C2BBC3-1755-411D-BDF0-E0E0BB749FFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98C2BBC3-1755-411D-BDF0-E0E0BB749FFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98C2BBC3-1755-411D-BDF0-E0E0BB749FFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98C2BBC3-1755-411D-BDF0-E0E0BB749FFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
