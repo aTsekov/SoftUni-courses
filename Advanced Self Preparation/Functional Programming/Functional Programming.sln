@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "L05 Filter By Age", "L05 Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E01 Action Point", "E01 Action Point\E01 Action Point.csproj", "{A08D2E89-B8F3-45E3-9EE0-A15C006DE885}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E02 Knights of Honor", "E02 Knights of Honor\E02 Knights of Honor.csproj", "{865E0463-B67E-4F96-A65A-E96912251321}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{A08D2E89-B8F3-45E3-9EE0-A15C006DE885}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A08D2E89-B8F3-45E3-9EE0-A15C006DE885}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A08D2E89-B8F3-45E3-9EE0-A15C006DE885}.Release|Any CPU.Build.0 = Release|Any CPU
+		{865E0463-B67E-4F96-A65A-E96912251321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{865E0463-B67E-4F96-A65A-E96912251321}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{865E0463-B67E-4F96-A65A-E96912251321}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{865E0463-B67E-4F96-A65A-E96912251321}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
