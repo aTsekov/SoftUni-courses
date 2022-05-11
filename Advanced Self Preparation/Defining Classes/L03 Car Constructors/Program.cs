@@ -12,16 +12,16 @@ namespace CarManufacturer
             double fuelQuantity = double.Parse(Console.ReadLine());
             double fuelConsumption = double.Parse(Console.ReadLine());
 
-            Car fisrtCar = new Car();
-            Car secondCar = new Car(make,model,year);
-            Car thirdCar = new Car(make,model,year, fuelQuantity,fuelConsumption);
+            Car fisrtCar = new Car(); // The first car is with the default values
+            Car secondCar = new Car(make,model,year);// THe second car has only the values only from the second constructor
+            Car thirdCar = new Car(make,model,year, fuelQuantity,fuelConsumption);// The 3rd car has the values from all of the ctor's apart from the defaul ones.
 
         }
     }
     public class Car
     {
 
-        public Car()
+        public Car()// We create a ctor with default values = meaning if a car is empty, it will automatically have these values
         {
             Make = "VW";
             Model = "Golf";
@@ -31,13 +31,13 @@ namespace CarManufacturer
 
         }
 
-        public Car(string make, string model, int year) : this()
+        public Car(string make, string model, int year) : this() //We chain the current ctor with the empty one with this: ()
         {
             this.Make = make;
             this.Model = model;
             this.Year = year;
         }
-        public Car(string make, string model, int year, double fuelQuantity, double FuelConsumption) : this (make, model, year)
+        public Car(string make, string model, int year, double fuelQuantity, double FuelConsumption) : this (make, model, year) // we chain the second and the third ctor. This way we do not have to repead here the fields from the second. Additionally this way we can choose what values to put in the car (object) when we initiate it. 
         {
             this.FuelConsumption = FuelConsumption;
             this.FuelQuantity = fuelQuantity;
