@@ -15,7 +15,7 @@ namespace CarManufacturer
 
 
 
-            Console.WriteLine($"Make: {car.Model}\nModel: {car}\nYear: {car}");
+            Console.WriteLine($"Make: {car.Model}\nModel: {car.Make}\nYear: {car.Year}");
 
         }
     }
@@ -29,8 +29,6 @@ namespace CarManufacturer
         public string Model { get; set; }
         public string Make { get; set; }
         public int Year { get; set; }
-
-
 
     }
     public class StartUp
