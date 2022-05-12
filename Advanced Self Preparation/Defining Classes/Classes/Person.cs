@@ -9,10 +9,32 @@ namespace DefiningClasses
         private string name; // field. It can be used only in the class because it is private
         private int age;
 
-        public string Name { get; set; } // property. It is visible everywhere because the property is public 
-        
+        public Person() // ctor with default values
+        {
+            this.Name = "No name";
+            this.Age = 1;
+        }
+        public Person(int age) : this()
+        {
+            Age = age;
+        }
+        public Person(string name, int age) :this(age)
+        {
+            Name = name;            
+        }
+        public string Name // property. It is visible everywhere because the property is public 
+        {
+            get
+            {
+                return name;
+            }
+            set
+            {
+                name = value;
+            }
+        }
 
-        public int Age // this is the second way of doing a property
+        public int Age 
         {
             get
             {
