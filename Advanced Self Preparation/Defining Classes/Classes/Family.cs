@@ -20,7 +20,7 @@ namespace DefiningClasses
         }
         public Person GetOldestPerson()
         {
-            Person oldestPerson = FamilyMembers.OrderByDescending(x => x.Age).FirstOrDefault();
+            Person oldestPerson = FamilyMembers.OrderByDescending(x => x.Age).FirstOrDefault();// We order the list of people who are part of the same family. 
             return oldestPerson;
         }
     }
