@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace DefiningClasses
 {
@@ -6,12 +7,26 @@ namespace DefiningClasses
     {
         public static void Main(string[] args)
         {
-           Person person = new Person();
+           int n = int.Parse(Console.ReadLine());
+            Family family = new Family();
 
-            person.Name = "Antoni";
-            person.Age = 29;
+            for (int i = 0; i < n; i++)
+            {
+                string[] familyInfo = Console.ReadLine().Split(" ");
 
-            Console.WriteLine(person.Name);
+                string name = familyInfo[0];
+                int age = int.Parse(familyInfo[1]); 
+
+                Person person = new Person(name, age);
+
+                
+                family.AddMember(person);
+            }
+            Person oldest = family.GetOldestPerson();
+            Console.WriteLine($"{oldest.Name} {oldest.Age}");
+
+
+            
         }
     }
 }
