@@ -10,8 +10,9 @@ namespace DateModifier
         {
             DateTime dateOne = DateTime.Parse(firstDate);
             DateTime dateTwo = DateTime.Parse(secondDate);
+          
 
-            int days = (dateOne - dateOne).Days;
+            int days = Math.Abs((dateTwo - dateOne).Days);
 
             return days;
         }
