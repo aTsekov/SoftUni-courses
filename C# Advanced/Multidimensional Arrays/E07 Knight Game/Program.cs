@@ -40,7 +40,7 @@ namespace E07_Knight_Game
                             int currentAttackedKnights = GetCountAttackedKnights(matrix,row,col);
                             if (currentAttackedKnights > maxAttackedKnights)
                             {
-                                maxAttackedKnights = currentAttackedKnights;
+                                maxAttackedKnights = currentAttackedKnights;// Test Commit
                                 maxAttackedKnightsRow = row;
                                 maxAttackedKnightsCol = col;
                             }
