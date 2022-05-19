@@ -42,7 +42,7 @@ namespace E06_Jagged_Array_Manipulator
             string commandInput = string.Empty;
             while ((commandInput = Console.ReadLine()) != "End")
             {
-                string[] arr = commandInput.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray();
+                string[] arr = commandInput.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray(); 
                 string command = arr[0];
                 int row = int.Parse(arr[1]);
                 int column = int.Parse(arr[2]);
@@ -56,7 +56,7 @@ namespace E06_Jagged_Array_Manipulator
                     }
                     else
                     {
-                        jaggedArr[row][column] += value;
+                        jaggedArr[row][column] = jaggedArr[row][column] + value;
                     }
 
                 }
@@ -69,7 +69,7 @@ namespace E06_Jagged_Array_Manipulator
                     }
                     else
                     {
-                        jaggedArr[row][column] -= value;
+                        jaggedArr[row][column] = jaggedArr[row][column] - value;
                     }
                 }
 
