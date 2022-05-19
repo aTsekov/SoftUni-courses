@@ -78,7 +78,7 @@ namespace _8._Bombs
                     .ToArray();
                 for (int col = 0; col < squareMatrix.GetLength(1); col++)
                 {
-                    squareMatrix[row, col] = numbersToFill[col];//test
+                    squareMatrix[row, col] = numbersToFill[col];
                 }
             }
 
