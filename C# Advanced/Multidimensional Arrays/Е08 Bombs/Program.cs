@@ -1,133 +1,117 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 
-namespace _8._Bombs
+namespace Е08_Bombs
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
-            int dimensions = int.Parse(Console.ReadLine());
-            int[,] squareMatrix = FillSquareMatrix(dimensions);
+            int n = int.Parse(Console.ReadLine());
+            int[,] matrix = new int[n, n];
 
-            int[] coordinatesOfBomb = Console.ReadLine()
-                                             .Split(new char[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries)
-                                             .Select(int.Parse)
-                                             .ToArray();
-            for (int i = 0; i < coordinatesOfBomb.Length; i += 2)
+
+            //We fill the matrix with the following two loops
+            for (int row = 0; row < n; row++)
             {
-                int currentRowBomb = coordinatesOfBomb[i];
-                int currentColBomb = coordinatesOfBomb[i + 1];
+                int[] input = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
 
-                if (IsValid(currentRowBomb, currentColBomb, squareMatrix) &&
-                    squareMatrix[currentRowBomb, currentColBomb] > 0)
+                for (int col = 0; col < n; col++)
                 {
-                    int bombDamage = squareMatrix[currentRowBomb, currentColBomb];
-                    squareMatrix = Explosion(bombDamage, currentRowBomb, currentColBomb, squareMatrix);
+                    matrix[row, col] = input[col];
                 }
+
             }
 
-            List<int> activeCells = FindActiveCells(squareMatrix);
-            Console.WriteLine($"Alive cells: {activeCells.Count}");
-            Console.WriteLine($"Sum: {activeCells.Sum()}");
-            PrintMatrix(squareMatrix);
+            int[] coordinates = Console.ReadLine().Split(new char[] { ',', ' ' }).Select(int.Parse).ToArray();
+            int rowCoordinate = 0;
+            int colCoordinate = 1;
 
-        }
-
-        private static void PrintMatrix(int[,] squareMatrix)
-        {
-            for (int row = 0; row < squareMatrix.GetLength(0); row++)
+            for (int i = 0; i < coordinates.Length - 1; i++)
             {
-                for (int col = 0; col < squareMatrix.GetLength(1); col++)
+                if (colCoordinate >= coordinates.Length)
                 {
-                    Console.Write(squareMatrix[row, col] + " ");
+                    break;
+                }
+                int bombRow = coordinates[rowCoordinate];
+                int bombCol = coordinates[colCoordinate];
+
+                int bombValue = matrix[bombRow, bombCol];
+                if (bombValue > 0)
+                {
+                    if (bombRow - 1 >= 0 && bombCol - 1 >= 0 && matrix[bombRow - 1, bombCol - 1] > 0)
+                    {
+                        matrix[bombRow - 1, bombCol - 1] -= bombValue;
+                    }
+                    if (bombRow - 1 >= 0 && bombCol >= 0 && matrix[bombRow - 1, bombCol] > 0)
+                    {
+                        matrix[bombRow - 1, bombCol] -= bombValue;
+                    }
+                    if (bombRow - 1 >= 0 && bombCol + 1 < matrix.GetLength(1) && matrix[bombRow - 1, bombCol + 1] > 0) ///
+                    {
+                        matrix[bombRow - 1, bombCol + 1] -= bombValue;
+                    }
+                    if (bombRow >= 0 && bombCol - 1 >= 0 && matrix[bombRow, bombCol - 1] != 0)
+                    {
+                        matrix[bombRow, bombCol - 1] -= bombValue;
+                    }
+                    if (bombRow <= matrix.GetLength(0) && bombCol + 1 < matrix.GetLength(1) && matrix[bombRow, bombCol + 1] > 0)////
+                    {
+                        matrix[bombRow, bombCol + 1] -= bombValue;
+                    }
+                    if (bombRow + 1 < matrix.GetLength(0) && bombCol - 1 >= 0 && matrix[bombRow + 1, bombCol - 1] > 0)//
+                    {
+                        matrix[bombRow + 1, bombCol - 1] -= bombValue;
+                    }
+                    if (bombRow + 1 < matrix.GetLength(0) && bombCol < matrix.GetLength(1) && matrix[bombRow + 1, bombCol] > 0)
+                    {
+                        matrix[bombRow + 1, bombCol] -= bombValue;
+                    }
+                    if (bombRow + 1 < matrix.GetLength(0) && bombCol + 1 < matrix.GetLength(1) && matrix[bombRow + 1, bombCol + 1] > 0)
+                    {
+                        matrix[bombRow + 1, bombCol + 1] -= bombValue;
+                    }
+
+
+
+
+                    matrix[bombRow, bombCol] = 0;
+                    rowCoordinate += 2;
+                    colCoordinate += 2;
+
+
                 }
 
+            }
+
+            int sum = 0;
+            int counter = 0;
+
+            for (int row = 0; row < n; row++)
+            {
+                for (int col = 0; col < n; col++)
+                {
+                    if (matrix[row, col] > 0)
+                    {
+                        sum += matrix[row, col];
+                        counter++;
+                    }
+
+                }
+            }
+            Console.WriteLine($"Alive cells: {counter}");
+            Console.WriteLine($"Sum: {sum}");
+            for (int row = 0; row < n; row++)
+            {
+                for (int col = 0; col < n; col++)
+                {
+
+                    Console.Write($"{matrix[row, col]} ");
+
+
+                }
                 Console.WriteLine();
             }
-        }
-
-        public static List<int> FindActiveCells(int[,] squareMatrix)
-        {
-            List<int> activeCells = new List<int>();
-
-            for (int row = 0; row < squareMatrix.GetLength(0); row++)
-            {
-                for (int col = 0; col < squareMatrix.GetLength(1); col++)
-                {
-                    if (squareMatrix[row, col] > 0)
-                    {
-                        activeCells.Add(squareMatrix[row, col]);
-                    }
-                }
-            }
-
-            return activeCells;
-        }
-
-        public static int[,] FillSquareMatrix(int dimensions)
-        {
-            int[,] squareMatrix = new int[dimensions, dimensions];
-
-            for (int row = 0; row < squareMatrix.GetLength(0); row++)
-            {
-                int[] numbersToFill = Console.ReadLine()
-                    .Split(" ", StringSplitOptions.RemoveEmptyEntries)
-                    .Select(int.Parse)
-                    .ToArray();
-                for (int col = 0; col < squareMatrix.GetLength(1); col++)
-                {
-                    squareMatrix[row, col] = numbersToFill[col];
-                }
-            }
-
-            return squareMatrix;
-        }
-
-        private static int[,] Explosion(int bombDamage, int currentRowBomb, int currentColBomb, int[,] squareMatrix)
-        {
-            if (IsValid(currentRowBomb - 1, currentColBomb, squareMatrix) && squareMatrix[currentRowBomb - 1, currentColBomb] > 0)
-            {
-                squareMatrix[currentRowBomb - 1, currentColBomb] -= bombDamage;
-            }
-            if (IsValid(currentRowBomb + 1, currentColBomb, squareMatrix) && squareMatrix[currentRowBomb + 1, currentColBomb] > 0)
-            {
-                squareMatrix[currentRowBomb + 1, currentColBomb] -= bombDamage;
-            }
-            if (IsValid(currentRowBomb - 1, currentColBomb - 1, squareMatrix) && squareMatrix[currentRowBomb - 1, currentColBomb - 1] > 0)
-            {
-                squareMatrix[currentRowBomb - 1, currentColBomb - 1] -= bombDamage;
-            }
-            if (IsValid(currentRowBomb - 1, currentColBomb + 1, squareMatrix) && squareMatrix[currentRowBomb - 1, currentColBomb + 1] > 0)
-            {
-                squareMatrix[currentRowBomb - 1, currentColBomb + 1] -= bombDamage;
-            }
-            if (IsValid(currentRowBomb + 1, currentColBomb - 1, squareMatrix) && squareMatrix[currentRowBomb + 1, currentColBomb - 1] > 0)
-            {
-                squareMatrix[currentRowBomb + 1, currentColBomb - 1] -= bombDamage;
-            }
-            if (IsValid(currentRowBomb + 1, currentColBomb + 1, squareMatrix) && squareMatrix[currentRowBomb + 1, currentColBomb + 1] > 0)
-            {
-                squareMatrix[currentRowBomb + 1, currentColBomb + 1] -= bombDamage;
-            }
-            if (IsValid(currentRowBomb, currentColBomb - 1, squareMatrix) && squareMatrix[currentRowBomb, currentColBomb - 1] > 0)
-            {
-                squareMatrix[currentRowBomb, currentColBomb - 1] -= bombDamage;
-            }
-            if (IsValid(currentRowBomb, currentColBomb + 1, squareMatrix) && squareMatrix[currentRowBomb, currentColBomb + 1] > 0)
-            {
-                squareMatrix[currentRowBomb, currentColBomb + 1] -= bombDamage;
-            }
-
-            squareMatrix[currentRowBomb, currentColBomb] -= bombDamage;
-
-            return squareMatrix;
-        }
-
-        public static bool IsValid(int row, int col, int[,] squareMatrix)
-        {
-            return (row >= 0 && row < squareMatrix.GetLength(0) && col >= 0 && col < squareMatrix.GetLength(1));
         }
     }
 }
