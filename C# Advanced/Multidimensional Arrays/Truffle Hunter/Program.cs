@@ -62,7 +62,7 @@ namespace Truffle_Hunter
                             forestMatrix[row, col] = "-";
                             eatenTruffles++;
                         }
-                        for (int i = row; i <= 0; i -=2 )
+                        for (int i = row; i >= 0; i -=2 )
                         {
                             int k = col;
                             
@@ -81,7 +81,7 @@ namespace Truffle_Hunter
                             forestMatrix[row, col] = "-";
                             eatenTruffles++;
                         }
-                        for (int i = row; i > forestMatrix.GetLength(0); i += 2)
+                        for (int i = row; i < forestMatrix.GetLength(0); i += 2)//
                         {
                             int k = col;
 
@@ -101,7 +101,7 @@ namespace Truffle_Hunter
                             eatenTruffles++;
                         }
                         
-                        for (int i = 0; i < n; i += 2)
+                        for (int i = col; i >= 0; i -= 2)
                         {
                             int j = row;
                             if (forestMatrix[j, i] != "-")
