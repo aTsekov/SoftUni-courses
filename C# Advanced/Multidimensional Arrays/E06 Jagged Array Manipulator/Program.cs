@@ -49,7 +49,7 @@ namespace E06_Jagged_Array_Manipulator
                 int value = int.Parse(arr[3]);
                 if (command == "Add")
                 {
-                    if (row < 0 || row >= rows - 1 || column < 0 || column >= jaggedArr[row].Length)
+                    if (row < 0 || row > rows - 1 || column < 0 || column >= jaggedArr[row].Length)
                     {
 
                             continue;
@@ -62,7 +62,7 @@ namespace E06_Jagged_Array_Manipulator
                 }
                 else if (command == "Subtract")
                 {
-                    if (row < 0 || row >= rows - 1 || column < 0 || column >= jaggedArr[row].Length)
+                    if (row < 0 || row > rows - 1 || column < 0 || column >= jaggedArr[row].Length)
                     {
 
                         continue;
