@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E07 Knight Game", "E07 Knig
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Е08 Bombs", "Е08 Bombs\Е08 Bombs.csproj", "{ABF55067-5CA9-4E32-9D9B-1F9E38F77021}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Truffle Hunter", "Truffle Hunter\Truffle Hunter.csproj", "{1387277D-953A-4DD0-B2B6-5F3814434958}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Truffle Hunter", "Truffle Hunter\Truffle Hunter.csproj", "{1387277D-953A-4DD0-B2B6-5F3814434958}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
