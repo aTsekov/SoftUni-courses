@@ -1,4 +1,6 @@
-﻿namespace Zoo
+﻿using System.Linq;
+
+namespace Zoo
 {
     public class Animal
     {
@@ -35,9 +37,9 @@
             set { lenght = value; }
         }
 
-        public void ToString(string specie, string diet, double weight)
+        public override string ToString()
         {
-            System.Console.WriteLine($"The {specie} is a {diet} and weighs {weight} kg.");
+            return $"The {species} is a {diet} and weighs {weight} kg.";
         }
 
         
