@@ -8,7 +8,7 @@ namespace Е09_SoftUni_Exam_Results
     {
         static void Main(string[] args)
         {
-            var submissions = new Dictionary<string, Dictionary<string, List<int>>>();
+            Dictionary<string,int> submissions = new Dictionary<string,int>();
             var languageSubmissions = new Dictionary<string, List<int>>();
 
             string input = String.Empty;
@@ -16,21 +16,24 @@ namespace Е09_SoftUni_Exam_Results
             {
                 string[] parts = input.Split('-');
                 string username = parts[0];
+                if (parts[1] == "banned")
+                {
+                    submissions.Remove(username);
+                    continue;
+
+                }
+
                 string language = parts[1];
                 int points = int.Parse(parts[2]);
-
                 if (!submissions.ContainsKey(username))
                 {
-                    submissions.Add(username, new Dictionary<string, List<int>>());
-                    submissions[username].Add(language, new List<int>());
-                    submissions[username][language].Add(points);
-                    
+                    submissions.Add(username, points);
                 }
-                else
+                else if (submissions[username] < points)
                 {
-                    submissions[username][language].Add(points);
-
+                    submissions[username] = points;
                 }
+               
                 if (!languageSubmissions.ContainsKey(language))
                 {
                     languageSubmissions.Add(language, new List<int>());
@@ -40,31 +43,34 @@ namespace Е09_SoftUni_Exam_Results
                 {
                     languageSubmissions[language].Add(points);
                 }
-                if (parts[2] == "banned")
-                {
-                    submissions.Remove(username);
-
-                }
-
-            }
-            submissions.OrderByDescending(x => x.Value.Values).ThenBy(u => u.Key);
-            Console.WriteLine($"Results:");
-
-            foreach ((var username, var language) in submissions)
-            {
-                Console.Write($"{username} | {language}");
-
                 
+
             }
+
+            var sortedPoints = submissions.OrderByDescending( p => p.Value).ThenBy( p => p.Key);
+            
+            
+            
+
+            
+            Console.WriteLine($"Results:");
+            foreach (var item in sortedPoints)
+            {
+                Console.WriteLine($"{item.Key} | {item.Value}");
+            }
+
+           
             Console.WriteLine($"Submissions:");
 
 
-            languageSubmissions.OrderByDescending(lang => lang.Value);
-            foreach (var language in languageSubmissions)
+            var newTest = languageSubmissions.OrderByDescending(l => l.Value.Count);
+
+            foreach (var language in newTest)
             {
                 Console.WriteLine($"{language.Key} - {language.Value.Count}");
             }
         }
         
     }
+   
 }
