@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace E04_Even_Times
 {
@@ -9,24 +10,25 @@ namespace E04_Even_Times
         {
             int n = int.Parse(Console.ReadLine());
 
-            int counter = 1;
-            double numToSave = int.MinValue;
+            
 
-            HashSet<int> nums = new HashSet<int>();
+            Dictionary<int,int> nums = new Dictionary<int, int>();
 
             for (int i = 0; i < n; i++)
             {
-                int m = int.Parse(Console.ReadLine());
-                
+                int number = int.Parse(Console.ReadLine());
 
-                if (nums.Contains(m))
+                if (!nums.ContainsKey(number))
                 {
-                    counter++;
-                    numToSave = m;
+                    nums.Add(number, 1);
                 }
-                nums.Add(m);
+                else
+                {
+                    nums[number]++;
+                }
+               
             }
-            Console.WriteLine(numToSave);
+            Console.WriteLine( nums.First(x => x.Value% 2 ==0).Key);
 
 
         }
