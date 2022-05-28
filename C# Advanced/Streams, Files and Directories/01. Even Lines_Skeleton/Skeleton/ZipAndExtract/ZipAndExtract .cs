@@ -2,6 +2,8 @@
 {
     using System;
     using System.IO;
+    using System.IO.Compression;
+
     public class ZipAndExtract
     {
         static void Main(string[] args)
@@ -18,12 +20,23 @@
 
         public static void ZipFileToArchive(string inputFilePath, string zipArchiveFilePath)
         {
-            throw new NotImplementedException();
+            using (var archive = ZipFile.Open(zipArchiveFilePath, ZipArchiveMode.Create))
+            {
+                //1. Взимаме файла, който ще зипваме 
+                string fileName = Path.GetFileName(inputFilePath);
+
+
+                //2. създаваме архив/зип на този файл. 
+                archive.CreateEntryFromFile(inputFilePath, fileName);
+            }
         }
 
         public static void ExtractFileFromArchive(string zipArchiveFilePath, string fileName, string outputFilePath)
         {
-            throw new NotImplementedException();
+            var archive = ZipFile.OpenRead(zipArchiveFilePath);
+            var fileForExtraction = archive.GetEntry(fileName);
+
+            fileForExtraction.ExtractToFile(outputFilePath);
         }
     }
 }
