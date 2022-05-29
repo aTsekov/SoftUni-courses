@@ -37,7 +37,7 @@ namespace CustomDoublyLinkedList
                 ListNode newHead = new ListNode (element); // we put a value to the new head (which is still not a head)
                 newHead.NextNode = head; // The next node of the new head is the current head. 
                 head.PreviousNode = newHead;// the head previous node becomes the new head. 
-                head = newHead; // the current head becomes the new head
+                head = newHead; // the head points towards the new head. 
                 //add the new element as a new head and redirect the old head as the second element, just after the new head
             }
             Count++;
