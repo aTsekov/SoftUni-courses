@@ -102,9 +102,9 @@ namespace ImplementingCustomList
 
         private void Resize() // Resize the initial array so it can hold more values. 
         {
-            if (elements.Length == internalCounter)
+            if (elements.Length == internalCounter) // This means that the array is full and we need to add more space to it. 
             {
-                int[] copyArray = new int[elements.Length * 2];
+                int[] copyArray = new int[elements.Length * 2]; // The new array ahs double the size of the original array
 
                 for (int i = 0; i < elements.Length; i++)
                 {
