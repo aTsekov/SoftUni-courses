@@ -12,4 +12,8 @@ namespace DateModifier
             Console.WriteLine(days);
         }
     }
+    public class StartUp
+    {
+
+    }
 }
