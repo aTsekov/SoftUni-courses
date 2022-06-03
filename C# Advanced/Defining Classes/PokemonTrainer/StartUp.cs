@@ -19,22 +19,18 @@ namespace PokemonTrainer
                 string element = data[2];
                 int pokemonHealt = int.Parse(data[3]);
                 Pokemon pokemon = new Pokemon(pokemonName, element, pokemonHealt);
-                Trainer trainer = new Trainer(trainerName);
-                trainer.PokemonList.Add(pokemon);
 
-                if (!trainers.Any(t => t.TrainerName == trainerName))
+
+                if (!trainers.Any(t => t.Name == trainerName))
                 {
+                    Trainer trainer = new Trainer(trainerName);
+                    trainer.PokemonList.Add(pokemon);
                     trainers.Add(trainer);
                 }
                 else
                 {
-                    foreach (var tr in trainers)
-                    {
-                        if (tr.TrainerName == trainerName)
-                        {
-                            tr.PokemonList.Add(pokemon);
-                        }
-                    }
+                    var currentTrainer = trainers.Find(t => t.Name == trainerName);
+                    currentTrainer.PokemonList.Add(pokemon);
                 }
             }
 
@@ -61,41 +57,56 @@ namespace PokemonTrainer
 
             foreach (var trainer in sortedTrainer)
             {
-                Console.WriteLine($"{trainer.TrainerName} {trainer.NumberOfBadges} {trainer.PokemonList.Count}");
+                Console.WriteLine($"{trainer.Name} {trainer.NumberOfBadges} {trainer.PokemonList.Count}");
             }
         }
 
         private static void TrainerPokemonElement(List<Pokemon> pokemonList, List<Trainer> trainers, string elementType)
         {
-            Pokemon pokemoneTORemove = new Pokemon();
+
             foreach (var trainer in trainers)
             {
-                if (trainer.PokemonList.Count == 0)
+                if (trainer.PokemonList.Any(pokemon => pokemon.Element == elementType))
                 {
-                    continue;
-                }
-
-
-                Pokemon currPokemon = trainer.PokemonList[0];
-
-                if (currPokemon.Element == elementType)
-                {
-                    foreach (var pokemon in trainer.PokemonList)
-                    {
-                        trainer.NumberOfBadges++;
-                    }
-
+                    trainer.NumberOfBadges++;
                 }
                 else
                 {
-                    currPokemon.Health -= 10;
-                    if (currPokemon.Health <= 0)
+                    foreach (var pokemon in trainer.PokemonList)
                     {
-                        trainer.PokemonList.RemoveAll(p => p.PokemonName == currPokemon.PokemonName);
-
+                        pokemon.Health -= 10;
                     }
                 }
             }
+            foreach (var trainer in trainers)
+            {
+                trainer.PokemonList.RemoveAll(pokemon => pokemon.Health <= 0);
+            }
+
+            //foreach (var trainer in trainers)
+            //{
+            //    if (trainer.PokemonList.Count == 0)
+            //    {
+            //        continue;
+            //    }
+
+
+            //    Pokemon currPokemon = trainer.PokemonList;
+
+            //    if (currPokemon.Element == elementType)
+            //    {
+            //        trainer.NumberOfBadges++;
+            //    }
+            //    else
+            //    {
+            //        currPokemon.Health -= 10;
+            //        if (currPokemon.Health <= 0)
+            //        {
+            //            trainer.PokemonList.RemoveAll(p => p.Name == currPokemon.Name);
+
+            //        }
+            //    }
+            //}
         }
     }
 }

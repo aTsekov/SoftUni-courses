@@ -7,7 +7,7 @@ namespace PokemonTrainer
     public class Trainer
     {
         private int numOfBadges = 0;
-        public string TrainerName { get; set; }
+        public string Name { get; set; }
         public int NumberOfBadges
         {
             get { return numOfBadges; }
@@ -17,7 +17,7 @@ namespace PokemonTrainer
         
         public Trainer(string name)
         {
-            TrainerName = name;
+            Name = name;
             PokemonList = new List<Pokemon>();
             NumberOfBadges = numOfBadges;
             
