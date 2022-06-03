@@ -10,8 +10,8 @@ namespace PokemonTrainer
         {
             string info = string.Empty;
             List<Pokemon> pokemonList = new List<Pokemon>();
-            List <Trainer> trainers = new List<Trainer>();
-            while ((info = Console.ReadLine())!= "Tournament")
+            List<Trainer> trainers = new List<Trainer>();
+            while ((info = Console.ReadLine()) != "Tournament")
             {
                 string[] data = info.Split(' ');
                 string trainerName = data[0];
@@ -19,14 +19,27 @@ namespace PokemonTrainer
                 string element = data[2];
                 int pokemonHealt = int.Parse(data[3]);
                 Pokemon pokemon = new Pokemon(pokemonName, element, pokemonHealt);
-                pokemonList.Add(pokemon);
+                Trainer trainer = new Trainer(trainerName);
+                trainer.PokemonList.Add(pokemon);
 
-                Trainer trainer = new Trainer(trainerName, pokemonList);
-                trainers.Add(trainer);
+                if (!trainers.Any(t => t.TrainerName == trainerName))
+                {
+                    trainers.Add(trainer);
+                }
+                else
+                {
+                    foreach (var tr in trainers)
+                    {
+                        if (tr.TrainerName == trainerName)
+                        {
+                            tr.PokemonList.Add(pokemon);
+                        }
+                    }
+                }
             }
 
             string elementType = string.Empty;
-            while ((elementType = Console.ReadLine())!= "End")
+            while ((elementType = Console.ReadLine()) != "End")
             {
 
                 if (elementType == "Fire")
@@ -48,7 +61,7 @@ namespace PokemonTrainer
 
             foreach (var trainer in sortedTrainer)
             {
-                Console.WriteLine($"{trainer.Name} {trainer.NumberOfBadges} {trainer.PokemonList.Count}");
+                Console.WriteLine($"{trainer.TrainerName} {trainer.NumberOfBadges} {trainer.PokemonList.Count}");
             }
         }
 
@@ -57,25 +70,31 @@ namespace PokemonTrainer
             Pokemon pokemoneTORemove = new Pokemon();
             foreach (var trainer in trainers)
             {
-                
-                foreach (var pokemon in trainer.PokemonList) ///
+                if (trainer.PokemonList.Count == 0)
                 {
-                    if (pokemon.Element == elementType)
+                    continue;
+                }
+
+
+                Pokemon currPokemon = trainer.PokemonList[0];
+
+                if (currPokemon.Element == elementType)
+                {
+                    foreach (var pokemon in trainer.PokemonList)
                     {
                         trainer.NumberOfBadges++;
                     }
-                    else
-                    {
-                        pokemon.Health -= 10;
-                        if (pokemon.Health <= 0)
-                        {
 
-                            pokemoneTORemove = pokemon;
-                            
-                        }
+                }
+                else
+                {
+                    currPokemon.Health -= 10;
+                    if (currPokemon.Health <= 0)
+                    {
+                        trainer.PokemonList.RemoveAll(p => p.PokemonName == currPokemon.PokemonName);
+
                     }
                 }
-                pokemonList.Remove(pokemoneTORemove);
             }
         }
     }
