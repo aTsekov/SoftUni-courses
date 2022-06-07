@@ -1,4 +1,7 @@
-﻿namespace FishingNet
+﻿using System;
+using System.Collections.Generic;
+
+namespace FishingNet
 {
     public class Fish
     {
@@ -18,5 +21,9 @@
             return ($"There is a {FishType}, {Length} cm. long, and {Weight} gr. in weight.");
         }
 
+        internal static IEnumerable<object> OrderByDescending(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
