@@ -20,7 +20,7 @@ namespace FishingNet
             Console.WriteLine(net.AddFish(fishThree));// Successfully added bass to the fishing net.
             Console.WriteLine(net.Count); // 3
 
-            foreach (var fish in net.Fish)
+            foreach (var fish in net.FishesList)
             {
                 Console.WriteLine(fish.ToString());
                 // There is a salmon, 44.25 cm. long, and 941.15 gr. in weight.

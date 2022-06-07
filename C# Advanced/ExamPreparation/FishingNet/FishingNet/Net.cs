@@ -1,30 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace FishingNet
 {
     public class Net
     {
-        public List<Fish> Fish { get; set; }
+        
+        public List<Fish> FishesList { get; set; }
         public string Matrial { get; set; }
         public int Capacity { get; set; }
         public int Count
         {
-            get { return Fish.Count; }
+            get { return FishesList.Count; }
         }
 
 
         public Net(string material, int capacity)
         {
-            Fish = new List<Fish>();
+            FishesList = new List<Fish>();
             Capacity = capacity;
             Matrial = material;
         }
 
         public string AddFish(Fish fish)
         {
-            if (fish.FishType == null || fish.FishType == " " || fish.Lenght <= 0 || fish.Weight <= 0)
+            if (string.IsNullOrWhiteSpace(fish.FishType) || fish.Length <= 0 || fish.Weight <= 0)
             {
                 return "Invalid fish.";
             }
@@ -34,7 +36,7 @@ namespace FishingNet
             }
             else
             {
-                Fish.Add(fish);
+                FishesList.Add(fish);
                 return $"Successfully added {fish.FishType} to the fishing net.";
             }
         }
@@ -42,9 +44,9 @@ namespace FishingNet
         public bool ReleaseFish(double weight)
         {
 
-            if (Fish.Any(f => f.Weight ==weight))
+            if (FishesList.Any(f => f.Weight ==weight))
             {
-                Fish.RemoveAll(f => f.Weight == weight);
+                FishesList.RemoveAll(f => f.Weight == weight);
                 return true;
             }
             else
@@ -53,41 +55,46 @@ namespace FishingNet
             }
         }
         //Fish GetFish(string fishType) – search and returns a fish by given fish type.
-        public string GetFish (string fishType)
+        public Fish GetFish (string fishType)
         {
-            if (Fish.Any(f => f.FishType == fishType))
-            {
-                return fishType;
-            }
-            else
-            {
-                return null;
-            }
-             
+            //Fish fishToSelect = Fish.Where(f =>f.FishType == fishType).FirstOrDefault();
+            //if (Fish.Any(f => f.FishType == fishType))
+            //{
+            //    return $"There is a {fishToSelect.FishType}, {fishToSelect.Length} cm. long, and {fishToSelect.Weight} gr. in weight.";
+            //}
+            //else
+            //{
+            //    return null;
+            //}
+            var fish = this.FishesList.FirstOrDefault(e => e.FishType == fishType);
+            return fish;
+
         }
         public Fish GetBiggestFish()
         {
             double longestFish = 0;
-            foreach (var fish in Fish)
+            foreach (var fish in FishesList)
             {
-                if (fish.Lenght > longestFish)
+                if (fish.Length > longestFish)
                 {
-                    longestFish = fish.Lenght;
+                    longestFish = fish.Length;
                 }
             }
-            return Fish.Where(f=> f.Lenght == longestFish).FirstOrDefault();
+            return FishesList.Where(f=> f.Length == longestFish).FirstOrDefault();
+
+
         }
         //Report() - returns information about the Net and all fish that were not released, order by fish's length descending  in the following format:
         public string Report()
         {
-            var sortedFishes = Fish.OrderByDescending(f => f.Lenght).ToList();
-            
-            foreach (var fish in sortedFishes)
-            {
-                return $"Into the {Matrial}:{Environment.NewLine}There is a {fish.FishType}, {fish.Lenght} cm. long, and {fish.Weight} gr. in weight.";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"Into the {Matrial}:");
 
+            foreach (var item in FishesList.OrderByDescending(x => x.Length))
+            {
+                sb.AppendLine(item.ToString());
             }
-            return null;
+            return sb.ToString().TrimEnd();
         }
     }
 }
