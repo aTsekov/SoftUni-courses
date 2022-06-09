@@ -1,19 +1,22 @@
 ﻿using System;
 
-namespace BoxOfT
+namespace Boxes
 {
-    public class StartUp
+    public class Program
     {
         static void Main(string[] args)
         {
-            BoxOfT<int> box = new BoxOfT<int>();
-            box.Add(1);
-            box.Add(2);
-            box.Add(3);
-            Console.WriteLine(box.Remove());
-            box.Add(4);
-            box.Add(5);
-            Console.WriteLine(box.Remove());
+            int numberOFLines = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < numberOFLines; i++)
+            {
+                var input = Console.ReadLine();
+                var box = new Box<string>(input);
+                Console.WriteLine(box);
+
+            }
+
+
         }
     }
 }
