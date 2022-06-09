@@ -10,8 +10,8 @@ namespace Boxes
 
             for (int i = 0; i < numberOFLines; i++)
             {
-                var input = Console.ReadLine();
-                var box = new Box<string>(input);
+                var input = int.Parse(Console.ReadLine());
+                var box = new Box<int>(input);
                 Console.WriteLine(box);
 
             }
