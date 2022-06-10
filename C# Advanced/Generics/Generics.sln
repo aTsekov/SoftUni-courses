@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Box", "Box\Box.csproj", "{0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericSwapMethod", "GenericSwapMethod\GenericSwapMethod.csproj", "{C67F3D82-4A74-46C0-A4CC-D3C078182BB6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Box1", "Box1\Box1.csproj", "{F3C0E9F0-31AD-4E1A-9A77-1EA70A85DB05}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C67F3D82-4A74-46C0-A4CC-D3C078182BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C67F3D82-4A74-46C0-A4CC-D3C078182BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C67F3D82-4A74-46C0-A4CC-D3C078182BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3C0E9F0-31AD-4E1A-9A77-1EA70A85DB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3C0E9F0-31AD-4E1A-9A77-1EA70A85DB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3C0E9F0-31AD-4E1A-9A77-1EA70A85DB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3C0E9F0-31AD-4E1A-9A77-1EA70A85DB05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
