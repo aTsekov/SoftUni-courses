@@ -13,15 +13,15 @@ namespace Box1
             
 
             // Task 5 and 6
-            var list = new List<string>();
+            var list = new List<double>();
             for (int i = 0; i < numberOfLine; i++)
             {
-                var input = Console.ReadLine();
+                var input = double.Parse(Console.ReadLine());
                 list.Add(input);
             }
 
-            var box = new Box<string>(list);
-            var elementToCompare = Console.ReadLine();
+            var box = new Box<double>(list);
+            var elementToCompare = double.Parse(Console.ReadLine());
             var count = box.CountOFGreaterElements(list, elementToCompare);
             Console.WriteLine(count);
         }
