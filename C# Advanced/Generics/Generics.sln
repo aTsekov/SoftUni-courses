@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Box1", "Box1\Box1.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tuple_", "Tuple\Tuple_.csproj", "{E835E49B-18EA-4F1B-927F-5810C885EBA1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GenericThreeuple", "GenericThreeuple\GenericThreeuple.csproj", "{3D7A922B-9D70-4479-9095-C510A884C56F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{E835E49B-18EA-4F1B-927F-5810C885EBA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E835E49B-18EA-4F1B-927F-5810C885EBA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E835E49B-18EA-4F1B-927F-5810C885EBA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D7A922B-9D70-4479-9095-C510A884C56F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D7A922B-9D70-4479-9095-C510A884C56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D7A922B-9D70-4479-9095-C510A884C56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D7A922B-9D70-4479-9095-C510A884C56F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
