@@ -1,26 +1,46 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace IteratorsAndComparators
 {
+
+
     public class Library : IEnumerable<Book>
     {
         private List<Book> books;
-        public Library(params Book [] books)
+
+        public Library(params Book[] books)
         {
             this.books = new List<Book>(books);
         }
-        public List<Book> Books { get; set; }
+
         public IEnumerator<Book> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new LibraryIterator(this.books);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
+           => this.GetEnumerator();
+
+        private class LibraryIterator : IEnumerator<Book>
         {
-            throw new NotImplementedException();
+            private readonly List<Book> books;
+            private int currentIndex;
+            public LibraryIterator(IEnumerable<Book> books)
+            {
+                this.books = books.ToList();
+                this.Reset();
+            }
+            public void Dispose() { }
+            public bool MoveNext() =>
+              ++this.currentIndex < this.books.Count;
+            public void Reset() => this.currentIndex = -1;
+            public Book Current => this.books[this.currentIndex];
+            object IEnumerator.Current => this.Current;
         }
     }
+
 }

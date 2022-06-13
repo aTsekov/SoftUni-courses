@@ -1,21 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace IteratorsAndComparators
 {
     public class Book
     {
-        public Book(string title, int year, params string [] authors) // params string [] is used to be able to add a few authors at the same time.
+        public Book(string title, int year, params string[] authors)
         {
             this.Title = title;
             this.Year = year;
-            this.Authors = authors;
+            this.Authors = authors.ToList();
         }
-        public string Title { get; set; }
-        public int Year { get; set; }
-        public IReadOnlyList<string> Authors { get; set; }
 
+        public string Title { get; private set; }
 
+        public int Year { get; private set; }
+
+        public List<string> Authors { get; private set; }
     }
 }
