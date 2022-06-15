@@ -22,6 +22,10 @@ namespace ListyIterator
                 {
                     Console.WriteLine(listy.Move());
                 }
+                else if (tokens[0] == "PrintAll")
+                {
+                    listy.PrintAll();
+                }
                 else if (tokens[0] == "Print")
                 {
                     listy.Print();
