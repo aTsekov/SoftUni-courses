@@ -7,7 +7,7 @@ namespace IteratorsAndComparators
 {
     public class Book
     {
-        public Book(string title, int year, params string[] authors)
+        public Book(string title, int year, params string[] authors) // With params when we create an instance of the object, we can give a few authors at the same time. 
         {
             this.Title = title;
             this.Year = year;
