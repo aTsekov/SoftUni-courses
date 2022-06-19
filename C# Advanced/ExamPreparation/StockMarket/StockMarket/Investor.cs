@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StockMarket
 {
     public class Investor
     {
-       
+
         public Investor(string fullName, string emailAddress, decimal moneyToInvest, string brokerName)
         {
             Portfolio = new List<Stock>();
@@ -29,15 +31,72 @@ namespace StockMarket
 
         }
 
-        //Method void BuyStock(Stock stock) – add a single stock of the given company if the stock’s market capitalization is bigger than $10000 and the investor has enough money.Then reduce the MoneyToInvest by the price of the stock.If a stock cannot be bought the method should not do anything.
 
-        public  void BuyStock(Stock stock)
+        public void BuyStock(Stock stock)
         {
-            
-            if (stock.MarketCapitaliZation >10000 && MoneyToInvest > stock.PricePerShare)
+
+            if (stock.MarketCapitaliZation >= 10000 && MoneyToInvest >= stock.PricePerShare)
             {
                 Portfolio.Add(stock);
             }
         }
+        public string SellStock(string companyName, decimal sellPrice)
+        {
+            Stock currComp = Portfolio.FirstOrDefault(c => c.CompanyName == companyName);
+            if (!Portfolio.Select(c => c.CompanyName).Contains(companyName))
+            {
+                return $"{companyName} does not exist.";
+            }
+            else if (currComp.PricePerShare >= sellPrice)
+            {
+                return $"Cannot sell {companyName}.";
+            }
+            else
+            {
+                Portfolio.Remove(currComp);
+                MoneyToInvest += sellPrice;
+                return $"{companyName} was sold.";
+            }
+        }
+        public Stock FindStock(string companyName)
+        {
+
+
+            if (!Portfolio.Select(c => c.CompanyName).Contains(companyName))
+            {
+                return null;
+            }
+            else
+            {
+                Stock currComp = Portfolio.FirstOrDefault(c => c.CompanyName == companyName);
+                return currComp;
+            }
+        }
+        public Stock FindBiggestCompany()
+        {
+            if (Portfolio.Count == 0)
+            {
+                return null;
+            }
+            else
+            {
+                decimal marketCapt = decimal.MinValue;
+                foreach (var comp in Portfolio)
+                {
+                    if (comp.MarketCapitaliZation > marketCapt)
+                    {
+                        marketCapt = comp.MarketCapitaliZation;
+                    }
+                }
+                Stock currComp = Portfolio.FirstOrDefault(c => c.MarketCapitaliZation == marketCapt);
+
+                return currComp;
+            }
+        }
+        public string InvestorInformation()
+        {
+            return $"The investor {FullName} with a broker {BrokerName} has stocks:{Environment.NewLine}{string.Join($"{Environment.NewLine}", Portfolio)}";
+        }
     }
+
 }
