@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -15,12 +16,13 @@ namespace Drones
         }
         public List<Drone> Drones { get; set; }
         public string NameAerfield { get; set; }
-        public  int Capacity { get; set; }
+        public int Capacity { get; set; }
         public double LandingStrip { get; set; }
         public int Count // count of the drones on the airfiled. 
         {
             get { return Drones.Count; }
         }
+
         public string AddDrone(Drone drone)
         {
             if (string.IsNullOrWhiteSpace(NameAerfield) || string.IsNullOrWhiteSpace(drone.Brand) || drone.Range < 5 || drone.Range > 15)
@@ -39,7 +41,7 @@ namespace Drones
         }
         public bool RemoveDrone(string name)
         {
-            if (Drones.Any( d => d.Name == name))
+            if (Drones.Any(d => d.Name == name))
             {
                 Drones.RemoveAll(d => d.Name == name);
                 return true;
@@ -51,7 +53,7 @@ namespace Drones
         }
         public int RemoveDroneByBrand(string brand)
         {
-            if (Drones.Any(d => d.Brand == brand ))
+            if (Drones.Any(d => d.Brand == brand))
             {
                 var numDronesToRemove = Drones.Where(d => d.Brand == brand).Count();
                 Drones.RemoveAll(d => d.Brand == brand);
@@ -59,7 +61,7 @@ namespace Drones
             }
             else
             {
-                return 0 ;
+                return 0;
             }
         }
         public Drone FlyDrone(string name) // Drone: CW4
@@ -86,15 +88,21 @@ namespace Drones
         }
         public string Report()
         {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Drones available at {NameAerfield}:");
-            foreach (var item in Drones.Where(d => d.Available == true))
-            {
-                sb.AppendLine(item.ToString());
-            }
-            return sb.ToString().TrimEnd();
+            var availableDrones = Drones.Where(d => d.Available == true);
+
+            return $"Drones available at {NameAerfield}:{Environment.NewLine}{string.Join(Environment.NewLine, availableDrones)}";
+
+
+            //    StringBuilder sb = new StringBuilder();
+            //    sb.AppendLine($"Drones available at {NameAerfield}:");
+            //    foreach (var item in Drones.Where(d => d.Available == true))
+            //    {
+            //        sb.AppendLine(item.ToString());
+            //    }
+            //    return sb.ToString().TrimEnd();
+            //}
+
+
         }
-
-
     }
 }

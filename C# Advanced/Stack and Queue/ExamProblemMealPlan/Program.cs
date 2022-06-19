@@ -8,16 +8,17 @@ namespace ExamProblemMealPlan
     {
         static void Main(string[] args)
         {
-            string[] mealsArr = Console.ReadLine().Split(' ');
-            int [] calories = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
+            string[] mealsArr = Console.ReadLine().Split(' ',StringSplitOptions.RemoveEmptyEntries);
+            int [] calories = Console.ReadLine().Split(' ',StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToArray();
             int salad = 350;
             int soup = 490;
             int pasta = 680;
             int steak = 790;
             int mealcounter = 0;
 
+            Queue<string> meals = new Queue<string>(mealsArr);
             Stack<int> caloriesPerDay = new Stack<int>(calories);
-            Queue <string> meals = new Queue<string>(mealsArr);
+           
 
             
                 int currentDayCals = caloriesPerDay.Peek();
