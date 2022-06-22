@@ -25,6 +25,8 @@ namespace StockMarket
             // Buy a stock
             investor.BuyStock(ibmStock);
 
+           
+
             // Sell a stock
             Console.WriteLine(investor.SellStock("IBM", 150.00m)); // "IBM was sold."
                                                                    // Add stocks
@@ -33,15 +35,20 @@ namespace StockMarket
             Stock twitterStock = new Stock("Twitter", "Jack Dorsey", 59.66m, 11200);
             Stock blizzardStock = new Stock("Activision Blizzard", "Bobby Kotick", 78.53m, 5520);
 
-            //Console.WriteLine("*********DEBUG*****************");
-            //Console.WriteLine(investor.SellStock("Ass", 100));
-            //Console.WriteLine("*********DEBUG*****************");
+            
 
             // Buy more stocks
             investor.BuyStock(teslaStock);
             investor.BuyStock(amazonStock);
             investor.BuyStock(twitterStock);
             investor.BuyStock(blizzardStock);
+            Console.WriteLine("*********DEBUG*****************");
+
+            Console.WriteLine(   investor.FindStock("Tesla"));
+            Console.WriteLine(   investor.FindStock("Gosho"));
+            
+
+            Console.WriteLine("*********DEBUG*****************");
 
             // FindBiggestCompany
             Console.WriteLine(investor.FindBiggestCompany());
