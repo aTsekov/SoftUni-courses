@@ -9,10 +9,16 @@ namespace StreetRacing
             //Sample Code Usage:
 
             //Initialize Race
-            Race race = new Race("RockPort Race", "Sprint", 1, 4, 150);
+            Race race = new Race("RockPort Race", "Sprint", 1, 4, 150); //capacity 4
 
             //Initialize Car
-            Car car = new Car("BMW", "320ci", "NFS2005", 150, 1450);
+            Car car = new Car("BMW", "320ci", "NFS2005", 150, 1450); //Yes
+            Car car1 = new Car("VW", "320ci", "NFS2005", 150, 1450); //No
+            Car car2 = new Car("Audi", "320ci", "NFS2006", 150, 1450);// yes
+            Car car3 = new Car("Renault", "320ci", "NFS2007", 150, 1450);//Yes
+            Car car4 = new Car("Renault", "320ci", "NFS2008", 150, 1450);//Yes
+            Car car5 = new Car("Renault", "320ci", "NFS2009", 150, 1450);//no
+            Car car6 = new Car("Renault", "320ci", "NFS2010", 150, 1450);//No
 
             //Print car
             Console.WriteLine(car.ToString());
@@ -25,6 +31,12 @@ namespace StreetRacing
 
             //Add car
             race.Add(car);
+            race.Add(car1);
+            race.Add(car2);
+            race.Add(car3);
+            race.Add(car4);
+            race.Add(car5);
+            race.Add(car6);
 
             //Remove car
             Console.WriteLine(race.Remove("NFS2005")); // True

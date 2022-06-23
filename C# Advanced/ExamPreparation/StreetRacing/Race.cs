@@ -34,7 +34,7 @@ namespace StreetRacing
 
             if (!Participants.Any(x => x.LicensePlate == car.LicensePlate))
             {
-                if (car.HorsePower <= MaxHorsePower && Participants.Count <= Capacity)
+                if (car.HorsePower <= MaxHorsePower && Participants.Count < Capacity)
                 {
                     Participants.Add(car);
                 }
