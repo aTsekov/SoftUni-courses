@@ -15,9 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pawn Wars", "Pawn Wars\Pawn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FoodFinder", "FoodFinder\FoodFinder.csproj", "{795DFFE7-7253-4C84-9E01-6D48A14CA309}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Birthday Celebration", "Birthday Celebration\Birthday Celebration.csproj", "{4B101004-F839-46DA-910C-CDCAB5F59A01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Birthday Celebration", "Birthday Celebration\Birthday Celebration.csproj", "{4B101004-F839-46DA-910C-CDCAB5F59A01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "The Battle of The Five Armies", "The Battle of The Five Armies\The Battle of The Five Armies.csproj", "{BB47B2FE-D6C7-442F-B8AA-B0E5590B97F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "The Battle of The Five Armies", "The Battle of The Five Armies\The Battle of The Five Armies.csproj", "{BB47B2FE-D6C7-442F-B8AA-B0E5590B97F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Masterchef", "Masterchef\Masterchef.csproj", "{52C17DE8-FE2E-4C60-84E8-62EBE5F1C48F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{BB47B2FE-D6C7-442F-B8AA-B0E5590B97F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB47B2FE-D6C7-442F-B8AA-B0E5590B97F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB47B2FE-D6C7-442F-B8AA-B0E5590B97F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52C17DE8-FE2E-4C60-84E8-62EBE5F1C48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52C17DE8-FE2E-4C60-84E8-62EBE5F1C48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52C17DE8-FE2E-4C60-84E8-62EBE5F1C48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52C17DE8-FE2E-4C60-84E8-62EBE5F1C48F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
