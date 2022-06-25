@@ -21,7 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "The Battle of The Five Armi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Masterchef", "Masterchef\Masterchef.csproj", "{52C17DE8-FE2E-4C60-84E8-62EBE5F1C48F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Survivor", "Survivor\Survivor.csproj", "{1A7FABC1-DC74-406C-BDE1-DAA42D101A77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Survivor", "Survivor\Survivor.csproj", "{1A7FABC1-DC74-406C-BDE1-DAA42D101A77}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TASK1", "TASK1\TASK1.csproj", "{BEEB94E3-DA3F-43B5-8120-517041F577E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wall Destroyer", "Wall Destroyer\Wall Destroyer.csproj", "{257100C7-CB98-414F-ACA9-208D945E9AB8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,14 @@ Global
 		{1A7FABC1-DC74-406C-BDE1-DAA42D101A77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A7FABC1-DC74-406C-BDE1-DAA42D101A77}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A7FABC1-DC74-406C-BDE1-DAA42D101A77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEEB94E3-DA3F-43B5-8120-517041F577E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEEB94E3-DA3F-43B5-8120-517041F577E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEEB94E3-DA3F-43B5-8120-517041F577E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEEB94E3-DA3F-43B5-8120-517041F577E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{257100C7-CB98-414F-ACA9-208D945E9AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{257100C7-CB98-414F-ACA9-208D945E9AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{257100C7-CB98-414F-ACA9-208D945E9AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{257100C7-CB98-414F-ACA9-208D945E9AB8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
