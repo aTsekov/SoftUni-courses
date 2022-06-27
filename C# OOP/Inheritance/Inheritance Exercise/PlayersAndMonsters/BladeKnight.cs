@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PlayersAndMonsters
 {
-    public class BladeKnight : DarkWizard
+    public class BladeKnight : DarkKnight
     {
         public BladeKnight(string username, int level) : base(username, level)
         {
