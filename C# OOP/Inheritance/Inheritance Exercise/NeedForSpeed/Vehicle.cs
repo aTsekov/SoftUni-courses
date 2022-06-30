@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NeedForSpeed
 {
-    public class Vehicle
+    public class Vehicle // THis is the parent class. Here we make a const to set a default value. Then we make the virtual property FuelConsumption = DefaultFuelConsumption. THis way when we create const with the same name in each class we can set a default value for each class. 
     {
         private const double DefaultFuelConsumption = 1.25;
         public Vehicle(int horsePower, double fuel)
@@ -21,7 +21,7 @@ namespace NeedForSpeed
 
         public virtual void Drive(double kilometers)
         {
-            this.Fuel -= kilometers * FuelConsumption; // /100?
+            this.Fuel -= kilometers * FuelConsumption; 
         }
     }
 }
