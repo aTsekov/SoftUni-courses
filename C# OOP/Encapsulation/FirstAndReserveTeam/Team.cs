@@ -12,24 +12,19 @@ namespace PersonsInfo
 
         public Team(string name)
         {
+            this.name = name;
             firstTeam = new List<Person>();
             reserveTeam = new List<Person>();
         }
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
+        
         public IReadOnlyCollection<Person> FirstTeam
         {
-            get { return firstTeam.AsReadOnly(); }
-           
+            get { return this.firstTeam.AsReadOnly(); }
         }
+
         public IReadOnlyCollection<Person> ReserveTeam
         {
-            get { return reserveTeam.AsReadOnly(); }
-            
-
+            get { return this.reserveTeam.AsReadOnly(); }
         }
         public void AddPlayer(Person person)
         {
