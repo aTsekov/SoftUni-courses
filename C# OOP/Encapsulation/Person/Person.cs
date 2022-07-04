@@ -20,11 +20,11 @@ namespace PersonsInfo
 
         public void IncreaseSalary(decimal percentage)
         {
-            if (this.Age <= 30)
+            if (this.Age <=30)
             {
                 percentage /= 2.0m;
             }
-            this.Salary *= 1 + (percentage / 100);
+            this.Salary *= 1 +(percentage / 100);
         }
 
         public override string ToString()
