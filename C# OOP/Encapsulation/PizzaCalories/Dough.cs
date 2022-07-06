@@ -68,6 +68,7 @@ namespace PizzaCalories
                 {
                     throw new Exception("Invalid type of dough.");
                 }
+                bakingTechnique = value;
             }
         }
         public double WeightGrams
@@ -83,7 +84,7 @@ namespace PizzaCalories
             }
         }
 
-        public double Calories => (grams * this.WeightGrams * this.doughtType * this.techniqueType);
+        public double Calories => grams * this.WeightGrams * this.doughtType * this.techniqueType;
 
     }
 }
