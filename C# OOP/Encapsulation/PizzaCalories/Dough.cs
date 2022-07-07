@@ -84,7 +84,7 @@ namespace PizzaCalories
             }
         }
 
-        public double Calories => grams * this.WeightGrams * this.doughtType * this.techniqueType;
+        public double calories => grams * this.WeightGrams * this.doughtType * this.techniqueType;
 
     }
 }
