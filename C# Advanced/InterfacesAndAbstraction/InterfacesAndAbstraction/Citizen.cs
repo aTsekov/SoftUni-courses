@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PersonInfo
 {
-    public class Citizen : IPerson
+    public class Citizen : IPerson 
     {
         public string Name {get;private set;}
 
