@@ -1,51 +1,72 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Vehicles.Models;
-
-namespace Vehicles 
+﻿namespace P01.Vehicles.Models
 {
-    public  abstract class Vehicle 
+    using global::Vehicles.Models;
+
+    public abstract class Vehicle : IVehicle
     {
         private double fuelQuantity;
         private double fuelConsumption;
-        public Vehicle()
-        {
 
-        }
-        public Vehicle(double fueltQuantity, double  fuelConsumption)
+        private Vehicle()
         {
-            this.FuelQuantity = fueltQuantity;
+            this.FuelConsumptionModifier = 0;
+        }
+
+        protected Vehicle(double fuelQuantity, double fuelConsumption)
+            : this()
+        {
+            this.FuelQuantity = fuelQuantity;
             this.FuelConsumption = fuelConsumption;
         }
+
+        //Full property -> Open to extension, easy can add validation
         public double FuelQuantity
         {
-            get { return this.fuelQuantity; }
-            private set { this.fuelQuantity = value; }
+            get
+            {
+                return this.fuelQuantity;
+            }
+            private set
+            {
+                this.fuelQuantity = value;
+            }
         }
-        public  virtual double FuelConsumption { get; protected set; } // liters per km
-        public  void Drive(double distance)
+
+        public double FuelConsumption
+        {
+            get
+            {
+                return this.fuelConsumption;
+            }
+            protected set
+            {
+                this.fuelConsumption = value + this.FuelConsumptionModifier;
+            }
+        }
+
+        protected virtual double FuelConsumptionModifier { get; }
+
+        public string Drive(double distance)
         {
             double fuelNeeded = distance * this.FuelConsumption;
             if (fuelNeeded > this.FuelQuantity)
             {
-                // not EnoughFuel
-                Console.WriteLine($"{this.GetType().Name} needs refueling"); 
+                //Not Enough fuel
+                return $"{this.GetType().Name} needs refueling";
             }
-            else
-            {
-                this.FuelQuantity -= fuelNeeded;
-                Console.WriteLine($"{this.GetType().Name} travelled {distance} km");
-            }
-            
+
+            this.FuelQuantity -= fuelNeeded;
+            return $"{this.GetType().Name} travelled {distance} km";
         }
+
         public virtual void Refuel(double liters)
         {
             this.FuelQuantity += liters;
         }
+
         public override string ToString()
         {
-            return $"{this.GetType().Name}: {this.FuelQuantity:F2}";
+            return $"{this.GetType().Name}: {this.FuelQuantity:f2}";
         }
     }
 }

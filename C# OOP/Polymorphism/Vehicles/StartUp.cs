@@ -1,48 +1,30 @@
-﻿using System;
-
-namespace Vehicles
+﻿namespace P01.Vehicles
 {
+    using System;
+
+    using Core;
+    using Factories;
+    using Factories.Interfaces;
+    using Models;
+
     public class StartUp
     {
         static void Main(string[] args)
         {
-            string [] carInfo = Console.ReadLine().Split(' ');
-            string[] truckInfo = Console.ReadLine().Split(' ');
-            int n = int.Parse(Console.ReadLine());
-            Vehicle car = new Car(double.Parse(carInfo[1]), double.Parse(carInfo[2]));
-            Vehicle truck = new Truck(double.Parse(truckInfo[1]), double.Parse(truckInfo[2]));
-            for (int i = 0; i < n; i++)
-            {
-                string [] command = Console.ReadLine().Split(' ');
-                if (command[0] == "Drive")
-                {
-                    if (command[1] =="Car")
-                    {
-                        car.Drive(double.Parse(command[2]));
-                    }
-                    else if (command[1] == "Truck")
-                    {
-                        truck.Drive(double.Parse(command[2]));
-                    }
-                }
-                else if (command[0] == "Refuel")
-                {
-                    if (command[1] == "Car")
-                    {
-                        car.Refuel(double.Parse(command[2]));
-                    }
-                    else if (command[1] == "Truck")
-                    {
-                        truck.Refuel(double.Parse(command[2]));
-                    }
-                }
-                else
-                {
-                    break;
-                }
-            }
-            Console.WriteLine(car);
-            Console.WriteLine(truck);
+            //Initialization of the application
+            string[] carData = Console.ReadLine() // Read the input
+                .Split();
+            string[] truckData = Console.ReadLine()
+                .Split();
+
+            IVehicleFactory vehicleFactory = new VehicleFactory();
+            Vehicle car = vehicleFactory
+                .CreateVehicle(carData[0], double.Parse(carData[1]), double.Parse(carData[2]));
+            Vehicle truck = vehicleFactory
+                .CreateVehicle(truckData[0], double.Parse(truckData[1]), double.Parse(truckData[2])); //the two vehicles are created
+
+            IEngine engine = new Engine(car, truck);
+            engine.Start(); //Starts business logic
         }
     }
 }
