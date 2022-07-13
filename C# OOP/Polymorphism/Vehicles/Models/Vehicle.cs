@@ -32,8 +32,12 @@ namespace Vehicles
                 // not EnoughFuel
                 Console.WriteLine($"{this.GetType().Name} needs refueling"); 
             }
-            this.FuelQuantity -= fuelNeeded;
-             Console.WriteLine($"{this.GetType().Name} travelled {distance} km");
+            else
+            {
+                this.FuelQuantity -= fuelNeeded;
+                Console.WriteLine($"{this.GetType().Name} travelled {distance} km");
+            }
+            
         }
         public virtual void Refuel(double liters)
         {
