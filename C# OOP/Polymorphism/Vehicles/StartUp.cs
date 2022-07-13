@@ -16,14 +16,18 @@
                 .Split();
             string[] truckData = Console.ReadLine()
                 .Split();
+            string[] busData = Console.ReadLine()
+                .Split();
 
             IVehicleFactory vehicleFactory = new VehicleFactory();
             Vehicle car = vehicleFactory
-                .CreateVehicle(carData[0], double.Parse(carData[1]), double.Parse(carData[2]));
+                .CreateVehicle(carData[0], double.Parse(carData[1]), double.Parse(carData[2]), double.Parse(carData[3]));
             Vehicle truck = vehicleFactory
-                .CreateVehicle(truckData[0], double.Parse(truckData[1]), double.Parse(truckData[2])); //the two vehicles are created
+                .CreateVehicle(truckData[0], double.Parse(truckData[1]), double.Parse(truckData[2]), double.Parse(carData[3])); //the two vehicles are created
+            Vehicle bus = vehicleFactory
+                .CreateVehicle(busData[0], double.Parse(busData[1]), double.Parse(busData[2]), double.Parse(busData[3])); //the two vehicles are created
 
-            IEngine engine = new Engine(car, truck);
+            IEngine engine = new Engine(car, truck,bus);
             engine.Start(); //Starts business logic
         }
     }

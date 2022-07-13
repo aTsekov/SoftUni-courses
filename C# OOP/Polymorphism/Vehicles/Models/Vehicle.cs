@@ -1,22 +1,31 @@
 ﻿namespace P01.Vehicles.Models
 {
     using global::Vehicles.Models;
+    using Factories.Interfaces;
 
-    public abstract class Vehicle : IVehicle
+    public abstract class Vehicle 
     {
         private double fuelQuantity;
         private double fuelConsumption;
+        private double tankCapacity;
 
         private Vehicle()
         {
             this.FuelConsumptionModifier = 0;
         }
 
-        protected Vehicle(double fuelQuantity, double fuelConsumption)
+        protected Vehicle(double fuelQuantity, double fuelConsumption,double tankCapacity)
             : this()
         {
             this.FuelQuantity = fuelQuantity;
             this.FuelConsumption = fuelConsumption;
+            this.TankCapacity = tankCapacity;
+        }
+
+        protected Vehicle(double fuelQuantity, double fuelConsumption)
+        {
+            this.fuelQuantity = fuelQuantity;
+            this.fuelConsumption = fuelConsumption;
         }
 
         //Full property -> Open to extension, easy can add validation
@@ -28,7 +37,11 @@
             }
             private set
             {
-                this.fuelQuantity = value;
+                if (value < 0)
+                {
+                    System.Console.WriteLine("Fuel must be a positive number");
+                }
+                fuelQuantity = value;
             }
         }
 
@@ -45,8 +58,25 @@
         }
 
         protected virtual double FuelConsumptionModifier { get; }
+        protected virtual double FuelConsumptionWithoutPeople { get; }
 
-        public string Drive(double distance)
+        protected double TankCapacity
+        {
+            get { return this.tankCapacity; }
+            set
+            {
+                
+                if (value < 0)
+                {
+                    System.Console.WriteLine("Fuel must be a positive number");
+                }
+                this.tankCapacity = value;
+            }
+        }
+
+        
+
+        public virtual string Drive(double distance)
         {
             double fuelNeeded = distance * this.FuelConsumption;
             if (fuelNeeded > this.FuelQuantity)
@@ -61,7 +91,21 @@
 
         public virtual void Refuel(double liters)
         {
-            this.FuelQuantity += liters;
+            if (liters <= 0)
+            {
+                System.Console.WriteLine("Fuel must be a positive number");
+            }
+            
+            else if (TankCapacity < (liters + FuelQuantity))
+            {
+                System.Console.WriteLine($"Cannot fit {liters} fuel in the tank");
+            }
+            else
+            {
+                this.FuelQuantity += liters;
+            }
+
+
         }
 
         public override string ToString()

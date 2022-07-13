@@ -8,11 +8,13 @@
     {
         private readonly Vehicle car;
         private readonly Vehicle truck;
+        private readonly Vehicle bus;
 
-        public Engine(Vehicle car, Vehicle truck)
+        public Engine(Vehicle car, Vehicle truck, Vehicle bus)
         {
             this.car = car;
             this.truck = truck;
+            this.bus = bus;
         }
 
         public void Start()
@@ -36,6 +38,10 @@
                     {
                         Console.WriteLine(this.truck.Drive(cmdParam));
                     }
+                    else if (vehicleType == "Bus")
+                    {
+                        Console.WriteLine(this.bus.Drive(cmdParam));
+                    }
                 }
                 else if (cmdType == "Refuel")
                 {
@@ -47,11 +53,24 @@
                     {
                         this.truck.Refuel(cmdParam);
                     }
+                    else if (vehicleType == "Bus")
+                    {
+                        Console.WriteLine(this.bus.Drive(cmdParam));
+                    }
+                }
+                else if (cmdType == "DriveEmpty")
+                {
+                    
+                     if (vehicleType == "Bus")
+                    {
+                        Console.WriteLine(this.bus.Drive(cmdParam));
+                    }
                 }
             }
 
             Console.WriteLine(this.car);
             Console.WriteLine(this.truck);
+            Console.WriteLine(this.bus);
         }
     }
 }
