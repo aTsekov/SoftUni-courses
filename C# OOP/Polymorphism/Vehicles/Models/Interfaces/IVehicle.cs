@@ -6,7 +6,7 @@ namespace Vehicles.Models
 {
     public interface IVehicle // not to be used for the moment
     {
-        double FuelQuantity { get; }
+        double FuelQuantity { get;}
         double FuelConsumption { get; }
         double TankCapacity { get; }
         string Drive(double distance);

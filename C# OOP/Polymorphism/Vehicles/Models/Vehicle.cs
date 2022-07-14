@@ -2,12 +2,14 @@
 {
     using global::Vehicles.Models;
     using Factories.Interfaces;
+    using System;
 
     public abstract class Vehicle 
     {
         private double fuelQuantity;
         private double fuelConsumption;
         private double tankCapacity;
+        private double fuelConsumptionBus;
 
         private Vehicle()
         {
@@ -35,7 +37,7 @@
             {
                 return this.fuelQuantity;
             }
-            private set
+            protected set
             {
                 if (value < 0)
                 {
@@ -54,6 +56,17 @@
             protected set
             {
                 this.fuelConsumption = value + this.FuelConsumptionModifier;
+            }
+        }
+        public double FuelConsumptionBus
+        {
+            get
+            {
+                return this.fuelConsumptionBus;
+            }
+            protected set
+            {
+                this.fuelConsumption = value + this.FuelConsumptionWithoutPeople;
             }
         }
 
@@ -88,25 +101,43 @@
             this.FuelQuantity -= fuelNeeded;
             return $"{this.GetType().Name} travelled {distance} km";
         }
+        public string DriveEmpty(double distance)
+        {
+
+            double fuelNeeded = distance;
+            if (fuelNeeded > this.FuelQuantity)
+            {
+                //Not Enough fuel
+                return $"{this.GetType().Name} needs refueling";
+            }
+
+            this.FuelConsumptionBus -= fuelNeeded;
+            return $"{this.GetType().Name} travelled {distance} km";
+        }
+
 
         public virtual void Refuel(double liters)
         {
+            double tmp = liters;
+           
             if (liters <= 0)
             {
-                System.Console.WriteLine("Fuel must be a positive number");
+                throw new ArgumentException("Fuel must be a positive number"); ;
             }
-            
+             
             else if (TankCapacity < (liters + FuelQuantity))
             {
-                System.Console.WriteLine($"Cannot fit {liters} fuel in the tank");
+                double tmp1 = liters;
+                throw new ArgumentException($"Cannot fit {liters} fuel in the tank");
             }
-            else
-            {
+            
+            
                 this.FuelQuantity += liters;
-            }
-
+            
+            
 
         }
+
 
         public override string ToString()
         {

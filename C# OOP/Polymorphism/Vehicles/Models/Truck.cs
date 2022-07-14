@@ -16,7 +16,9 @@
 
         public override void Refuel(double liters)
         {
-            base.Refuel(liters * RefuelCoeffiecient);
+            liters *= RefuelCoeffiecient;
+            base.Refuel(liters);
+           
         }
     }
 }

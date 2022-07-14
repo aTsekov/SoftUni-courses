@@ -28,44 +28,53 @@
                 string vehicleType = cmdArgs[1];
                 double cmdParam = double.Parse(cmdArgs[2]);
 
-                if (cmdType == "Drive")
+                try
                 {
-                    if (vehicleType == "Car")
+                    if (cmdType == "Drive")
                     {
-                        Console.WriteLine(this.car.Drive(cmdParam));
+                        if (vehicleType == "Car")
+                        {
+                            Console.WriteLine(this.car.Drive(cmdParam));
+                        }
+                        else if (vehicleType == "Truck")
+                        {
+                            Console.WriteLine(this.truck.Drive(cmdParam));
+                        }
+                        else if (vehicleType == "Bus")
+                        {
+                            Console.WriteLine(this.bus.Drive(cmdParam));
+                        }
                     }
-                    else if (vehicleType == "Truck")
+                    else if (cmdType == "Refuel")
                     {
-                        Console.WriteLine(this.truck.Drive(cmdParam));
+                        if (vehicleType == "Car")
+                        {
+                            this.car.Refuel(cmdParam);
+                        }
+                        else if (vehicleType == "Truck")
+                        {
+                            this.truck.Refuel(cmdParam);
+                        }
+                        else if (vehicleType == "Bus")
+                        {
+                            this.bus.Refuel(cmdParam);
+                        }
                     }
-                    else if (vehicleType == "Bus")
+                    else if (cmdType == "DriveEmpty")
                     {
-                        Console.WriteLine(this.bus.Drive(cmdParam));
+
+                        if (vehicleType == "Bus")
+                        {
+                            Console.WriteLine(this.bus.DriveEmpty(cmdParam));
+                        }
                     }
                 }
-                else if (cmdType == "Refuel")
+                catch (Exception ae)
                 {
-                    if (vehicleType == "Car")
-                    {
-                        this.car.Refuel(cmdParam);
-                    }
-                    else if (vehicleType == "Truck")
-                    {
-                        this.truck.Refuel(cmdParam);
-                    }
-                    else if (vehicleType == "Bus")
-                    {
-                        Console.WriteLine(this.bus.Drive(cmdParam));
-                    }
+
+                     Console.WriteLine(ae.Message); 
                 }
-                else if (cmdType == "DriveEmpty")
-                {
-                    
-                     if (vehicleType == "Bus")
-                    {
-                        Console.WriteLine(this.bus.Drive(cmdParam));
-                    }
-                }
+               
             }
 
             Console.WriteLine(this.car);
