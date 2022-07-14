@@ -17,6 +17,12 @@
             get { return powerDruid; }
             protected set { powerDruid = value; }
         }
+        public override string CastAbility()
+        {
+
+            return $"{this.GetType().Name} - {this.Name} healed for {this.Power}";
+
+        }
 
     }
 }

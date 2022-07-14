@@ -17,5 +17,9 @@
             get {  return powerRogue; }
             protected set { powerRogue = value; }
         }
+        public override string CastAbility()
+        {
+            return $"{this.GetType().Name} - {this.Name} hit for {this.Power} damage";
+        }
     }
 }

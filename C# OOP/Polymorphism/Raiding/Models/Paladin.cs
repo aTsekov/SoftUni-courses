@@ -16,5 +16,9 @@
             get { return powerPaladin; }
             protected set { powerPaladin = value; }
         }
+        public override string CastAbility()
+        {
+            return $"{this.GetType().Name} - {this.Name} healed for {this.Power}";
+        }
     }
 }

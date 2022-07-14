@@ -22,5 +22,9 @@
                 powerWarrior = value;
             }
         }
+        public override string CastAbility()
+        {
+            return $"{this.GetType().Name} - {this.Name} hit for {this.Power} damage";
+        }
     }
 }

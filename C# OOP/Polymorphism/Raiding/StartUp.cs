@@ -9,19 +9,34 @@
         {
             int n = int.Parse(Console.ReadLine());
             int combinedPower = 0;
+            int bossPower = 0;
+
             for (int i = 0; i < n; i++)
             {
-                HeroFactory hf = new HeroFactory();
-                string heroName = Console.ReadLine();
-                string heroType = Console.ReadLine();
-                hf.CreateHero(heroType, heroName);
-                combinedPower += hf.HelpPower;
+                try
+                {
+                    HeroFactory hf = new HeroFactory();
+                    string heroName = Console.ReadLine();
+                    string heroType = Console.ReadLine();
+                    hf.CreateHero(heroType, heroName);
+                    combinedPower += hf.HelpPower;
+                }
+                catch (Exception ae)
+                {
+
+                    Console.WriteLine(ae.Message);
+                }
+
 
             }
-            int bossPower = int.Parse(Console.ReadLine());
 
 
-            if (bossPower < combinedPower)
+
+
+
+            bossPower = int.Parse(Console.ReadLine());
+
+            if (bossPower <= combinedPower)
             {
                 Console.WriteLine("Victory!");
             }

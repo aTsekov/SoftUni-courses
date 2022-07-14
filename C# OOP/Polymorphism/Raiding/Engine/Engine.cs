@@ -41,7 +41,7 @@
             int bossPower = int.Parse(Console.ReadLine());
 
 
-            if (bossPower < combinedPower)
+            if (bossPower <= combinedPower)
             {
                 Console.WriteLine("Victory!");
             }

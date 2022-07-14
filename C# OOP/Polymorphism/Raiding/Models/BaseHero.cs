@@ -15,18 +15,9 @@
         public virtual int Power { get; protected set; }
         public virtual string CastAbility()
         {
-            if (GetType().Name == "Druid" || GetType().Name == "Paladin")
-            {
-                return $"{this.GetType().Name} - {this.Name} healed for {this.Power}";
-            }
-            else if (GetType().Name == "Rogue" || GetType().Name == "Warrior")
-            {
-                return $"{this.GetType().Name} - {this.Name} hit for {this.Power} damage";
-            }
-            else
-            {
+            
                 throw new Exception("Invalid hero!");
-            }
+            
         }
     }
 }

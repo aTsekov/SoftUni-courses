@@ -10,32 +10,34 @@
         public int HelpPower { get;private set; }
         public BaseHero CreateHero(string heroType, string heroName)
         {
+           
             BaseHero baseHero;
 
             if (heroType == "Paladin")
             {
                 baseHero = new Paladin(heroName);
-                baseHero.CastAbility();
+                Console.WriteLine (baseHero.CastAbility());
             }
             else if (heroType == "Druid")
             {
                 baseHero = new Druid(heroName);
-                baseHero.CastAbility();
+                Console.WriteLine(baseHero.CastAbility());
 
             }
             else if (heroType == "Rogue")
             {
                 baseHero = new Rogue(heroName);
-                baseHero.CastAbility();
+                Console.WriteLine(baseHero.CastAbility());
             }
             else if (heroType == "Warrior")
             {
                 baseHero = new Warrior(heroName);
-                baseHero.CastAbility();
+                 Console.WriteLine (baseHero.CastAbility());
             }
             else
             {
                 throw new Exception("Invalid hero!");
+                
             }
             HelpPower = baseHero.Power;
             return baseHero;

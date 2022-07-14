@@ -10,6 +10,7 @@
         public Vehicle CreateVehicle(string vehicleType, double fuelQuantity, double fuelConsumption, double tankCapacity)
         {
             Vehicle vehicle;
+            
 
             if (vehicleType == "Car")
             {
