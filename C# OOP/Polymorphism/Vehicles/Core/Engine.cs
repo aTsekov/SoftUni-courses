@@ -30,6 +30,7 @@
 
                 try
                 {
+                    var actual = cmdParam;
                     if (cmdType == "Drive")
                     {
                         if (vehicleType == "Car")
@@ -49,15 +50,16 @@
                     {
                         if (vehicleType == "Car")
                         {
-                            this.car.Refuel(cmdParam);
+
+                            this.car.Refuel(actual,cmdParam);
                         }
                         else if (vehicleType == "Truck")
                         {
-                            this.truck.Refuel(cmdParam);
+                            this.truck.Refuel(actual,cmdParam);
                         }
                         else if (vehicleType == "Bus")
                         {
-                            this.bus.Refuel(cmdParam);
+                            this.bus.Refuel(actual,cmdParam);
                         }
                     }
                     else if (cmdType == "DriveEmpty")

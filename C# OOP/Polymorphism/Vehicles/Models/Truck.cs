@@ -14,10 +14,13 @@
         protected override double FuelConsumptionModifier
             => TruckFuelConsumptionIncrement;
 
-        public override void Refuel(double liters)
+        public override void Refuel(double actualLitters, double liters)
         {
-            liters *= RefuelCoeffiecient;
-            base.Refuel(liters);
+            //liters *= RefuelCoeffiecient;
+             actualLitters = liters * RefuelCoeffiecient;
+            base.Refuel(actualLitters,liters);
+            
+            
            
         }
     }

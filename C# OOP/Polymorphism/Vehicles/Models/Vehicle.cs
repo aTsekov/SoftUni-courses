@@ -4,7 +4,7 @@
     using Factories.Interfaces;
     using System;
 
-    public abstract class Vehicle 
+    public abstract class Vehicle
     {
         private double fuelQuantity;
         private double fuelConsumption;
@@ -16,7 +16,7 @@
             this.FuelConsumptionModifier = 0;
         }
 
-        protected Vehicle(double fuelQuantity, double fuelConsumption,double tankCapacity)
+        protected Vehicle(double fuelQuantity, double fuelConsumption, double tankCapacity)
             : this()
         {
             this.FuelQuantity = fuelQuantity;
@@ -78,16 +78,20 @@
             get { return this.tankCapacity; }
             set
             {
-                
+
                 if (value < 0)
                 {
                     System.Console.WriteLine("Fuel must be a positive number");
+                }
+                if (value < FuelQuantity)
+                {
+                    FuelQuantity = 0;
                 }
                 this.tankCapacity = value;
             }
         }
 
-        
+
 
         public virtual string Drive(double distance)
         {
@@ -116,25 +120,26 @@
         }
 
 
-        public virtual void Refuel(double liters)
+        public virtual void Refuel(double actuals, double liters)
         {
-            double tmp = liters;
-           
+
+
             if (liters <= 0)
             {
                 throw new ArgumentException("Fuel must be a positive number"); ;
             }
-             
-            else if (TankCapacity < (liters + FuelQuantity))
+
+            else if (TankCapacity < (actuals + FuelQuantity))
             {
-                double tmp1 = liters;
+                
+
                 throw new ArgumentException($"Cannot fit {liters} fuel in the tank");
             }
-            
-            
-                this.FuelQuantity += liters;
-            
-            
+
+
+            this.FuelQuantity += actuals;
+
+
 
         }
 
