@@ -1,10 +1,10 @@
 ﻿namespace Solid
 {
-    
+    using System.Collections.Generic;
 
     public interface ILoger 
     {
-        public IAppender Appender { get; }
+        public List<IAppender> Appenders { get; }
         void Info(string dateTime, string message);
         void Warning(string dateTime, string message);
         void Error(string dateTime, string message);

@@ -1,6 +1,7 @@
 ﻿namespace Solid
 {
     using Solid.ReportLevel;
+    using System.Collections.Generic;
 
     public class Logger : ILoger
     {
@@ -8,37 +9,47 @@
         {
         }
 
-        public Logger(IAppender appender)
+        public Logger(params IAppender [] appenders)
         {
-            this.Appender = appender;
+            this.Appenders = new List<IAppender>();
+            this.Appenders.AddRange(appenders);
         }
-        public IAppender Appender { get; }
+        public List<IAppender> Appenders { get; }
 
         
 
         public void Critical(string dateTime, string message)
         {
-            this.Appender.Append(dateTime, LogLevel.Critical, message);
+            Log(dateTime, LogLevel.Critical, message);
         }
+
+       
 
         public void Error(string dateTime, string message)
         {
-            this.Appender.Append(dateTime, LogLevel.Error, message);
+            Log(dateTime, LogLevel.Error, message);
         }
 
         public void Fatal(string dateTime, string message)
         {
-            this.Appender.Append(dateTime, LogLevel.Fatal, message); ;
+            Log(dateTime, LogLevel.Fatal, message);
         }
 
         public void Info(string dateTime, string message)
         {
-            this.Appender.Append(dateTime, LogLevel.Info, message); ;
+            Log(dateTime, LogLevel.Info, message);
         }
 
         public void Warning(string dateTime, string message)
         {
-            this.Appender.Append(dateTime, LogLevel.Warning, message);
+            Log(dateTime, LogLevel.Warning, message);
+        }
+        private void Log(string dateTime, LogLevel logLevel, string message)
+        {
+            foreach (var appender in Appenders)
+            {
+                appender.Append(dateTime, logLevel, message);
+            }
         }
     }
 }
