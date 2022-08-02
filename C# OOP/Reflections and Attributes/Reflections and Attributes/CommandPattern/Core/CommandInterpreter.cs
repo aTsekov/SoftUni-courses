@@ -17,7 +17,7 @@
             string[] cmdArgs = cmdSplit.Skip(1).ToArray();
 
             Assembly assembly = Assembly.GetCallingAssembly();
-            Type cmdType = assembly?
+            Type cmdType = assembly? //to avoid exception. If the assembly is null the code after the assembly (as of GetTypes onwards) it will not be executed thus avoid an exception. 
                 .GetTypes()
                 .FirstOrDefault(t => t.Name == $"{cmdName}Command" &&
                                      t.GetInterfaces().Any(i => i == typeof(ICommand)));
