@@ -19,7 +19,7 @@
             this.RaceName = raceName;
             this.NumberOfLaps = numberOfLaps;
             this.TookPlace = tookPlace;
-            this.Pilots = new List<IPilot>().AsReadOnly(); // ????
+            this.Pilots = new List<IPilot>(); // ???? THIS SHOULD NOT BE READONLY!!!
         }
         public string RaceName
         {

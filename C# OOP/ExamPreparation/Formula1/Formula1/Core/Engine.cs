@@ -86,6 +86,7 @@
                 catch (Exception ex)
                 {
                     writer.WriteLine(ex.Message);
+                   
                 }
             }
         }

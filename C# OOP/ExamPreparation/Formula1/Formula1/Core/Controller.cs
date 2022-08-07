@@ -82,7 +82,7 @@
                 throw new NullReferenceException($"Car { carModel } does not exist.");
             }
             pilot.AddCar(car);
-            carRepository.Remove(car);
+            carRepository.Remove(car);            
             return $"Pilot { pilotName } will drive a {car.GetType().Name} { carModel } car.";
         }
 
@@ -94,9 +94,18 @@
             {
                 throw new NullReferenceException($"Race { raceName } does not exist.");
             }
-            if ((!pilotRepository.Models.Any(p => p.FullName == pilotFullName)) || pilot.CanRace == false || race.Pilots.Any( p => p.FullName == pilotFullName))
+            bool check = false;
+            if ((!pilotRepository.Models.Any(p => p.FullName == pilotFullName)))
             { //If the pilot does not exist, or the pilot can not race, or the pilot is already in the race
                 throw new InvalidOperationException($"Pilot { pilotFullName } does not exist or has a car."); // Possibly a mistake as I am not sure if the value is null when the pilot does not have a car. 
+            }
+            if (pilot.CanRace == false )
+            {
+                throw new InvalidOperationException($"Pilot { pilotFullName } does not exist or has a car.");
+            }
+            if (race.Pilots.Any(p => p.FullName == pilotFullName))
+            {
+                throw new InvalidOperationException($"Pilot { pilotFullName } does not exist or has a car.");
             }
             race.AddPilot(pilot);
             return $"Pilot { pilotFullName } is added to the { raceName } race.";
@@ -104,19 +113,74 @@
         }
         public string StartRace(string raceName)
         {
+            if (!raceRepository.Models.Any( r => r.RaceName == raceName)) //If Race does not excists
+            {
+                throw new NullReferenceException($"Race { raceName } does not exist.");
+            }
+            var raceToStart = raceRepository.Models.FirstOrDefault(r => r.RaceName == raceName);
+            var pilotsNum = raceToStart.Pilots.Count;
+
+            if (pilotsNum < 3) //If not enough pilots in the race.
+            {
+                throw new InvalidOperationException($"Race { raceName } cannot start with less than three participants.");
+            }
+
+            bool tookPlace = raceToStart.TookPlace;
+            if (tookPlace == true) // if race already took place.
+            {
+                throw new InvalidOperationException($"Can not execute race { raceName }.");
+            }
+
+            var laps = raceToStart.NumberOfLaps;
+            List<IPilot> pilotsList = new List<IPilot>();
             
-        }
+            foreach (var pilot in raceToStart.Pilots)
+            {
+                
+                pilot.Car.RaceScoreCalculator(laps);
+                pilotsList.Add(pilot);
+                
+            }
+            var sortedPilots = pilotsList.OrderByDescending(p => p.Car.RaceScoreCalculator(laps)).ToArray();
 
+            raceToStart.TookPlace = true;
 
-        public string PilotReport()
-        {
-            throw new NotImplementedException();
+            var firstPilot = sortedPilots[1];
+            firstPilot.WinRace();
+            var secondPilot = sortedPilots[2];
+            var thirdPilot = sortedPilots[3];
+
+            var strInfo = $"Pilot { firstPilot.FullName } wins the { raceName } race.{Environment.NewLine}" +
+                $"Pilot { secondPilot.FullName } is second in the { raceName } race.{Environment.NewLine}" +
+                $"Pilot { thirdPilot.FullName } is third in the { raceName} race.";
+
+            return strInfo;
         }
 
         public string RaceReport()
         {
-            throw new NotImplementedException();
+            RaceRepository rc = new RaceRepository();
+            StringBuilder sb = new StringBuilder();
+            foreach (var race in rc.Models)
+            {
+                sb.AppendLine(race.RaceInfo());
+            }
+
+            return sb.ToString().Trim();
         }
+        public string PilotReport()
+        {
+            PilotRepository pilots = new PilotRepository();
+            StringBuilder sb = new StringBuilder();
+
+            foreach (var pilot in pilots.Models)
+            {
+                sb.AppendLine(pilot.ToString());
+            }
+            return sb.ToString().Trim();
+        }
+
+        
 
         
     }

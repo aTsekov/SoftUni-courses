@@ -10,12 +10,12 @@
     {
         private string fullName;
         private IFormulaOneCar car; // THis Should be initiated in the CTOR!
-        private bool canRace;
+        private bool canRace = false;
 
         public Pilot(string fullName)
         {
             this.FullName = fullName;
-            this.Car = car; // Should this be like this? 
+            //this.Car = car; // Should this be like this? 
             this.CanRace = canRace;
         }
         public string FullName
@@ -35,7 +35,7 @@
             get {return canRace; }
             private set
             {
-                value = false;
+                
                 canRace = value;
             }
         }
@@ -59,7 +59,7 @@
         public void AddCar(IFormulaOneCar car)
         {
             Car = car;
-            CanRace = true;
+            canRace = true;
         }
 
         public void WinRace()

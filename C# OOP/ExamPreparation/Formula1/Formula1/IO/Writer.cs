@@ -1,6 +1,7 @@
 ﻿namespace Formula1.IO
 {
     using System;
+    using System.IO;
     using Formula1.IO.Contracts;
     public class Writer : IWriter
     {
@@ -13,5 +14,7 @@
         {
             Console.WriteLine(message);
         }
+       
+
     }
 }
