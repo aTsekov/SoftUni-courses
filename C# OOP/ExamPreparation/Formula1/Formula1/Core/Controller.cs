@@ -94,18 +94,19 @@
             {
                 throw new NullReferenceException($"Race { raceName } does not exist.");
             }
-            bool check = false;
+            
             if ((!pilotRepository.Models.Any(p => p.FullName == pilotFullName)))
             { //If the pilot does not exist, or the pilot can not race, or the pilot is already in the race
-                throw new InvalidOperationException($"Pilot { pilotFullName } does not exist or has a car."); // Possibly a mistake as I am not sure if the value is null when the pilot does not have a car. 
+                throw new InvalidOperationException($"Can not add pilot { pilotFullName } to the race."); // Possibly a mistake as I am not sure if the value is null when the pilot does not have a car. 
             }
+
             if (pilot.CanRace == false )
             {
-                throw new InvalidOperationException($"Pilot { pilotFullName } does not exist or has a car.");
+                throw new InvalidOperationException($"Can not add pilot { pilotFullName } to the race.");
             }
             if (race.Pilots.Any(p => p.FullName == pilotFullName))
             {
-                throw new InvalidOperationException($"Pilot { pilotFullName } does not exist or has a car.");
+                throw new InvalidOperationException($"Can not add pilot { pilotFullName } to the race.");
             }
             race.AddPilot(pilot);
             return $"Pilot { pilotFullName } is added to the { raceName } race.";
@@ -145,10 +146,10 @@
 
             raceToStart.TookPlace = true;
 
-            var firstPilot = sortedPilots[1];
+            var firstPilot = sortedPilots[0];
             firstPilot.WinRace();
-            var secondPilot = sortedPilots[2];
-            var thirdPilot = sortedPilots[3];
+            var secondPilot = sortedPilots[1];
+            var thirdPilot = sortedPilots[2];
 
             var strInfo = $"Pilot { firstPilot.FullName } wins the { raceName } race.{Environment.NewLine}" +
                 $"Pilot { secondPilot.FullName } is second in the { raceName } race.{Environment.NewLine}" +
@@ -159,21 +160,30 @@
 
         public string RaceReport()
         {
-            RaceRepository rc = new RaceRepository();
+            
             StringBuilder sb = new StringBuilder();
-            foreach (var race in rc.Models)
+
+
+            foreach (var race in raceRepository.Models)
             {
-                sb.AppendLine(race.RaceInfo());
+                if (race.TookPlace == true)
+                {
+                    sb.AppendLine(race.RaceInfo());
+                }
+                
             }
 
             return sb.ToString().Trim();
         }
         public string PilotReport()
         {
-            PilotRepository pilots = new PilotRepository();
+            
             StringBuilder sb = new StringBuilder();
+            var sorted = pilotRepository.Models.OrderByDescending(a => a.NumberOfWins);
+            
 
-            foreach (var pilot in pilots.Models)
+
+            foreach (var pilot in sorted)
             {
                 sb.AppendLine(pilot.ToString());
             }

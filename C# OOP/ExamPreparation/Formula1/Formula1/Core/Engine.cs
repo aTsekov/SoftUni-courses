@@ -9,6 +9,8 @@
         private IWriter writer;
         private IReader reader;
         private IController controller;
+        //*******
+        //private FileWriter file;
 
         public Engine()
         {
@@ -19,6 +21,8 @@
 
         public void Run()
         {
+
+           //var fileWriter = new FileWriter("../../../data.txt"); // 
             while (true)
             {
                 string[] input = reader.ReadLine().Split();
@@ -35,6 +39,7 @@
                         string fullName = input[1];
 
                         result = controller.CreatePilot(fullName);
+                       
                     }
                     else if (input[0] == "CreateCar")
                     {
@@ -82,10 +87,13 @@
                     }
 
                     writer.WriteLine(result);
+                  
+                   // fileWriter.WriteLine(result);//
                 }
                 catch (Exception ex)
                 {
                     writer.WriteLine(ex.Message);
+                    //fileWriter.WriteLine(ex.Message + "\n"); //
                    
                 }
             }
