@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace SmartphoneShop.Tests
 {
@@ -91,8 +93,99 @@ namespace SmartphoneShop.Tests
                 shop.Add(phone2);
                 shop.Add(phone3);
             }, $"The shop is full.");
+        }[Test]
+        public void CheckIfThrowsExceptionIfYouTryToRemovePhoneWhichDoesNotExists()
+        {
+            var phone1 = new Smartphone("Iphone", 50);
+            var phone2 = new Smartphone("Samsung", 50);            
+            var shop = new Shop(2);
+            shop.Add(phone1);
+            shop.Add(phone2);
+            var modelName = "Nokia";
+            var phone3 = new Smartphone(modelName, 40);
+
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+
+                shop.Remove(phone3.ModelName);
+
+            },$"The phone model {phone3.ModelName} doesn't exist.");
         }
+        [Test]
+        public void CheckIfActuallythePhoneIsDeleted()
+        {
+            var phone1 = new Smartphone("Iphone", 50);
+            var phone2 = new Smartphone("Samsung", 50);            
+            var shop = new Shop(2);
+            shop.Add(phone1);
+            shop.Add(phone2);
+
+            shop.Remove("Samsung");
+            var expectedCount = shop.Count;
+            var actualCount = 1;
+
+            Assert.AreEqual(expectedCount, actualCount,"The phone is actually deleted");
+        }  
+        [Test]
+        public void TestPhoneIfphoneExists()
+        {
       
+            string modelName = "Nokia";
+            
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+
+                var shop = new Shop(2);
+                shop.TestPhone(modelName, 20);
+                
+
+            },$"The phone model {modelName} doesn't exist.");
+        }
+        [Test]
+        public void TestPhoneIfCurrentBateryChargeIsReduced()
+        {
+            string modelName = "Nokia";
+            int batteryUsage = 5;
+            Smartphone phone1 = new Smartphone(modelName, 15);
+            phone1.CurrentBateryCharge = 10;
+            var shop = new Shop(2);
+            shop.Add(phone1);
+            shop.TestPhone("Nokia", batteryUsage);
+            int expectedBatteryUsage = 5;
+            var actualBatteryUsage = phone1.CurrentBateryCharge;
+
+            Assert.AreEqual(expectedBatteryUsage, actualBatteryUsage, "The substraction of battery charge works as expected");
+        }
+       [Test]
+       public void TessIfChargePhoneThrowsException()
+        {
+            string modelName = "Nokia";
+
+            Assert.Throws<InvalidOperationException>(() =>
+            {
+
+                var shop = new Shop(2);
+                shop.ChargePhone(modelName);
+
+
+            }, $"The phone model {modelName} doesn't exist.");
+        }
+
+        [Test]
+        public void TestIfPhoneIsCharged()
+        {
+            string modelName = "Nokia";
+            int batteryUsage = 5;
+            Smartphone phone1 = new Smartphone(modelName, 15);
+            phone1.CurrentBateryCharge = 10;
+            var shop = new Shop(2);
+            shop.Add(phone1);
+            shop.ChargePhone("Nokia");
+            int expectedBatteryUsage = phone1.MaximumBatteryCharge;
+            var actualBatteryUsage = phone1.CurrentBateryCharge;
+
+            Assert.AreEqual(expectedBatteryUsage, actualBatteryUsage, "The phone is fully charged");
+        }
 
 
 

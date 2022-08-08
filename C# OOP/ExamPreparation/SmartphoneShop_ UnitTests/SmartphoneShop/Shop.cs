@@ -73,6 +73,7 @@ namespace SmartphoneShop
             {
                 throw new InvalidOperationException($"The phone model {currentPhone.ModelName} is low on batery.");
             }
+            
 
             currentPhone.CurrentBateryCharge -= batteryUsage;
         }
