@@ -26,7 +26,7 @@
         public string Name
         {
             get { return this.name; }
-            protected set
+            private set
             {
                 if (string.IsNullOrWhiteSpace(value))
                 {
@@ -69,7 +69,7 @@
         public ICollection<string> Targets
         {
             get { return this.targets;}
-            set { this.targets = value; }
+            private set { this.targets = value; }
         }
 
         public void Attack(IVessel target) //This is absolutely wrong!
