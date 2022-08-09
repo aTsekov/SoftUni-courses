@@ -29,23 +29,27 @@
 
         }
         [Test]
-        public void TestIfBookNameIsValid()
+        [TestCase("")]
+        [TestCase(null)]
+        public void TestIfBookNameIsValid(string book)
         {
             
 
             Assert.Throws<ArgumentException>(() =>
             {
-                var book1 = new Book("", "JJ Rowling");
+                var book1 = new Book(book, "JJ Rowling");
             },$"Invalid Book Name!") ;
         }
         [Test]
-        public void TestIfAuthorIsValid()
+        [TestCase("")]
+        [TestCase(null)]
+        public void TestIfAuthorIsValid(string author)
         {
 
 
             Assert.Throws<ArgumentException>(() =>
             {
-                var book1 = new Book("Harry Potter", "");
+                var book1 = new Book("Harry Potter", author);
             }, $"Invalid Author!");
         }
         [Test]
