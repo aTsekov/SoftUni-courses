@@ -71,6 +71,7 @@
         public void AddEquipment(IEquipment equipment)
         {
             this.Equipment.Add(equipment);
+            
         }
 
         public void Exercise()
@@ -94,7 +95,7 @@
                 sb.AppendLine($"Athletes: {string.Join(", ", Athletes)}");
             }
             sb.AppendLine($"Equipment total count: {this.Equipment.Count}");
-            sb.AppendLine($"Equipment total weight: {this.EquipmentWeight} grams");
+            sb.AppendLine($"Equipment total weight: {this.EquipmentWeight:f2} grams");
 
             return sb.ToString().TrimEnd();
         }
