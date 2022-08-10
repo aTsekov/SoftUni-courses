@@ -88,14 +88,25 @@
             sb.AppendLine($"{this.Name} is a {this.GetType().Name}:");
             if (Athletes.Count == 0)
             {
-                sb.AppendLine(" No athletes");
+                sb.AppendLine("Athletes: No athletes");
             }
             else
             {
-                sb.AppendLine($"Athletes: {string.Join(", ", Athletes)}");
+                var names = new List<string>();
+                foreach (var item in Athletes)
+                {
+                    names.Add(item.FullName);
+                }
+                sb.AppendLine($"Athletes: {string.Join(", ", names)}");
             }
             sb.AppendLine($"Equipment total count: {this.Equipment.Count}");
-            sb.AppendLine($"Equipment total weight: {this.EquipmentWeight:f2} grams");
+            double weight1 = 0;
+            foreach (var item in equipment)
+            {
+                weight1 += item.Weight;
+            }
+
+            sb.AppendLine($"Equipment total weight: {weight1:f2} grams");
 
             return sb.ToString().TrimEnd();
         }

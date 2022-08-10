@@ -75,7 +75,7 @@
         }
         public string AddAthlete(string gymName, string athleteType, string athleteName, string motivation, int numberOfMedals)
         {
-            if (athleteType != "Boxer"  || athleteType != "Weightlifter")
+            if (athleteType != "Boxer"  && athleteType != "Weightlifter")
             {
                 throw new InvalidOperationException($"Invalid athlete type.");
             }
