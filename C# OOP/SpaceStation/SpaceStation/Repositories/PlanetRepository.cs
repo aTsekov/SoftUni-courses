@@ -10,6 +10,10 @@
     public class PlanetRepository : IRepository<IPlanet>
     {
         private List<IPlanet> models;
+        public PlanetRepository()
+        {
+            models = new List<IPlanet>();
+        }
         public IReadOnlyCollection<IPlanet> Models => models;
 
         public void Add(IPlanet model)
