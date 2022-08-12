@@ -19,9 +19,9 @@
                 
                 if (ast.Oxygen > 0)
                 {
-                    while (ast.Oxygen> 0)
+                    while (ast.Oxygen> 0 && planet.Items.Any())
                     {
-                        var item = planet.Items.FirstOrDefault(); // The mistake is here
+                        var item = planet.Items.FirstOrDefault(); 
                         ast.Breath();
                         ast.Bag.Items.Add(item);
                         planet.Items.Remove(item);

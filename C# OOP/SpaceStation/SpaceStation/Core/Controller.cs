@@ -4,6 +4,7 @@
     using SpaceStation.Models;
     using SpaceStation.Models.Astronauts;
     using SpaceStation.Models.Astronauts.Contracts;
+    using SpaceStation.Models.Mission;
     using SpaceStation.Models.Planets.Contracts;
     using SpaceStation.Repositories;
     using System;
@@ -73,29 +74,33 @@
         }
         public string ExplorePlanet(string planetName)
         {
-            //The mistake is that I do not call the "Mission class" where the logic for collection the items is located. 
+           
            var planetToExplore = planets.FirstOrDefault(p => p.Name == planetName);
             var suitableAstronauts = new List<IAstronaut>();
             var dead = new List<IAstronaut>();
+            var mission = new Mission();
             if (astronauts.Any( a => a.Oxygen > 60))
             {
                 foreach (var astr in astronauts)
                 {
                     if (astr.Oxygen > 60)
                     {
-                        suitableAstronauts.Add(astr);
-                        
+                        suitableAstronauts.Add(astr); 
                     }
-                    //astr.Breath();
-                    if (astr.Oxygen == 0)
-                    {
-                        dead.Add(astr);
-                    }
+                    
                 }
             }
             else
             {
-                throw new InvalidOperationException("You need at least one astronaut to explore the planet");
+                throw new InvalidOperationException("You need at least one astronaut to explore the planet!");
+            }
+            mission.Explore(planetToExplore,suitableAstronauts);
+            foreach (var astr in suitableAstronauts)
+            {
+                if (astr.Oxygen == 0)
+                {
+                    dead.Add(astr);
+                }
             }
             exploredPlanets++;
 
@@ -114,7 +119,7 @@
                 sb.AppendLine($"Oxygen: {astr.Oxygen}");
                 if (astr.Bag.Items.Count == 0)
                 {
-                    sb.AppendLine("none");
+                    sb.AppendLine("Bag items: none");
                 }
                 else
                 {
