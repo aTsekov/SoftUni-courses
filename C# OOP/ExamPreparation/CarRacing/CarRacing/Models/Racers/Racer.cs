@@ -9,6 +9,7 @@
     public abstract class Racer : IRacer
     {
         private string username;
+        private string racingBehavior;
         public string Username
         {
             get { return username; }
@@ -22,7 +23,11 @@
             }
         }
 
-        public string RacingBehavior => throw new NotImplementedException();
+        public string RacingBehavior
+        {
+            get { return racingBehavior; }
+            private set { racingBehavior = value; }
+        }
 
         public int DrivingExperience => throw new NotImplementedException();
 
