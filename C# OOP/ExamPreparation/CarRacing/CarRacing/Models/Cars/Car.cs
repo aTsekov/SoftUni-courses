@@ -64,7 +64,7 @@
         public int HorsePower
         {
             get { return horsePower; }
-            private set
+            protected set
             {
                 if (value < 0)
                 {
