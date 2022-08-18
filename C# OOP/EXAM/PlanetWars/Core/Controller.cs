@@ -79,7 +79,7 @@
             {
                 throw new InvalidOperationException($"Planet {planetName} does not exist!");
             }
-            if (weaponTypeName == " BioChemicalWeapon")
+            if (weaponTypeName == "BioChemicalWeapon")
             {
                 weapon = new BioChemicalWeapon(destructionLevel);
             }
@@ -101,7 +101,7 @@
             }
             planets.FindByName(planetName).AddWeapon(weapon);
             planets.FindByName(planetName).Spend(weapon.Price);
-            return $"{weaponTypeName} added successfully to the Army of {planetName}!";
+            return $"{planetName} purchased {weaponTypeName}!";
 
         }
 

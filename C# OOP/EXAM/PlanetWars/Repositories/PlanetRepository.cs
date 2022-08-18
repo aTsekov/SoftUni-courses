@@ -19,9 +19,10 @@
 
         public IPlanet FindByName(string name)
         {
-            if (models.Any(a => a.GetType().Name == name))
+            
+            if (models.Any(a => a.Name == name))
             {
-                var astr = models.FirstOrDefault(a => a.GetType().Name == name);
+                var astr = models.FirstOrDefault(a => a.Name == name);
                 return astr;
             }
             return null;
