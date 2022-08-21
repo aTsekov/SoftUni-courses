@@ -6,6 +6,8 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using Microsoft.Extensions.DependencyInjection; // basic dependency injection by MS
+    
 
     public class WeaponRepository : IRepository<IWeapon>
     {
