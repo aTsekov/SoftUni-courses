@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The small title on the tab in the browser + the small icon called Favicon -->
+    <title> Navigation bar</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">    
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+<!-- with the following row a link between the css and the html files is created -->
+    <link rel = "stylesheet" href="style.css"> 
+
+</head>
+<body>
+    
+    <nav id = "topmenu">
+        <!-- the <nav> tag defines a set of navigation links -->
+        <ul> 
+            <!-- <ul> tag means unsorted list -->
+                <!-- the <li> tag is used inside ordered list<ol> or unordered list <ul>. The <li> defines a list item in the or ordered or unordered list -->
+            <li> <a href="#">Home</a> </li>
+            <!-- tag <a></a> means a link and where # is the actual link or another html document -->
+            <li> <a href="#">Tutorials</a> </li>
+            <li> <a href="#">About</a> </li>
+            <li> <a href="#">Newsletter</a> </li>
+            <li> <a href="#">Contact</a> </li>            
+        </ul>
+    </nav>
+    <article>
+        <!-- An article should make sense on its own and it should be possible to distribute it independently from the rest of the site.  -->
+        <h2> My article</h1>
+    <!-- <h1> tag is for headings. -->
+        <!-- the <time> tag is used to put the time of a post. Then it is easier to be found in a google search by date. -->
+        <p>Posted on <time datetime="12-09-2022"> 09th of September 2022</time></p> 
+        <!-- <p> paragraph in a text -->
+        <p> This is the text of the article
+            imagine that is very long. 
+            <img src="favicon.ico"/>
+        </p>
+    </article>
+
+    <details> 
+        <!-- the <details> tag creates the moving arrow. -->
+        <p>More info about the details.</p> 
+      </details>
+
+      <details>
+        <summary>Some details</summary> 
+        <p>More info about the details.</p> 
+       </details>
+       
+
+    <aside>
+        <!-- this is a side bar that is user in forums for example -->
+        <h3>Content</h3>
+        <ul>
+            <li><a href="#">First item in the content</a></li>
+            <li><a href="#">Second item in the content</a></li>
+            <li><a href="#">Third item in the content</a></li>
+        </ul>
+    </aside>
+
+    <table>
+        
+        <thead>
+          <tr><th colspan="4">Web Fundamentals</th></tr>
+        </thead>
+        
+            <tr>
+                <!-- in <tr> we define the content on one row. so row1 cellA and row1 cell two -->
+              <td>Cell A</td>
+              <td>Cell B</td>
+            </tr>
+            <!-- here is row2 cell1 and row2 cell2 -->
+            <tr>
+              <td>Cell C</td>
+              <td>Cell D</td>
+            </tr>
+        </table>
+
+            
+         
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+          <tr><th colspan="4">Web Fundamentals</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="bold">&#8470;</td>
+            <td>Number</td><td>First Name</td> <td>Last Name<td>Score</td>
+            
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>Gosho</td>
+            <td>Petrov</td>
+            <td>12</td>
+            
+          </tr>
+          <tr>
+            
+            <tr>
+                <td>1</td>
+                <td>Pesho</td>
+                <td>Petrov</td>
+                <td>15</td>
+                
+              </tr>
+        </tbody>
+    </table>
+      
+    <footer>
+        <p>Posted by: John Dow</p>
+          <p>
+           <a href="a@a.com>Contact..."></a>
+          </p>
+        <p>©copyright</p>
+      </footer>
+    
+
+
+
+</body>
+</html>
