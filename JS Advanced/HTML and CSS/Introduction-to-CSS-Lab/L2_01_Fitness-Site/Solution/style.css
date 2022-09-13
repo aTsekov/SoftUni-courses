@@ -1,0 +1,39 @@
+/* this is the tag <p> with the id"HER" this way I make sure I will change only this tag and not all<p> */
+p#HER{
+    display: block;
+    /* Padding is used to create space around an element's content, inside of any defined borders. */
+    padding: 1px30px;
+    /* text decoration = none removes all  of the build in formating like unrlying in links. */
+    text-decoration: none;    
+    /* color of the element */
+    color: orange;
+    /* The border-radius CSS property rounds the corners of an element's outer border edge. */
+    border-radius: 5px;
+    /* The vertical-align CSS property sets vertical alignment of an inline, inline-block or table-cell box. align the element in the middle of the section */
+    vertical-align: middle;
+    /* The float property specifies whether an element should float to the left, right, or not at all. */
+    float: left;
+    /* The CSS margin properties are used to create space around elements, outside of any defined borders. */
+    margin: 10px 20px;
+  }
+/* This is the background color of the section nav*/
+nav{
+    background-color: grey; 
+}
+/* The whole list in the nav container is aligned on the right-hand side.*/
+nav ul{
+    text-align: right;
+}
+/* This is used  to disply the list in one row instead of a column.  */
+nav ul li {
+    display: inline-block;
+  }
+nav ul li a {
+    display: block;
+    padding: 10px 10px;
+    text-decoration: none;
+    color: orange;
+    border-radius: 5px;
+  }
+ 
+  
