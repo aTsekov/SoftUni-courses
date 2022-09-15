@@ -15,7 +15,7 @@ function walk(steps, footPrint, speed) {
     let formattedH = timeInH < 10 ? `0${timeInH}` : `${timeInH}`;
     let formattedM = timeInMin < 10 ? `0${timeInMin}` : `${timeInMin}`;
     let formattedS = timeInSec < 10 ? `0${timeInSec}` : `${timeInSec}`;
-    console.log(`${formattedH}: ${formattedM}:${formattedS}`);
+    console.log(`${formattedH}:${formattedM}:${formattedS}`);
 
 }
 
