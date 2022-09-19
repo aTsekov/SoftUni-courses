@@ -19,9 +19,9 @@ function magicMatrix(arr) {
 
 }
 
-magicMatrix([[4, 5, 6],
-[6, 5, 4],
-[5, 5, 5]]);
+magicMatrix([[3, 5, 6],
+[5, 5, 4],
+[5, 4, 5]]);
 magicMatrix([[11, 32, 45],
 [21, 0, 1],
 [21, 1, 1]]);
