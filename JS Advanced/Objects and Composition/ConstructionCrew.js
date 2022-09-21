@@ -2,7 +2,7 @@ function workerFunc(dataObj) {
     let result = {}
     result.weight = dataObj.weight;
     result.experience = dataObj.experience;
-    result.levelOfHydrated = dataObj.experience;
+    result.levelOfHydrated = dataObj.levelOfHydrated;
     result.dizziness = dataObj.dizziness;
 
     if(result.dizziness){
