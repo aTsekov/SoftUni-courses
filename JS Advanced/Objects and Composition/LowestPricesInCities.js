@@ -21,6 +21,7 @@ function lowestPrice(data) {
         console.log(`${product} -> ${value.price} (${value.town})`)
     }  
 }
+//
 
 
 lowestPrice(['Sample Town | Sample Product | 1000',

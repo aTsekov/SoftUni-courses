@@ -29,13 +29,13 @@ function createCar(carData) {
     }
     if (carData.wheelsize % 2 === 0) {
         let size = carData.wheelsize - 1;
-        result.wheelsize = [size, size, size, size]
+        result.wheels = [size, size, size, size]
     }
     else {
         size = carData.wheelsize;
-        result.wheelsize = [size, size, size, size]
+        result.wheels = [size, size, size, size]
     }
-    console.table(result)
+    //console.table(result)
     return result;
 
 }

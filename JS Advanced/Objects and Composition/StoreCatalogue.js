@@ -11,6 +11,7 @@ function sortAlphabetically(arr) {
         console.log(`  ${product}: ${price}`);
     }
 }
+//
 
 sortAlphabetically(['Appricot : 20.4',
     'Fridge : 1500',
