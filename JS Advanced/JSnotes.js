@@ -16,3 +16,20 @@ document.querySelector('span.button');
 divElement.style.display = 'none';
 divElement.style.display = 'block';
 
+let towns = Array.from(document.querySelectorAll("#towns li")); // Here we select <ul> with id towns with the # and then all of its 
+//<li> elements which are in the <ul> towns. 
+
+town.style.textDecoration = "underline"; // each town(text or item in the list) gets text decoration and becomes bold. 
+town.style.fontWeight = "bold";
+
+for (const row of tableRows) {
+
+    if (!row.innerText.includes(searchStr)) { // if the text is not found remove the style from the class 'select' in the css file.
+       row.classList.remove('select');
+    }
+    else {
+       row.className = 'select';// if the text is found add the class 'select' from the css file to the object and this way we apply
+       //the style from the css file. 
+    }
+ }
+
