@@ -2,12 +2,13 @@ function attachEventsListeners() {
 
     //get all of the buttons by input type. 
     let buttons = Array.from(document.querySelectorAll("input[type=button]"));
-
+    // create an event listener for each button.
     for (let button of buttons) {
         button.addEventListener("click", convert);
     }
 
     function convert(e) {
+
         let value = Number(e.target.parentElement.querySelector("input[type=text]").value);
         let unit = e.target.id;
 

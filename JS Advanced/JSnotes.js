@@ -52,3 +52,6 @@ for (const row of tableRows) {
    } 
 }
 
+//get all of the buttons by input type. 
+let buttons = Array.from(document.querySelectorAll("input[type=button]"));
+
