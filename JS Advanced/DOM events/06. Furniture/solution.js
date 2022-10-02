@@ -21,22 +21,11 @@ function solve() {
       let price = Number(item["price"]);
       let decFactor = Number(item["decFactor"]);
       let tableRow = document.createElement("tr");
-      tableRow.innerHTML = `<td>
-                            <img src="${image}">
-                          </td>
-                          <td>
-                            <p>${name}</p>
-                          </td>
-                          <td>
-                            <p>${price}</p>
-                          </td>
-                          <td>
-                            <p>${decFactor}</p>
-                          </td>
-                          <td>
-                            <input type ="checkbox">
-                          </td>
-                          `;
+      tableRow.innerHTML = `<td><img src="${image}"></td>
+                          <td><p>${name}</p></td>
+                          <td><p>${price}</p></td>
+                          <td><p>${decFactor}</p></td>
+                          <td><input type ="checkbox"></td>`;
 
       tableBody.appendChild(tableRow);
     }
@@ -45,18 +34,20 @@ function solve() {
   }
 
   function buy(event) {
-    let checkboxes = Array.from(document.querySelectorAll("input[type=checkbox]"));
+    
     let res = [];
+    let table = Array.from(document.querySelectorAll("tbody tr"));
 
-    for (let checkbox of checkboxes) {
-      let table = Array.from(document.querySelectorAll("tbody tr"));
-      //let row = Array.from(table.querySelectorAll("td"));
-      if (checkbox.checked) {
+    for (let row of table) {
+      
+
+      if (row.querySelector("input[type=checkbox]:checked")) {
+        let tableData = Array.from(row.querySelectorAll("td"));
 
         let info = {
-          name: row[1].children[0].textContent, // <td><p> where the name is stored
-          price: row[2].children[0].textContent,
-          decFactor: row[3].children[0].textContent
+          name: tableData[1].children[0].textContent, // <td><p> where the name is stored
+          price: tableData[2].children[0].textContent,
+          decFactor: tableData[3].children[0].textContent
         }
         res.push(info);
       }
@@ -67,14 +58,14 @@ function solve() {
     let avgDecFactor = 0;
     for (let boughtProduct of res) {
       furniturePieces.push(boughtProduct.name)
-      totalPrice += Number(buyProduct.price);
-      avgDecFactor += Number(buyProduct.decFactor);
+      totalPrice += Number(boughtProduct.price);
+      avgDecFactor += Number(boughtProduct.decFactor);
 
     }
-    avgDecFactor = avgDecFactor / furniturePieces.length;
+    let totalFac = avgDecFactor / furniturePieces.length;
     let finalFurStr = furniturePieces.join(', ');
-    let finalResult = `Bought furniture: ${finalFurStr}\nTotal price: ${totalPrice}\nAverage decoration factor: ${averageDecFactor}`;
-    textAreas[1] = finalResult;
+    let finalResult = `Bought furniture: ${finalFurStr}\nTotal price: ${totalPrice.toFixed(2)}\nAverage decoration factor: ${totalFac}`;
+    textAreas[1].value = finalResult;
 
   }
 
