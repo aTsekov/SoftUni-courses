@@ -1,3 +1,4 @@
+// ************* DOM selections ****************
 document.getElementById('firstNumber').value; // Select the element with ID "firstNumber" and take its value
 
 document.getElementById('result').innerText = result // The innerText property sets or returns the text content of an element.(in this case
@@ -33,7 +34,7 @@ for (const row of tableRows) {
     }
  }
 
- // event listener
+// ************* DOM events and changing the inner HTML ****************
  function create(words) {
    for (const word of words) {
       let div = document.createElement('div'); // create a new HTML element.
@@ -88,4 +89,12 @@ function lockedProfile() {
    }
 
 }
+
+// ************* Advanced functions ****************
+function sortArr(arr, command){
+   return command === 'asc' ? arr.sort((a, b) => a - b) : arr.sort((a, b) => b - a);
+   // if command is 'asc' then sort ascending else sort descending. 
+}
+
+sortArr([14, 7, 17, 6, 8], 'asc');
 
