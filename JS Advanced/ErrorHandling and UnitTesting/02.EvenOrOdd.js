@@ -8,4 +8,4 @@ function isOddOrEven(string) {
 
     return "odd";
 }
-module.exports = {isOddOrEven};
+module.exports = {isOddOrEven}; // make the function exportable to another file
