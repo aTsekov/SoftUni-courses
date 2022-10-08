@@ -22,7 +22,7 @@ function validate(objHTTP) {
     if(specialChars.includes(objHTTP.message)){
         throw new Error("Invalid request header: Invalid Message");
     }
-    console.log(objHTTP);
+    
     return objHTTP;
 
 }
