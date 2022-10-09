@@ -1,4 +1,11 @@
 function notify(message) {
-  console.log('todo')
-  // TODO:
+  let divContent = document.getElementById('notification');
+  divContent.innerHTML = message;
+  divContent.style.display = 'block';
+  divContent.addEventListener('click', showHide);
+
+  function showHide(e){
+    e.target.style.display = 'none';
+  }
+
 }
