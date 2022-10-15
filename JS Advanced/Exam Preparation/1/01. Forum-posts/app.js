@@ -2,9 +2,12 @@ window.addEventListener("load", solve);
 
 function solve() {
     document.getElementById("publish-btn").addEventListener("click", post);
+    document.getElementById("clear-btn").addEventListener("click", clear);
+
     let title = document.getElementById("post-title");
     let category = document.getElementById("post-category");
     let content = document.getElementById("post-content");
+
 
     function post(event) {
         let titleValue = title.value;
@@ -45,7 +48,65 @@ function solve() {
         li.appendChild(editButton);
        
         ulReviewList.appendChild(li);
+        title.value = "";
+        category.value = "";
+        content.value = "";
+
+        let edits = document.getElementsByClassName("action-btn edit");
+        for (let editButton of edits) { 
+            editButton.addEventListener("click", editText);
+        }
+       
+    
+        function editText (e){
+            let rpost = e.target.parentNode;
+            rpost.childNodes[0].childNodes
+            title.value =  rpost.childNodes[0].childNodes[0].innerText;
+            category.value =  rpost.childNodes[0].childNodes[1].innerText.substring(9);
+            content.value =  rpost.childNodes[0].childNodes[2].innerText.substring(9);
+            rpost.remove();
+
+        }
+
+        let approveBtns = document.getElementsByClassName("action-btn approve");
+        for (let approveBtn of approveBtns) { 
+            approveBtn.addEventListener("click",approve);
+        }
+        
+
+       
 
     }
+    function approve(e){
+        let butt = e.target;
+        let publishedRecords = document.getElementById("published-list");
+        let ulReviewList = document.getElementById("review-list");
+        // The problem is somewhere here. THe two buttons are not deleted. 
+        let h4 = butt.parentNode.childNodes[0].childNodes[0]
+        let p1 = butt.parentNode.childNodes[0].childNodes[1]
+        let p2 = butt.parentNode.childNodes[0].childNodes[2]
+        
+        let art = document.createElement("article");
+        art.appendChild(h4);
+        art.appendChild(p1);
+        art.appendChild(p2);
+   
+        publishedRecords.appendChild(art);
+
+        
+
+        //ulReviewList.childNodes[1].remove()
+        //return;
+        
+
+    }
+    function clear(e){
+        let publishedRecords = document.getElementById("published-list").remove();
+
+    }
+
+
+
+   
 }
 
