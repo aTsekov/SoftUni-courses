@@ -25,11 +25,11 @@ class Garden{
     }
 
     ripenPlant(plantName, quantity){
-        let IsPlantInGarden = plants.filter( p => p.plantName === plantName);
+        let IsPlantInGarden = this.plants.some( p => p.plantName === plantName);
         if( !IsPlantInGarden){
             throw new Error(`There is no ${plantName} in the garden.`);
         }
-        let currentPlant = plants.find(plant => plant.plantName === plantName);
+        let currentPlant = this.plants.find(plant => plant.plantName === plantName);
         if( currentPlant.ripe === true){
             throw new Error(`The ${plantName} is already ripe.`)
         }
@@ -45,6 +45,34 @@ class Garden{
             return `${quantity} ${plantName}s have successfully ripened.`
         }
     }
+    harvestPlant(plantName){
+        let IsPlantInGarden = this.plants.some( p => p.plantName === plantName);
+        if( !IsPlantInGarden){
+            throw new Error(`There is no ${plantName} in the garden.`);
+        }
+        let currentPlant = this.plants.find(plant => plant.plantName === plantName);
+        if( currentPlant.ripe === false){
+            throw new Error(`The ${plantName} cannot be harvested before it is ripe.`)
+        }
+       
+        let curr = this.plants.filter(p => p.plantNames === plantName)
+        this.plants = curr;
+        let plantForStorage = {
+            plantName: currentPlant.plantName,
+            quantity: currentPlant.quantity
+        }
+        this.storage.push(plantForStorage);
+        this.spaceAvailable += currentPlant.quantity; // Is this correct? Do I need to increase the spaceAvailable like this?
+        return `The ${plantName} has been successfully harvested.`;
+    }
+
+    generateReport(){
+        let ArrOfNames = [];
+        for (const name of this.plants) {
+            ArrOfNames.push(name);
+        }
+        let report = `The garden has ${this.spaceAvailable } free space left.\nPlants in the garden: ${ArrOfNames.join(', ')}`;
+    }
 
 
 }
@@ -53,7 +81,14 @@ class Garden{
 const myGarden = new Garden(250)
 console.log(myGarden.addPlant('apple', 20));
 console.log(myGarden.addPlant('orange', 200));
-console.log(myGarden.addPlant('olive', 50));
+console.log(myGarden.addPlant('raspberry', 10));
+console.log(myGarden.ripenPlant('apple', 10));
+console.log(myGarden.ripenPlant('orange', 1));
+console.log(myGarden.harvestPlant('orange'));
+console.log(myGarden.generateReport());
+
+
+
 
 
         
