@@ -1,3 +1,4 @@
+
 const bookSelection = {
   isGenreSuitable(genre, age) {
     if (age <= 12 && (genre === "Thriller" || genre === "Horror")) {
@@ -33,3 +34,5 @@ const bookSelection = {
     return resultArr;
   },
 };
+
+module.exports ={bookSelection}
