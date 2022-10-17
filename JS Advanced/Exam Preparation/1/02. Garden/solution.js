@@ -1,6 +1,6 @@
 class Garden{
 
-    constructor( spaceAvailable){
+    constructor(spaceAvailable){
         this.spaceAvailable = spaceAvailable
         this.plants = [];
         this.storage = [];
@@ -12,8 +12,8 @@ class Garden{
         }
 
         let plant = {
-            plantName: plantName,
-            spaceRequired: spaceRequired,
+            plantName,
+            spaceRequired,
             ripe: false,
             quantity : 0
         };
@@ -55,23 +55,45 @@ class Garden{
             throw new Error(`The ${plantName} cannot be harvested before it is ripe.`)
         }
        
-        let curr = this.plants.filter(p => p.plantNames === plantName)
-        this.plants = curr;
+        this.plants = this.plants.filter(plant => plant.plantName !== plantName);
         let plantForStorage = {
             plantName: currentPlant.plantName,
             quantity: currentPlant.quantity
         }
         this.storage.push(plantForStorage);
-        this.spaceAvailable += currentPlant.quantity; // Is this correct? Do I need to increase the spaceAvailable like this?
+        this.spaceAvailable += currentPlant.spaceRequired; // Is this correct? Do I need to increase the spaceAvailable like this?
         return `The ${plantName} has been successfully harvested.`;
     }
 
     generateReport(){
         let ArrOfNames = [];
         for (const name of this.plants) {
-            ArrOfNames.push(name);
+            ArrOfNames.push(name.plantName);
         }
+        ArrOfNames.sort()//(a, b) => a-b);
         let report = `The garden has ${this.spaceAvailable } free space left.\nPlants in the garden: ${ArrOfNames.join(', ')}`;
+        //this.plants.sort((a, b) => a-b);
+        
+        let arr = [];
+        for (const name of this.storage) {
+            let obj ={
+                name: name.plantName,
+                quantity: name.quantity
+            }
+            arr.push(obj);
+        }
+        if(this.storage === undefined){
+            report += `\n` +`Plants in storage: The storage is empty.`
+        }
+        
+
+        else{
+            report += `\n` + `Plants in storage: `
+            for (const i of arr) {
+                report += `${i.name} (${i.quantity})`
+            }
+        }
+        return report;
     }
 
 
@@ -85,6 +107,7 @@ console.log(myGarden.addPlant('raspberry', 10));
 console.log(myGarden.ripenPlant('apple', 10));
 console.log(myGarden.ripenPlant('orange', 1));
 console.log(myGarden.harvestPlant('orange'));
+
 console.log(myGarden.generateReport());
 
 
