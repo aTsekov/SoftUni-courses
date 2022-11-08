@@ -12,24 +12,24 @@ async function loadMessages() {
  
     const messages = Object.values(data);
     const list = document.getElementById('messages');
-    list.value = messages.map(m => `${m.author}: ${m.message}`).join(`\n`);
+    list.value = messages.map(m => `${m.author}: ${m.content}`).join(`\n`);
 }
 
  function onSubmit(data) {
 
     const list = document.getElementById('messages');
-    list.value += '\n' + `${data.author}: ${data.message}`;
+    list.value += '\n' + `${data.author}: ${data.content}`;
 
 }
 async function PostDataOnServer() {
     const author = document.querySelectorAll("input[name='author']")[0].value;
-    const message = document.querySelectorAll("input[name='content']")[0].value;
+    const content = document.querySelectorAll("input[name='content']")[0].value;
 
     const urlPostData = 'http://localhost:3030/jsonstore/messenger'
     const response = await fetch(urlPostData, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({author,message})
+        body: JSON.stringify({author,content})
     });
 
     const dataResponseFromServer = await response.json()    
