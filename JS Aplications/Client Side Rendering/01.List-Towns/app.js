@@ -1,5 +1,5 @@
-//import {html, render} from  './node_modules/lit-html/lit-html.js'; // with this import the app does not work
-import {html, render} from 'https://unpkg.com/lit-html?module'; // with this one it works without problems. 
+import {html, render} from  '../node_modules/lit-html/lit-html.js'; // installed in the main folder of the topic lit. 
+//import {html, render} from 'https://unpkg.com/lit-html?module'; // with this one it works without problems. 
 
 const form = document.querySelector('form'); //Select the form.  and add event listener.
 
