@@ -1,20 +1,21 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import {login} from '../api/data.js';
 
-let page = null;
+let context = null;
 export async function loginView(ctx) {
     
     ctx.render(createLogInTemp(onSubmit))
-    page = ctx.page;
+    context = ctx.page;
 }
 
 function onSubmit(e){
-    debugger
+    
     e.preventDefault()
     const formData = new FormData(e.target);
     const {email,password} = Object.fromEntries(formData);
     login(email, password);
-    page.redirect("/"); // redirect to the home page.
+    
+    context.page.redirect("/"); // redirect to the home page.
 
 }
 

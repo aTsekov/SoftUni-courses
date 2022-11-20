@@ -10,6 +10,8 @@ const endpoint = {
 
 }
 
+const url = "http://localhost:3030/";
+
 //Prepare a function for each action we will need to perform with the required information. 
 
 export async function login (email, password){
@@ -19,7 +21,7 @@ export async function login (email, password){
 }
 
 export async function register (email, password){
-    debugger
+    
     const res = await api.post(endpoint.register,{email, password})
     sessionStorage.setItem("userData", JSON.stringify(res));
     return res;
