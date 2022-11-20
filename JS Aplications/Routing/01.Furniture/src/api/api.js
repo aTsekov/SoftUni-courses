@@ -51,6 +51,7 @@ export async function get (url){ // GET needs only the url
     return await request(url, getOptions("GET"))
 }
 export async function post (url, data){// POST needs url, headers and body. 
+    debugger;
     return await request(url, getOptions("POST", data))
 }
 export async function put (url,data){//PUT needs url, headers and body. 

@@ -19,6 +19,7 @@ export async function login (email, password){
 }
 
 export async function register (email, password){
+    debugger
     const res = await api.post(endpoint.register,{email, password})
     sessionStorage.setItem("userData", JSON.stringify(res));
     return res;
@@ -51,7 +52,7 @@ export async function deleteItemById (id){
 }
 export async function getMyItems (){
     const userData = JSON.parse(sessionStorage(getItem("userData")));
-    const userId = userData && userData._id // if there is user data only in the case take the ID
+    const userId = userData && userData._id // if there is user data - only in this case take the ID
     let id = `${userId}%22`
     const res = await api.get(endpoint.myItems + id)   
 

@@ -1,20 +1,25 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 import {login} from '../api/data.js';
 
+let page = null;
 export async function loginView(ctx) {
+    
     ctx.render(createLogInTemp(onSubmit))
+    page = ctx.page;
 }
 
 function onSubmit(e){
+    debugger
     e.preventDefault()
     const formData = new FormData(e.target);
     const {email,password} = Object.fromEntries(formData);
     login(email, password);
+    page.redirect("/"); // redirect to the home page.
 
 }
 
-function createLogInTemp(onSubmit) {
-    return html`
+function createLogInTemp(handler) { // handler is onSubmit function
+     const res =html`
     
     <div class="row space-top">
     <div class="col-md-12">
@@ -22,7 +27,7 @@ function createLogInTemp(onSubmit) {
         <p>Please fill all fields.</p>
     </div>
 </div>
-<form @submit = ${onSubmit}>
+<form @submit =${handler}>
     <div class="row space-top">
         <div class="col-md-4">
             <div class="form-group">
@@ -37,4 +42,6 @@ function createLogInTemp(onSubmit) {
         </div>
     </div>
 </form>`;
+
+return res;
 }
