@@ -18,7 +18,7 @@ async function request(url, options) {
             }
             const data = await response.json(); // wait for response from the server.
             // if the response is "OK" then but the data is missing then this should also throw an error;
-            throw data;
+            return data;
         }
         catch (e) {
             alert(e.message);

@@ -26,8 +26,8 @@ page.start();
 
  window.login = api.login; //this is just to test is the login works
  window.register = api.register;
- await window.login("antk@abv.bg","12345") // this is for the browser to test if the login works
-await window.register ("antk@abv.bg","12345")
+ //await window.login("antk@abv.bg","12345") // this is for the browser to test if the login works
+//await window.register ("antk@abv.bg","12345")
 
 
 
