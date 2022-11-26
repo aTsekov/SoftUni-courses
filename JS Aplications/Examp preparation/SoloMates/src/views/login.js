@@ -1,5 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js'
 import {login} from '.././API/data.js';
+import { updateNav } from './navView.js';
 
 
 export async function loginView(ctx) {
@@ -16,6 +17,7 @@ export async function loginView(ctx) {
             return alert ("All fields are required!")
         }
         await login(email, password);
+        updateNav();
         ctx.page.redirect("/dashboard"); // redirect to the dashboard page.
     }
 }

@@ -1,32 +1,31 @@
 import { render } from '../node_modules/lit-html/lit-html.js';
 import page from '../node_modules/page/page.mjs';
 
-// import { homeView } from './views/homeView.js';
-// import { addPairView } from './views/addPair.js';
-// import { dashboardView } from './views/dashboard.js';
-// import { loginView } from './views/login.js';
-// import { logoutView } from './views/logout.js';
-// import { registerView } from './views/register.js';
-// import { searchView } from './views/search.js';
-import { updateNavView } from './views/navView.js';
+import { homeView } from './views/homeView.js';
+import { addPairView } from './views/addPair.js';
+import { dashboardView } from './views/dashboard.js';
+import { loginView } from './views/login.js';
+
+import { registerView } from './views/register.js';
+import { searchView } from './views/search.js';
+import { updateNav } from './views/navView.js';
 
 
 const root = document.getElementsByTagName('main')[0]; // DO NOT FORGET TO ADJUST THE ROOT!!!
-updateNavView();
 
+//page(renderMiddleware);
 
-//page("/", renderMiddleware, updateNavView);
+console.log("sedfsdf")
 page("/", renderMiddleware, homeView);
 page("/home", renderMiddleware, homeView);
 page("/dashboard", renderMiddleware, dashboardView);
 page("/search", renderMiddleware, searchView);
 page("/addPair", renderMiddleware, addPairView);
-page("/logout", renderMiddleware, logoutView);
 page("/login", renderMiddleware, loginView);
 page("/register", renderMiddleware, registerView); 
 page("*", homeView);
 
-updateNavView();
+updateNav();
 page.start();
 
 //window.login = api.login; //this is just to test is the login works
