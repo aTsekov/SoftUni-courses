@@ -1,28 +1,38 @@
 import { render } from '../node_modules/lit-html/lit-html.js';
 import page from '../node_modules/page/page.mjs';
-import { addPairView } from './views/addPair.js';
-import { dashboardView } from './views/dashboard.js';
-import { loginView } from './views/login.js';
-import { registerView } from './views/register.js';
-import { searchView } from './views/search.js';
 
-console.log("works")
+// import { homeView } from './views/homeView.js';
+// import { addPairView } from './views/addPair.js';
+// import { dashboardView } from './views/dashboard.js';
+// import { loginView } from './views/login.js';
+// import { logoutView } from './views/logout.js';
+// import { registerView } from './views/register.js';
+// import { searchView } from './views/search.js';
+import { updateNavView } from './views/navView.js';
 
-page("/", renderMiddleware, dashboardView);
+
+const root = document.getElementsByTagName('main')[0]; // DO NOT FORGET TO ADJUST THE ROOT!!!
+updateNavView();
+
+
+//page("/", renderMiddleware, updateNavView);
+page("/", renderMiddleware, homeView);
+page("/home", renderMiddleware, homeView);
 page("/dashboard", renderMiddleware, dashboardView);
 page("/search", renderMiddleware, searchView);
 page("/addPair", renderMiddleware, addPairView);
-page("/logout", renderMiddleware, loginView);
+page("/logout", renderMiddleware, logoutView);
 page("/login", renderMiddleware, loginView);
 page("/register", renderMiddleware, registerView); 
-page("*", dashboardView);
+page("*", homeView);
 
+updateNavView();
 page.start();
 
 //window.login = api.login; //this is just to test is the login works
 //window.register = api.register;
 //await window.login("antk@abv.bg","12345") // this is for the browser to test if the login works
-//await window.register ("antk@abv.bg","12345")
+//await window.register ("antk@abv.bg","12345")test
 
 function renderMiddleware(ctx, next) {
     ctx.render = (content) => render(content, root) // content is the html template that will be written and root is the element

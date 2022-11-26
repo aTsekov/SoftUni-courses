@@ -1,8 +1,8 @@
-const host = "http://localhost:3000"; // maybe my local host is wrong. to test this!!
+const host = "http://localhost:3030/"; // maybe my local host is wrong. to test this!!
 
 async function request ( url, options){
     try {
-        const response = await fetch (host, url, options)
+        const response = await fetch (host + url, options)
         if (!response.ok){
             const err = await Response.json();
             throw new Error(err.message);
@@ -32,7 +32,7 @@ function getOptions (method, body){
         headers: {}
     }
 
-    const user = JSON.parse(sessionStorage("userData"));
+    const user = JSON.parse(sessionStorage.getItem("userData"));
 
     if (user){
         const token = user.accessToken;
@@ -42,6 +42,8 @@ function getOptions (method, body){
         options.headers["content-Type"] = "Application/json";
         options.body = JSON.stringify(body);
     }
+
+    return options;
 }
 
 //Provide the necessary data for each different request
