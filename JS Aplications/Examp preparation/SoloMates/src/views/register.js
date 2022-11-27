@@ -1,5 +1,6 @@
 import {html} from '../../node_modules/lit-html/lit-html.js'
 import {register} from '.././API/data.js';
+import { updateNav } from './navView.js';
 
 
 export async function registerView(ctx) {
@@ -18,8 +19,9 @@ export async function registerView(ctx) {
         if (data.password !== data["re-password"]) {
             return alert ("The passwords do not match!")
         }
-
+        
         await register(data.email, data.password);
+        updateNav();
         ctx.page.redirect("/dashboard"); // redirect to the dashboard page.
     }
 }

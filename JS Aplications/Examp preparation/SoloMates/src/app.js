@@ -9,16 +9,21 @@ import { loginView } from './views/login.js';
 import { registerView } from './views/register.js';
 import { searchView } from './views/search.js';
 import { updateNav } from './views/navView.js';
+import { detailsView } from './views/detailsView.js';
+import { editView } from './views/editView.js';
+
 
 
 const root = document.getElementsByTagName('main')[0]; // DO NOT FORGET TO ADJUST THE ROOT!!!
 
-//page(renderMiddleware);
+//page(renderMiddleware); to test
 
-console.log("sedfsdf")
+
 page("/", renderMiddleware, homeView);
 page("/home", renderMiddleware, homeView);
 page("/dashboard", renderMiddleware, dashboardView);
+page("/dashboard/:id", renderMiddleware, detailsView);
+page("/edit/:id", renderMiddleware, editView);
 page("/search", renderMiddleware, searchView);
 page("/addPair", renderMiddleware, addPairView);
 page("/login", renderMiddleware, loginView);
@@ -35,6 +40,11 @@ page.start();
 
 function renderMiddleware(ctx, next) {
     ctx.render = (content) => render(content, root) // content is the html template that will be written and root is the element
-    //that will be the "parent" of the new html code. 
+   //that will be the "parent" of the new html code. 
+
+    const user = JSON.parse(sessionStorage.getItem("userData"));
+    if (user){ // we place the user in the context.
+        ctx.user = user;
+    }
     next();
 }
