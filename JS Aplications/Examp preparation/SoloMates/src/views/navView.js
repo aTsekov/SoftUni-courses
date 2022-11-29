@@ -22,7 +22,7 @@ function createNavTemp(hasUser) {
     <a id="logo" href="/"><img id="logo-img" src="./images/logo.png" alt="" /></a>
      <nav>
           <div>
-            <a href="/dashboard">Dashboard</a>
+            <a href="/dashboard">Dashboard</a> 
             <a href="/search">Search</a>
           </div>
             ${ hasUser ?

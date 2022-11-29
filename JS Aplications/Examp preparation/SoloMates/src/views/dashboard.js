@@ -7,10 +7,7 @@ export async function dashboardView(ctx) {
 
     ctx.render(dashboardTemplate(shoes)) // we give the template all items so they can be rendered. 
 
-    function onSubmitDetails(e) {
-        //this is the event listener for the details button. 
-    }
-
+   
 }
 
 function dashboardTemplate(shoes) {
