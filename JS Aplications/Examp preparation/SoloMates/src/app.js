@@ -5,7 +5,6 @@ import { homeView } from './views/homeView.js';
 import { addPairView } from './views/addPair.js';
 import { dashboardView } from './views/dashboard.js';
 import { loginView } from './views/login.js';
-
 import { registerView } from './views/register.js';
 import { searchView } from './views/search.js';
 import { updateNav } from './views/navView.js';
