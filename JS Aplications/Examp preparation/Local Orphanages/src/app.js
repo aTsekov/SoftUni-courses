@@ -9,7 +9,7 @@ import { registerView } from './views/registerView.js';
 import { updateNav } from './views/navView.js';
 import { detailsView } from './views/detailsView.js';
 import { editView } from './views/editView.js';
-//import { createMyPostsView } from './views/myPostsView.js';
+import { createMyPostsView } from './views/myPostsView.js';
 
 
 
@@ -24,7 +24,7 @@ page("/dashboard", dashboardView);
 page("/dashboard/:id",  detailsView);
 page("/edit/:id",  editView);
 page("/createPage",  createPageView);
-//page("/myPosts", renderMiddleware, createMyPostsView); // !!!!!!!!!!!!!!!!
+page("/myPosts", renderMiddleware, createMyPostsView); // !!!!!!!!!!!!!!!!
 page("/login",  loginView);
 page("/register",  registerView); 
 page("*", dashboardView);

@@ -14,7 +14,7 @@ export async function detailsView(ctx) {
     ctx.render(detailsTemplate(post, isOwner, onDelete));
 
     async function onDelete() {
-        debugger
+        
 
         const choice = confirm('Are you sure you want to delete this item?') // this will make a pop-up with ok or cancel and not like alert with ok only.
         if (choice) {
@@ -37,10 +37,10 @@ const detailsTemplate = (post, isOwner, onDelete) =>html`
             </div>
             <div class="info">
                 <h2 class="title post-title">${post.title}</h2>
-                <p class="post-description">${post.description}</p>
-                <p class="post-address">${post.address}</p>
-                <p class="post-number">${post.number}</p>
-                <p class="donate-Item">${post.Item}</p>
+                <p class="post-description">Description: ${post.description}</p>
+                <p class="post-address">Address: ${post.address}</p>
+                <p class="post-number">Phone number: ${post.phone}</p>
+                <p class="donate-Item">Donate Materials: 0</p>
 
                 ${isOwner ? html`
                 <div class="btns">
