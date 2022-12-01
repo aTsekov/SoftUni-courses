@@ -31,7 +31,7 @@ function createNavTemp(hasUser) {
           <!-- Logged-in users -->
           <div id="user">
                     <a href="/myPosts">My Posts</a>
-                    <a href="/createPost">Create Post</a>
+                    <a href="/createPage">Create Post</a>
                     <a @click=${onLogout} href="/dashboard">Logout</a>
                 </div>`
             :

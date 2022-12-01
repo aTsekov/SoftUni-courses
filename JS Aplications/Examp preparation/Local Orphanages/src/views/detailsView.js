@@ -7,16 +7,17 @@ import { deleteItemById } from '../API/data.js';
 export async function detailsView(ctx) {
 
     const id = ctx.params.id
-    const pairOfShoes = await getItemById(id);
+    const post = await getItemById(id);
     const isLogged = Boolean(ctx.user);
-    const isOwner = isLogged && ctx.user._id == pairOfShoes._ownerId; // if the user is the creator of the record, then he will see the 
+    const isOwner = isLogged && ctx.user._id == post._ownerId; // if the user is the creator of the record, then he will see the 
     // edit and the details button. 
-    ctx.render(detailsTemplate(pairOfShoes, isOwner, onDelete));
+    ctx.render(detailsTemplate(post, isOwner, onDelete));
 
-    async function onDelete(){
-        
+    async function onDelete() {
+        debugger
+
         const choice = confirm('Are you sure you want to delete this item?') // this will make a pop-up with ok or cancel and not like alert with ok only.
-        if (choice){
+        if (choice) {
             await deleteItemById(id);
             ctx.page.redirect('/dashboard')
         }
@@ -24,29 +25,32 @@ export async function detailsView(ctx) {
 
 }
 
-const detailsTemplate = (pairOfShoes, isOwner,onDelete) =>html`
+const detailsTemplate = (post, isOwner, onDelete) =>html`
 
-<section id="details">
-    <div id="details-wrapper">
-        <p id="details-title">Shoe Details</p>
-        <div id="img-wrapper">
-            <img src="${pairOfShoes.imageUrl}" alt="example1" />
-        </div>
-        <div id="info-wrapper">
-            <p>Brand: <span id="details-brand">${pairOfShoes.brand}</span></p>
-            <p>
-                Model: <span id="details-model">${pairOfShoes.model}</span>
-            </p>
-            <p>Release date: <span id="details-release">${pairOfShoes.release}</span></p>
-            <p>Designer: <span id="details-designer">${pairOfShoes.designer}</span></p>
-            <p>Value: <span id="details-value">${pairOfShoes.value}</span></p>
-        </div>
-        ${isOwner ? html`
-        <div id="action-buttons">
-            <a href="/edit/${pairOfShoes._id}" id="edit-btn">Edit</a>
-            <a @click=${onDelete} href="javascript:void(0)" id="delete-btn">Delete</a>
-        </div>` : nothing}
+<section id="details-page">
+    <h1 class="title">Post Details</h1>
 
+    <div id="container">
+        <div id="details">
+            <div class="image-wrapper">
+                <img src="${post.imageUrl}" alt="Material Image" class="post-image">
+            </div>
+            <div class="info">
+                <h2 class="title post-title">${post.title}</h2>
+                <p class="post-description">${post.description}</p>
+                <p class="post-address">${post.address}</p>
+                <p class="post-number">${post.number}</p>
+                <p class="donate-Item">${post.Item}</p>
+
+                ${isOwner ? html`
+                <div class="btns">
+                    <a href="/edit/${post._id}" class="edit-btn btn">Edit</a>
+                    <a @click=${onDelete} href="javascript:void(0)" class="delete-btn btn">Delete</a>
+
+                </div>` : nothing}
+
+            </div>
+        </div>
     </div>
 </section>
 

@@ -11,11 +11,11 @@ export async function createPageView(ctx) {
         
         e.preventDefault();
         const formData = new FormData(e.target) // e.target should point to the form
-        const {brand,model,imageUrl,release,designer,value} = Object.fromEntries(formData);
-        if(!brand || !model|| !imageUrl || !release || !designer || !value){
+        const {title,description,imageUrl,address,phone} = Object.fromEntries(formData);
+        if(!title || !description|| !imageUrl || !address || !phone){
             return alert ("All fields are required!")
         }
-        await createItem({brand,model,imageUrl,release,designer,value});
+        await createItem({title,description,imageUrl,address,phone});
         updateNav();
         ctx.page.redirect("/dashboard"); // redirect to the dashboard page.
     }
@@ -23,50 +23,37 @@ export async function createPageView(ctx) {
 
 function addPairTemplate(handler) {
     const res =html`
-    <section id="create">
-          <div class="form">
-            <h2>Add item</h2>
-            <form @submit =${handler} class="create-form">
-              <input
-                type="text"
-                name="brand"
-                id="shoe-brand"
-                placeholder="Brand"
-              />
-              <input
-                type="text"
-                name="model"
-                id="shoe-model"
-                placeholder="Model"
-              />
-              <input
-                type="text"
-                name="imageUrl"
-                id="shoe-img"
-                placeholder="Image url"
-              />
-              <input
-                type="text"
-                name="release"
-                id="shoe-release"
-                placeholder="Release date"
-              />
-              <input
-                type="text"
-                name="designer"
-                id="shoe-designer"
-                placeholder="Designer"
-              />
-              <input
-                type="text"
-                name="value"
-                id="shoe-value"
-                placeholder="Value"
-              />
+    <section id="create-page" class="auth">
+    <form @submit =${handler}  id="create">
+                <h1 class="title">Create Post</h1>
 
-              <button type="submit">post</button>
+                <article class="input-group">
+                    <label for="title">Post Title</label>
+                    <input type="title" name="title" id="title">
+                </article>
+
+                <article class="input-group">
+                    <label for="description">Description of the needs </label>
+                    <input type="text" name="description" id="description">
+                </article>
+
+                <article class="input-group">
+                    <label for="imageUrl"> Needed materials image </label>
+                    <input type="text" name="imageUrl" id="imageUrl">
+                </article>
+
+                <article class="input-group">
+                    <label for="address">Address of the orphanage</label>
+                    <input type="text" name="address" id="address">
+                </article>
+
+                <article class="input-group">
+                    <label for="phone">Phone number of orphanage employee</label>
+                    <input type="text" name="phone" id="phone">
+                </article>
+
+                <input type="submit" class="btn submit" value="Create Post">
             </form>
-          </div>
         </section>`
 
     return res;

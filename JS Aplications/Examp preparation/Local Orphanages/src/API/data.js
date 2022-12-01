@@ -5,10 +5,10 @@ const endpoint = {
     "register": "users/register",
     "logout": "users/logout",
     "getAllItems": "data/posts?sortBy=_createdOn%20desc", // CHECK ALL URLS AS THE SLASH/ SHOULD BE HERE AND NOT ON THE HOST.
-    "getElementById":"data/shoes/",
-    "deleteItemById": "/data/shoes/",
-    "createItem": "data/shoes",
-    "updateItemById" :"data/shoes/"    
+    "getElementById":"data/posts/",
+    "deleteItemById": "/data/posts/",
+    "createItem": "data/posts",
+    "updateItemById" :"/data/posts/"    
 
 }
 

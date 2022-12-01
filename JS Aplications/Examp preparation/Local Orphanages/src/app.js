@@ -1,7 +1,7 @@
 import { render } from '../node_modules/lit-html/lit-html.js';
 import page from '../node_modules/page/page.mjs';
 
-import { homeView } from './views/homeView.js';
+
 import { createPageView } from './views/createPageView.js';
 import { dashboardView } from './views/dashboardView.js';
 import { loginView } from './views/loginView.js';
@@ -18,15 +18,16 @@ const root = document.getElementById('main-content'); // DO NOT FORGET TO ADJUST
 //page(renderMiddleware); to test
 
 
-page("/", renderMiddleware, dashboardView);
-page("/dashboard", renderMiddleware, dashboardView);
-page("/dashboard/:id", renderMiddleware, detailsView);
-page("/edit/:id", renderMiddleware, editView);
-page("/createPage", renderMiddleware, createPageView);
+page(renderMiddleware);
+page("/",dashboardView);
+page("/dashboard", dashboardView);
+page("/dashboard/:id",  detailsView);
+page("/edit/:id",  editView);
+page("/createPage",  createPageView);
 //page("/myPosts", renderMiddleware, createMyPostsView); // !!!!!!!!!!!!!!!!
-page("/login", renderMiddleware, loginView);
-page("/register", renderMiddleware, registerView); 
-page("*", homeView);
+page("/login",  loginView);
+page("/register",  registerView); 
+page("*", dashboardView);
 
 updateNav();
 page.start();
