@@ -14,6 +14,7 @@ import { editView } from './views/editView.js';
 
 
 const root = document.getElementsByTagName('main')[0]; // DO NOT FORGET TO ADJUST THE ROOT!!!
+//Test for github
 
 //page(renderMiddleware); to test
 
