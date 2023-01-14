@@ -30,3 +30,12 @@ VALUES
 (2,'Bob',15,3),
 (3,'Steward',NULL,2)
 
+Select * FROM [Minions]
+Select * FROM [Towns]
+
+TRUNCATE  TABLE [Minions]
+Drop TABLE Minions
+Drop TABLE Towns
+
+
+
