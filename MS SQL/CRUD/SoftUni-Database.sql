@@ -33,6 +33,7 @@ VALUES (3, 'Edmonds')
 INSERT INTO Towns (TownID, Name)
 VALUES (4, 'Seattle')
 
+
 INSERT INTO Towns (TownID, Name)
 VALUES (5, 'Bellevue')
 
@@ -116,6 +117,8 @@ VALUES (31, 'Berlin')
 
 INSERT INTO Towns (TownID, Name)
 VALUES (32, 'Sofia')
+INSERT INTO Towns (TownID, Name)
+VALUES (33, 'Brussels')
 
 SET IDENTITY_INSERT Towns OFF
 
