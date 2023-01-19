@@ -80,7 +80,7 @@ ORDER BY [Salary] DESC
 		,[LastName] DESC
 		,[MiddleName]
 
-		- Problem 17
+		-- Problem 17
 -- Views store temporaly the SELECT query, not the resultset!!!
 GO
  
@@ -106,7 +106,7 @@ SELECT [FirstName] + ' ' + ISNULL([MiddleName], 'Replacement') + ' ' + [LastName
  
 -- Problem 19
 SELECT
-TOP (10) *--, FORMAT([StartDate], 'dd/MM/yyyy')
+TOP (10) * --, FORMAT([StartDate], 'dd/MM/yyyy')
     FROM [Projects]
 ORDER BY [StartDate],
          [Name]
