@@ -61,4 +61,48 @@ VALUES
 	 ('Model X',2),
 	 ('Model 3',2),
 	 ('Nova',3)
+
+--P03 RELATION MANY TO MANY
+
+CREATE TABLE [Students]
+(
+	[StudentID] INT PRIMARY KEY IDENTITY(1,1),
+	[Name] VARCHAR(50)
+)
+
+CREATE TABLE [Exams]
+(
+	[ExamID] INT PRIMARY KEY IDENTITY(101,1),
+	[Name] VARCHAR(50)
+)
+
+CREATE TABLE [StudentsExams] -- In this table we set 2 FK and make a composite PK containing the 2 FKs. 
+--This way the relation MANY TO MANY is created and the PK in this table ensures the uniuqness of the combinations.
+(
+	[StudentID] INT FOREIGN KEY REFERENCES [Students] ([StudentID]),
+	[ExamID] INT FOREIGN KEY REFERENCES [Exams] ([ExamID]),
+	PRIMARY KEY ([StudentID],[ExamID]) 
+)
+
+
+INSERT INTO[Students]([Name])
+VALUES 
+('Mila'),
+('Toni'),
+('Ron')
+
+INSERT INTO[Exams]([Name])
+VALUES 
+('SpringMVC'),
+('Neo4j'),
+('Oracle 11g')
+
+
+INSERT INTO[StudentsExams]([StudentID],[ExamID])
+VALUES 
+(1,101),
+(1,102),
+(2,101)
+
+
 	 
