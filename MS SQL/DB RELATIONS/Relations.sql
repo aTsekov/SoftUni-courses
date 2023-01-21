@@ -1,7 +1,7 @@
 CREATE DATABASE [Relations]
 Use [Relations]
 
--- P01
+-- P01 ONE TO ONE
 CREATE TABLE [Passports] 
 (
 	[PassportID] INT PRIMARY KEY IDENTITY(101,1),
@@ -29,7 +29,7 @@ VALUES
 	 ('Tom',56100.00,103),
 	 ('Yana',60200.00,101)
 
---P02
+--P02 ONE TO MANY
 
 
 CREATE TABLE [Manufacturers]
@@ -103,6 +103,27 @@ VALUES
 (1,101),
 (1,102),
 (2,101)
+
+
+--P04 SELF-REFERENCING
+
+CREATE TABLE [Teachers]
+
+(
+	[TeacherID] INT PRIMARY KEY IDENTITY (101,1),
+	[Name] NVARCHAR (50) NOT NULL,
+	[ManagerID] INT FOREIGN KEY REFERENCES [Teachers] ([TeacherID]) -- A manager can have multiple teachers beneth. 
+	--Since the PK and FK are in the same table we need to think which one is higher level and this one will be the FK. 
+)
+
+INSERT INTO[Teachers]([Name],[ManagerID])
+VALUES 
+('John', NULL ),
+('Maya',106 ),
+('Silvia', 106),
+('Ted', 105),
+('Mark', 101),
+('Greta', 101)
 
 
 	 
