@@ -126,4 +126,66 @@ VALUES
 ('Greta', 101)
 
 
+
+-- P05 Online Store Database
+
+CREATE DATABASE [Store Datebase]
+
+USE [Store Datebase]
+
+
+CREATE TABLE [Cities]
+(
+	[CityID] INT PRIMARY KEY IDENTITY (1,1),
+	[Name] NVARCHAR (50)
+)
+
+CREATE TABLE [Customers]
+(
+	[CustomerID] INT PRIMARY KEY IDENTITY (1,1),
+	[Name] NVARCHAR (50),
+	[Birthday] DATETIME2,
+	[CityID] INT FOREIGN KEY REFERENCES [Cities](CityID)
+)
+
+CREATE TABLE [Orders]
+(
+	[OrderID] INT PRIMARY KEY IDENTITY (1,1),	
+	[CustomerID] INT FOREIGN KEY REFERENCES [Customers]([CustomerID])
+)
+
+CREATE TABLE [ItemTypes]
+(
+	[ItemTypeID] INT PRIMARY KEY IDENTITY (1,1),
+	[Name] NVARCHAR (50)
+
+)
+
+CREATE TABLE [Items]
+(
+	[ItemID] INT PRIMARY KEY IDENTITY (1,1),
+	[Name] NVARCHAR (50),
+	[ItemTypeID] INT FOREIGN KEY REFERENCES [ItemTypes]([ItemTypeID])
+)
+
+CREATE TABLE [OrderItems]
+(
+	[OrderID] INT FOREIGN KEY REFERENCES [Orders]([OrderID]),	
+	[ItemID] INT FOREIGN KEY REFERENCES [Items]([ItemID]),
+	PRIMARY KEY ([OrderID],[ItemID])
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	 
