@@ -47,6 +47,24 @@ ORDER BY [Name]
    WHERE LEFT([Name],1) NOT IN ('R','B','D')
 ORDER BY [Name]
 
+--P08
+
+
+CREATE VIEW V_EmployeesHiredAfter2000
+AS
+     SELECT FirstName,
+            LastName
+     FROM Employees
+     WHERE DATEPART(YEAR, HireDate) > 2000;
+
+--P09
+
+SELECT [FirstName],[LastName]
+   FROM [Employees]
+  WHERE LEN([LastName]) = 5;
+
+
+
 
   
 
