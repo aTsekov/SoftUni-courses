@@ -133,4 +133,191 @@ ORDER BY [e].[EmployeeID]
 
 select * from Employees
 
+--P10
+
+SELECT TOP (50) [e].[EmployeeID], CONCAT([e].[FirstName] ,' ', [e].[LastName])
+			 AS [EmployeeName], CONCAT([m].[FirstName] ,' ', [m].[LastName]) 
+			 AS [ManagerName], [d].[Name]
+			 AS [DepartmentName]
+		   FROM [Employees]
+			 AS [e]
+		   JOIN [Employees]
+             AS [m]
+  	         ON [e].[ManagerID] = [m].[EmployeeID]
+		   JOIN [Departments]
+		     AS [d]
+			 ON [d].DepartmentID = [e].DepartmentID
+	   ORDER BY [e].EmployeeID
+
+
+--P11
+
+
+
+SELECT MIN([department_avg])
+  FROM 
+	   ( SELECT [DepartmentID], AVG([Salary]) 
+			 AS [department_avg]
+		   FROM [Employees]
+	   GROUP BY [DepartmentID]
+	   ) 
+subq;
+
+
+USE [Geography]
+GO
+
+--P12
+
+  SELECT [mc].[CountryCode], [m].[MountainRange], [p].[PeakName],[p].[Elevation]
+    FROM [MountainsCountries]
+      AS [mc]
+    JOIN [Mountains]
+      AS [m]
+      ON [mc].[MountainId] = [m].[Id]
+    JOIN [Peaks]
+      AS [p]
+      ON [m].[Id] = [p].[MountainId]
+   WHERE [mc].[CountryCode] = 'BG' 
+	 AND [p].[Elevation] > 2835
+ORDER BY [p].[Elevation] DESC
+
+--P13
+
+  SELECT [CountryCode],
+         COUNT([MountainId])
+      AS [MountainRanges]
+    FROM [MountainsCountries]
+   WHERE [CountryCode] IN (
+                                SELECT [CountryCode]
+                                  FROM [Countries]
+                                 WHERE [CountryName] IN ('United States', 'Russia', 'Bulgaria')
+                          )
+GROUP BY [CountryCode]
+
+--P14
+
+    SELECT TOP(5) [c].[CountryName], [r].[RiverName]
+      FROM [Countries]
+        AS [c]
+ LEFT JOIN [CountriesRivers]
+        AS [cr]
+	    ON [c].[CountryCode] = [cr].[CountryCode]
+ LEFT JOIN [Rivers]
+        AS [r]
+        ON [r].Id = [cr].[RiverId]
+	 WHERE [c].ContinentCode IN (
+										SELECT [con].[ContinentCode]
+										  FROM [Countries]
+										    AS [c]
+								     LEFT JOIN [Continents]
+										    AS [con]
+											ON [c].[ContinentCode] = [con].[ContinentCode]
+										 WHERE [con].[ContinentName] = 'Africa'
+										
+								)
+	ORDER BY [c].[CountryName]
+
+--P15
+
+SELECT [ContinentCode],
+       [CurrencyCode],
+       [CurrencyUsage]
+  FROM (
+            SELECT *,
+                   DENSE_RANK() OVER (PARTITION BY [ContinentCode] ORDER BY [CurrencyUsage] DESC)
+                AS [CurrencyRank]
+              FROM (
+                        SELECT [ContinentCode],
+                               [CurrencyCode],
+                               COUNT(*)
+                            AS [CurrencyUsage]
+                          FROM [Countries]
+                      GROUP BY [ContinentCode], [CurrencyCode]
+                        HAVING COUNT(*) > 1
+                   )
+                AS [CurrencyUsageSubquery]
+       )
+    AS [CurrencyRankingSubquery]
+ WHERE [CurrencyRank] = 1
+
+ --P16
+
+      SELECT COUNT([c].[CountryCode])
+	      AS [Count]
+        FROM [Countries]
+          AS [c]
+   LEFT JOIN [MountainsCountries]
+          AS [mc]
+	      ON [c].[CountryCode] = [mc].[CountryCode]
+	   WHERE [mc].[MountainId] IS NULL
+	GROUP BY [mc].[MountainId]
+
+--P17
+
+  SELECT 
+  TOP (5) [c].[CountryName],
+          MAX([p].[Elevation])
+       AS [HighestPeakElevation],
+          MAX([r].[Length])
+       AS [LongestRiverLength]
+     FROM [Countries]
+       AS [c]
+LEFT JOIN [CountriesRivers]
+       AS [cr]
+       ON [cr].[CountryCode] = [c].[CountryCode]
+LEFT JOIN [Rivers]
+       AS [r]
+       ON [cr].[RiverId] = [r].[Id]
+LEFT JOIN [MountainsCountries]
+       AS [mc]
+       ON [mc].[CountryCode] = [c].[CountryCode]
+LEFT JOIN [Mountains]
+       AS [m]
+       ON [mc].[MountainId] = [m].[Id]
+LEFT JOIN [Peaks]
+       AS [p]
+       ON [p].[MountainId] = [m].[Id]
+ GROUP BY [c].[CountryName]
+ ORDER BY [HighestPeakElevation] DESC,
+          [LongestRiverLength] DESC,
+          [CountryName]
+		 
+
+-- Problem 18
+  SELECT 
+ TOP (5) [CountryName]
+      AS [Country],
+         ISNULL([PeakName], '(no highest peak)')
+      AS [Highest Peak Name],
+         ISNULL([Elevation], 0)
+      AS [Highest Peak Elevation],
+         ISNULL([MountainRange], '(no mountain)')
+      AS [Mountain]
+    FROM (
+               SELECT [c].[CountryName],
+                      [p].[PeakName],
+                      [p].[Elevation],
+                      [m].[MountainRange],
+                      DENSE_RANK() OVER(PARTITION BY [c].[CountryName] ORDER BY [p].[Elevation] DESC)
+                   AS [PeakRank]
+                 FROM [Countries]
+                   AS [c]
+            LEFT JOIN [MountainsCountries]
+                   AS [mc]
+                   ON [mc].[CountryCode] = [c].[CountryCode]
+            LEFT JOIN [Mountains]
+                   AS [m]
+                   ON [mc].[MountainId] = [m].[Id]
+            LEFT JOIN [Peaks]
+                   AS [p]
+                   ON [p].[MountainId] = [m].[Id]
+         ) 
+      AS [PeakRankingSubquery]
+   WHERE [PeakRank] = 1
+ORDER BY [Country],
+         [Highest Peak Name]
+
+
+
  
