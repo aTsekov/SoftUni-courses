@@ -1,7 +1,7 @@
 USE [SoftUni]
 GO
 
--- Grouping Demo
+-- Grouping Demo ->> next lecture is about GROUP BY and HAVING
   SELECT [JobTitle],
          AVG([Salary])
       AS [AverageSalary],
