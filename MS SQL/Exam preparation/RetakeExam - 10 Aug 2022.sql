@@ -144,3 +144,106 @@ ORDER BY  CountOfSites DESC,
     WHERE LEFT(l.[Name],1) NOT IN ('B','M','D') AND s.Establishment LIKE '%BC'--RIGHT(s.Establishment, 1) IN ('C')
  ORDER BY s.[Name]
 
+ --P09
+   SELECT t.[Name], t.Age,t.PhoneNumber,t.Nationality,ISNULL(bp.[Name],'(no bonus prize)') AS Reward
+     FROM Tourists
+       AS t
+LEFT JOIN TouristsBonusPrizes
+	   AS tb
+	   ON t.Id = tb.TouristId
+LEFT JOIN BonusPrizes
+	   AS bp
+	   ON bp.Id = tb.BonusPrizeId	  
+ ORDER BY t.[Name]
+
+
+ --P10
+  SELECT DISTINCT LTRIM(SUBSTRING(t.[Name],(CHARINDEX(' ',t.[Name] )),LEN(t.[Name]))) AS LastName, t.Nationality,
+         t.Age,t.PhoneNumber
+    FROM Categories
+      AS c
+    JOIN Sites
+	  AS s
+ 	 ON c.Id = s.CategoryId
+    JOIN SitesTourists
+      AS st
+	  ON st.SiteId = s.Id
+    JOIN Tourists
+      AS t
+	  ON t.Id = st.TouristId
+   WHERE c.[Name] = 'History and archaeology'
+
+ 
+ --P11
+ GO
+ CREATE OR ALTER FUNCTION udf_GetTouristsCountOnATouristSite (@Site VARCHAR(100))
+   RETURNS INT
+		  AS
+		  BEGIN		    
+ 
+                    DECLARE @TouristCount INT;
+                    SET @TouristCount = (
+					                             SELECT COUNT(*)
+												   FROM Sites
+													 AS s
+												   JOIN SitesTourists
+												   	 AS st
+													 ON st.SiteId = s.Id
+												   JOIN Tourists 
+												     AS t
+													 ON t.Id = st.TouristId
+												  WHERE s.[Name] = @Site                                                      
+                                         ); 
+                    RETURN @TouristCount;    
+		  END
+GO
+
+
+SELECT dbo.udf_GetTouristsCountOnATouristSite ('Regional History Museum – Vratsa')
+
+SELECT dbo.udf_GetTouristsCountOnATouristSite ('Samuil’s Fortress')
+
+ --P12
+ GO
+ CREATE OR ALTER PROC usp_AnnualRewardLottery(@TouristName VARCHAR (50))
+	   AS
+           BEGIN
+         DECLARE @TouristCount INT;
+             SET @TouristCount =(	
+									SELECT Count(*) 
+									    AS Coun
+									 
+									  FROM Tourists
+									    AS T
+									  JOIN SitesTourists
+									    AS st
+										ON t.Id = st.TouristId
+									  JOIN Sites
+									    AS s
+										ON st.SiteId = s.Id
+										WHERE t.[Name] = @TouristName
+								);
+
+									   UPDATE Tourists
+										  SET Reward = 
+												CASE
+													WHEN @TouristCount >= 100 THEN  'Gold badge'
+													WHEN @TouristCount >= 50 THEN  'Silver badge'
+													WHEN @TouristCount >= 25 THEN  'Bronze badge'
+												END;
+
+												SELECT [Name], Reward
+												  FROM Tourists
+												 WHERE [Name] = @TouristName		
+	
+
+             END
+ 
+GO
+	
+
+	EXEC usp_AnnualRewardLottery 'Gerhild Lutgard'
+
+	EXEC usp_AnnualRewardLottery 'U'
+	EXEC usp_AnnualRewardLottery 'Zac Walsh'
+	EXEC usp_AnnualRewardLottery 'Brus Brown'
