@@ -82,4 +82,24 @@ VALUES
 ('Athens','Greece','4342 McDonald Avenue', '10435' ),
 ('Zagreb','Croatia','4333 Lauren Drive', '10000' )
 
+--P03
+
+UPDATE Cigars
+ SET PriceForSingleCigar = PriceForSingleCigar * 1.2
+ WHERE TastId = 1
+
+ UPDATE Brands
+ SET BrandDescription = CONCAT(BrandDescription ,' New description')
+ WHERE BrandDescription IS NULL
+
+ --P04
+
+DELETE FROM Clients
+	WHERE AddressId IN (7,8,10)
+
+DELETE FROM Addresses
+	WHERE Country LIKE 'C%'
+
+
+
 
