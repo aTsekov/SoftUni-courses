@@ -176,3 +176,55 @@ ORDER BY FullName ASC
 	   ON s.Id = cg.SizeId
  GROUP BY c.LastName
  ORDER BY CigarLength DESC
+
+ --P11
+
+ GO
+ CREATE FUNCTION udf_ClientWithCigars(@name VARCHAR (30)) 
+   RETURNS INT
+		  AS
+		  BEGIN		    
+ 
+                    DECLARE @CigarCount INT;
+                    SET @CigarCount = (
+					                               SELECT COUNT(*)
+                                                     FROM Clients
+                                                       AS c
+                                                     JOIN ClientsCigars
+                                                       AS cc
+                                                	   ON cc.ClientId = c.Id
+                                                	WHERE c.FirstName = @name
+                                                 GROUP BY cc.ClientId                                                     
+                                         ); 
+                    RETURN @CigarCount;    
+		  END
+GO
+
+SELECT dbo.udf_ClientWithCigars('Betty')
+
+--P12
+
+GO
+CREATE PROC usp_SearchByTaste(@taste VARCHAR(20))
+AS
+	 SELECT c.CigarName, CONCAT('$',c.PriceForSingleCigar) AS Price,
+         t.TasteType, b.BrandName, CONCAT(s.Length, ' cm') AS CigarLength, 
+  	     CONCAT(s.RingRange, ' cm') AS CigarRingRange
+    FROM Cigars
+      AS c
+    JOIN Brands
+      AS b
+  	  ON b.Id = c.BrandId
+    JOIN Tastes
+      AS t
+      ON t.Id = c.TastId
+    JOIN Sizes
+      AS s
+  	  ON s.Id = c.SizeId
+   WHERE t.TasteType = @taste
+ORDER BY S.Length, S.RingRange  DESC 
+GO
+
+EXEC usp_SearchByTaste 'Woody'
+
+  
