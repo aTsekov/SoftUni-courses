@@ -101,5 +101,78 @@ DELETE FROM Addresses
 	WHERE Country LIKE 'C%'
 
 
+	--P05
 
+	SELECT CigarName, PriceForSingleCigar, ImageURL
+	  FROM Cigars
+  ORDER BY PriceForSingleCigar, CigarName DESC
 
+  --P06
+
+  SELECT c.Id, CigarName, PriceForSingleCigar, TasteType, TasteStrength
+    FROM Cigars
+	  AS c
+	JOIN Tastes
+	  AS t
+	  ON t.Id = c.TastId
+   WHERE t.TasteType IN ('Earthy', 'Woody')
+ORDER BY c.PriceForSingleCigar DESC
+
+--P07
+
+   SELECT c.Id, CONCAT(c.FirstName,' ', c.LastName) AS ClientName, c.Email 
+     FROM Clients
+       AS c
+LEFT JOIN ClientsCigars
+       AS cc
+	   ON cc.ClientId = c.Id
+	WHERE cc.CigarId IS NULL
+	ORDER BY ClientName
+
+-- P08
+
+SELECT TOP (5)c.CigarName, c.PriceForSingleCigar,c.ImageURL 
+  FROM Cigars
+    AS c
+  JOIN Sizes
+    AS s
+	ON s.Id = c.SizeId
+ WHERE s.Length >= 12 AND (c.CigarName LIKE '%ci%' OR c.PriceForSingleCigar >= 50)
+   AND s.RingRange >= 2.55
+ORDER BY c.CigarName, c.PriceForSingleCigar DESC
+
+--P09
+
+  SELECT CONCAT(c.FirstName, ' ', c.LastName) AS FullName,
+	     a.Country,
+	     a.ZIP,
+	     FORMAT(MAX(cig.PriceForSingleCigar), 'c' ) AS CigarPrice
+	FROM Clients AS c 
+	JOIN Addresses AS a
+	  ON a.Id = c.AddressId
+	JOIN ClientsCigars AS cc
+	  ON cc.ClientId = c.Id
+	JOIN Cigars AS cig
+	  ON cig.Id = cc.CigarId
+   WHERE a.ZIP NOT LIKE '%[^0-9]%'
+GROUP BY c.FirstName, c.LastName, a.Country, a.ZIP
+ORDER BY FullName ASC
+
+--P10
+
+   SELECT c.LastName,
+          AVG(s.Length) AS CigarLength,
+   	      CEILING(AVG(s.RingRange)) AS CiagrRingRange
+     FROM Clients
+       AS c
+     JOIN ClientsCigars
+       AS cc
+   	   ON c.Id =ClientId
+     JOIN Cigars
+       AS cg
+   	ON cg.Id = cc.CigarId
+     JOIN Sizes
+       AS s 
+	   ON s.Id = cg.SizeId
+ GROUP BY c.LastName
+ ORDER BY CigarLength DESC
