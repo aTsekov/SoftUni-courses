@@ -27,5 +27,19 @@ namespace ADO.NET_Exercise
                                    WHERE mv.VillainId = @Id
                                 ORDER BY m.Name";
 
+        public const string TownById = @"SELECT Id FROM Towns WHERE Name = @townName";
+
+        public const string InsertTown = @"INSERT INTO Towns (Name) VALUES (@townName)";
+
+        public const string VillainByName = @"SELECT Id FROM Villains WHERE Name = @Name";
+
+        public const string InsertVillain = @"INSERT INTO Villains (Name, EvilnessFactorId)  VALUES (@villainName, 4)";
+
+        public const string GetMinionByName = @"SELECT Id FROM Minions WHERE Name = @Name";
+
+        public const string InsertMinion = @"INSERT INTO Minions (Name, Age, TownId) VALUES (@name, @age, @townId)";
+
+        public const string InsertMinionVillain = @"INSERT INTO MinionsVillains (MinionId, VillainId) VALUES (@minionId, @villainId)";
+
     }
 }

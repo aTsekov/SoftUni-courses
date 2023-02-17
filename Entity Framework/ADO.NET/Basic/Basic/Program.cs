@@ -15,7 +15,7 @@ using (connection) //we use using because SqlConnection is IDisposible. Meaning 
     string query = "SELECT * FROM Employees WHERE DepartmentID = 7";
     SqlCommand command = new SqlCommand(query, connection); // We provide the query and the connection. 
     SqlDataReader reader = await command.ExecuteReaderAsync(); // We provide the query and the connection. 
-
+    
     //int emplCount = (int) await command.ExecuteScalarAsync(); //Scalar means it will returns only one value. 
 
     //Console.WriteLine($"There are {emplCount} empls. in our company");

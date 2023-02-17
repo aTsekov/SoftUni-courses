@@ -50,13 +50,13 @@ SELECT ROW_NUMBER() OVER (ORDER BY m.Name) AS RowNum,
                                 ORDER BY m.Name
 
 --Problem 04
-SELECT Id FROM Villains WHERE Name = @Name
-SELECT Id FROM Minions WHERE Name = @Name
-INSERT INTO MinionsVillains (MinionId, VillainId) VALUES (@minionId, @villainId)
-INSERT INTO Villains (Name, EvilnessFactorId)  VALUES (@villainName, 4)
-INSERT INTO Minions (Name, Age, TownId) VALUES (@name, @age, @townId)
-INSERT INTO Towns (Name) VALUES (@townName)
-SELECT Id FROM Towns WHERE Name = @townName
+--SELECT Id FROM Villains WHERE Name = @Name
+--SELECT Id FROM Minions WHERE Name = @Name
+--INSERT INTO MinionsVillains (MinionId, VillainId) VALUES (@minionId, @villainId)
+--INSERT INTO Villains (Name, EvilnessFactorId)  VALUES (@villainName, 4)
+--INSERT INTO Minions (Name, Age, TownId) VALUES (@name, @age, @townId)
+--INSERT INTO Towns (Name) VALUES (@townName)
+--SELECT Id FROM Towns WHERE Name = @townName
 
 --Problem 05
 UPDATE Towns
