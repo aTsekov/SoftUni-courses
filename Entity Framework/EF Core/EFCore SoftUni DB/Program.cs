@@ -1,6 +1,6 @@
-﻿namespace EFCore_SoftUni_DB
+﻿namespace SoftUni
 {
-    public class StartUp
+    public class Program
     {
         static void Main(string[] args)
         {
