@@ -10,7 +10,7 @@ namespace SoftUni.Models
     {
         public Project()
         {
-            Employees = new HashSet<Employee>();
+           Employees = new HashSet<Employee>();
             EmployeesProjects = new HashSet<EmployeeProject>();
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SoftUni.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Softuni;
 
 namespace SoftUni.Data
 {
@@ -28,7 +29,7 @@ namespace SoftUni.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Server=.;Database=SoftUni;User Id=sa;Password=SoftUn!2021;MultipleActiveResultSets=true;TrustServerCertificate=True");
+                optionsBuilder.UseSqlServer(Config.ConnectionString);
             }
         }
 
