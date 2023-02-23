@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace SoftUni.Models
 {
@@ -11,26 +10,24 @@ namespace SoftUni.Models
         public Employee()
         {
             Departments = new HashSet<Department>();
-            InverseManager = new HashSet<Employee>();
-            Projects = new HashSet<Project>();
             EmployeesProjects = new HashSet<EmployeeProject>();
+            InverseManager = new HashSet<Employee>();
         }
 
         [Key]
         [Column("EmployeeID")]
         public int EmployeeId { get; set; }
+        [Required]
         [StringLength(50)]
-        [Unicode(false)]
-        public string FirstName { get; set; } = null!;
+        public string FirstName { get; set; }
+        [Required]
         [StringLength(50)]
-        [Unicode(false)]
-        public string LastName { get; set; } = null!;
+        public string LastName { get; set; }
         [StringLength(50)]
-        [Unicode(false)]
-        public string? MiddleName { get; set; }
+        public string MiddleName { get; set; }
+        [Required]
         [StringLength(50)]
-        [Unicode(false)]
-        public string JobTitle { get; set; } = null!;
+        public string JobTitle { get; set; }
         [Column("DepartmentID")]
         public int DepartmentId { get; set; }
         [Column("ManagerID")]
@@ -43,22 +40,19 @@ namespace SoftUni.Models
         public int? AddressId { get; set; }
 
         [ForeignKey(nameof(AddressId))]
-        [InverseProperty("Employees")]
-        public virtual Address? Address { get; set; }
+        [InverseProperty(nameof(Models.Address.Employees))]
+        public virtual Address Address { get; set; }
         [ForeignKey(nameof(DepartmentId))]
-        [InverseProperty("Employees")]
-        public virtual Department Department { get; set; } = null!;
+        //[InverseProperty(nameof(Department.Employees))]
+        public virtual Department Department { get; set; }
         [ForeignKey(nameof(ManagerId))]
         [InverseProperty(nameof(InverseManager))]
-        public virtual Employee? Manager { get; set; }
+        public virtual Employee Manager { get; set; }
         [InverseProperty("Manager")]
         public virtual ICollection<Department> Departments { get; set; }
+        [InverseProperty("Employee")]
+        public virtual ICollection<EmployeeProject> EmployeesProjects { get; set; }
         [InverseProperty(nameof(Manager))]
         public virtual ICollection<Employee> InverseManager { get; set; }
-
-        [ForeignKey("EmployeeId")]
-        [InverseProperty(nameof(Project.Employees))]
-        public virtual ICollection<Project> Projects { get; set; }
-        public virtual ICollection<EmployeeProject> EmployeesProjects { get; set; }
     }
 }

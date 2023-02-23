@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace SoftUni.Models
 {
@@ -16,16 +15,16 @@ namespace SoftUni.Models
         [Key]
         [Column("AddressID")]
         public int AddressId { get; set; }
+        [Required]
         [StringLength(100)]
-        [Unicode(false)]
-        public string AddressText { get; set; } = null!;
+        public string AddressText { get; set; }
         [Column("TownID")]
         public int? TownId { get; set; }
 
         [ForeignKey(nameof(TownId))]
-        [InverseProperty("Addresses")]
-        public virtual Town? Town { get; set; }
-        [InverseProperty(nameof(Employee.Address))]
+        [InverseProperty(nameof(Models.Town.Addresses))]
+        public virtual Town Town { get; set; }
+        [InverseProperty("Address")]
         public virtual ICollection<Employee> Employees { get; set; }
     }
 }
