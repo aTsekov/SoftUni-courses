@@ -3,6 +3,7 @@ using System;
 using System.Text;
 using System.Linq;
 using System.Threading.Channels;
+using SoftUni.Models;
 
 namespace SoftUni
 {
@@ -20,6 +21,10 @@ namespace SoftUni
 
             //P05
             //Console.WriteLine(GetEmployeesFromResearchAndDevelopment(context));
+
+            //P06
+            Console.WriteLine(AddNewAddressToEmployee(context));
+            
         }
 
 
@@ -91,6 +96,36 @@ namespace SoftUni
             }
 
             return sb.ToString().TrimEnd();
+        }
+
+        //P06
+        public static string AddNewAddressToEmployee(SoftUniContext context)
+        {
+
+
+            var sb = new StringBuilder();
+
+            Address adr = new Address()
+            {
+                AddressText = "Vitoshka 15",
+                TownId = 4
+            };
+
+
+            var nakov = context.Employees.FirstOrDefault(e => e.LastName == "Nakov");
+            nakov.Address = adr;
+
+            context.SaveChanges();
+
+            var empls = context.Employees.OrderByDescending(e => e.AddressId).Take(10)
+                .Select(e => e.Address.AddressText).ToArray();
+
+            foreach (var e in empls)
+            {
+                sb.AppendLine(e);
+            }
+
+            return sb.ToString();
         }
     }
 }
