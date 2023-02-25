@@ -2,6 +2,7 @@
 using System;
 using System.Text;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Channels;
 using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using SoftUni.Models;
@@ -39,7 +40,10 @@ namespace SoftUni
             //Console.WriteLine(GetDepartmentsWithMoreThan5Employees(context));
 
             //P11
-            Console.WriteLine(GetLatestProjects(context));
+            //Console.WriteLine(GetLatestProjects(context));
+            
+            //P12
+            Console.WriteLine(IncreaseSalaries(context));
 
 
         }
@@ -302,6 +306,36 @@ namespace SoftUni
             }
 
             return sb.ToString();
+        }
+
+        //P12
+
+        public static string IncreaseSalaries(SoftUniContext context)
+        {
+            var sb = new StringBuilder();
+
+            var employeesToIncreaseSalary = context.Employees.Where(e =>
+                e.Department.Name == "Engineering"
+                || e.Department.Name == "Tool Design"
+                || e.Department.Name == "Marketing"
+                || e.Department.Name == "Information Services")
+                .OrderBy(e => e.FirstName).ThenBy(e => e.LastName).ToList();
+
+            foreach (var e in employeesToIncreaseSalary)
+            {
+                e.Salary *= 1.12m;
+            }
+
+            context.SaveChanges();
+
+            foreach (var e in employeesToIncreaseSalary)
+            {
+                sb.AppendLine($"{e.FirstName} {e.LastName} (${e.Salary:F2})");
+            }
+
+            return sb.ToString().TrimEnd();
+
+          
         }
     }
 }
