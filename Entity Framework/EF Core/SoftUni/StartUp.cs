@@ -33,7 +33,13 @@ namespace SoftUni
             //Console.WriteLine(GetAddressesByTown(context));
 
             //P09
-            Console.WriteLine(GetEmployee147(context));
+            //Console.WriteLine(GetEmployee147(context));
+
+            //P10
+            //Console.WriteLine(GetDepartmentsWithMoreThan5Employees(context));
+
+            //P11
+            Console.WriteLine(GetLatestProjects(context));
 
 
         }
@@ -231,6 +237,68 @@ namespace SoftUni
                 {
                     sb.AppendLine(pr.ProjectName);
                 }
+            }
+
+            return sb.ToString();
+        }
+
+        // P10
+        public static string GetDepartmentsWithMoreThan5Employees(SoftUniContext context)
+        {
+            var sb = new StringBuilder();
+
+            var departmentsWithMoreThan5Empl = context.Departments.Where(d => d.Employees.Count > 5)
+                .Select( e => new
+                {
+                    DepartmentName = e.Name,
+                    ManagerFirstName = e.Manager.FirstName,
+                    ManagerLastName = e.Manager.LastName,
+                    EmployeesCount = e.Employees.Count,
+                    Employees = e.Employees.Select(ep => new
+                    {
+                        EmloyeeFirstName = ep.FirstName,
+                        EmloyeeLastName = ep.LastName,
+                        JobTitle = ep.JobTitle
+                    }).OrderBy(ep => ep.EmloyeeFirstName).ThenBy(ep => ep.EmloyeeLastName).ToArray()
+                }).OrderBy( e=> e.EmployeesCount).ThenBy(d => d.DepartmentName).ToArray();
+
+            foreach (var d in departmentsWithMoreThan5Empl)
+            {
+                sb.AppendLine($"{d.DepartmentName} - {d.ManagerFirstName}  {d.ManagerLastName}");
+
+                foreach (var e in d.Employees)
+                {
+                    sb.AppendLine($"{e.EmloyeeFirstName} {e.EmloyeeLastName} - {e.JobTitle}");
+                }
+            }
+
+
+            return sb.ToString();
+        }
+
+        //P11
+
+        public static string GetLatestProjects(SoftUniContext context)
+        {
+            var sb = new StringBuilder();
+
+            var projects = context.Projects
+                .OrderByDescending(p => p.StartDate)
+                .Take(10)
+                .OrderBy(p => p.Name)
+                .Select(p => new
+                {
+                    ProjectName = p.Name,
+                    Description = p.Description,
+                    StartDate = p.StartDate.ToString("M/d/yyyy h:mm:ss tt")
+                })
+                .ToArray();
+
+            foreach (var project in projects)
+            {
+                sb.AppendLine($"{project.ProjectName}");
+                sb.AppendLine($"{project.Description}");
+                sb.AppendLine($"{project.StartDate}");
             }
 
             return sb.ToString();
