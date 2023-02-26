@@ -46,7 +46,14 @@ namespace SoftUni
             //Console.WriteLine(IncreaseSalaries(context));
 
             //P13 
-            Console.WriteLine(GetEmployeesByFirstNameStartingWithSa(context));
+            //Console.WriteLine(GetEmployeesByFirstNameStartingWithSa(context));
+
+            //P14
+
+            //Console.WriteLine(DeleteProjectById(context));
+
+            //P15
+            Console.WriteLine(RemoveTown(context));
 
 
         }
@@ -342,7 +349,6 @@ namespace SoftUni
         }
 
         //P13
-
         public static string GetEmployeesByFirstNameStartingWithSa(SoftUniContext context)
         {
             var sb = new StringBuilder();
@@ -365,5 +371,60 @@ namespace SoftUni
             return sb.ToString().TrimEnd();
         }
 
+        //P14
+
+        public static string DeleteProjectById(SoftUniContext context)
+        {
+            var sb = new StringBuilder();
+
+            //Find the project to delete
+            var projectToDelete = context.Projects.Find(2);
+
+            //Find the references in EmployeesProjects
+            var referencedProjects =
+                context.EmployeesProjects.Where(p => p.ProjectId == projectToDelete.ProjectId).ToArray();
+            //Delete the reference and then the project itself. 
+            context.EmployeesProjects.RemoveRange(referencedProjects);
+            context.Projects.Remove(projectToDelete!);
+            context.SaveChanges();
+
+            var proj10 = context.Projects.Select(e => e.Name).Take(10).ToArray();
+
+            foreach (var p in proj10)
+            {
+                sb.AppendLine(p);
+            }
+
+
+            return sb.ToString().TrimEnd();
+        }
+
+        //P15
+
+        public static string RemoveTown(SoftUniContext context)
+        {
+            
+
+            var townToDelete = context.Towns.FirstOrDefault(t => t.Name == "Seattle");
+
+            var referencedAddresses = context.Addresses.Where( a => a.TownId == townToDelete.TownId).ToArray();
+
+            int numberOfAddresses = referencedAddresses.Length;
+
+            foreach (var e in context.Employees)
+            {
+                if (referencedAddresses.Any(a => a.AddressId == e.AddressId))
+                {
+                    e.AddressId = null;
+                }
+            }
+            context.Addresses.RemoveRange(referencedAddresses);
+            context.Towns.Remove(townToDelete!);
+            context.SaveChanges();
+
+
+
+            return $"{numberOfAddresses} addresses in Seattle were deleted";
+        }
     }
 }
