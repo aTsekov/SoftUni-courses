@@ -43,7 +43,10 @@ namespace SoftUni
             //Console.WriteLine(GetLatestProjects(context));
             
             //P12
-            Console.WriteLine(IncreaseSalaries(context));
+            //Console.WriteLine(IncreaseSalaries(context));
+
+            //P13 
+            Console.WriteLine(GetEmployeesByFirstNameStartingWithSa(context));
 
 
         }
@@ -337,5 +340,30 @@ namespace SoftUni
 
           
         }
+
+        //P13
+
+        public static string GetEmployeesByFirstNameStartingWithSa(SoftUniContext context)
+        {
+            var sb = new StringBuilder();
+
+            var emplsSA = context.Employees.Select(e => new
+            {
+                FirstName = e.FirstName,
+                LastName = e.LastName,
+                JobTitle = e.JobTitle,
+                Salary = e.Salary
+            }).Where(e => e.FirstName.StartsWith("Sa"))
+                .OrderBy(e => e.FirstName).ThenBy( e=> e.LastName)
+                .ToList();
+
+            foreach (var e in emplsSA)
+            {
+                sb.AppendLine($"{e.FirstName} {e.LastName} - {e.JobTitle} - (${e.Salary:F2})");
+            }
+
+            return sb.ToString().TrimEnd();
+        }
+
     }
 }
