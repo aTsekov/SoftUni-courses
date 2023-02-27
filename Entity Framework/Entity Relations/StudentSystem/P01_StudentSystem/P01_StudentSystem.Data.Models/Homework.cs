@@ -15,7 +15,7 @@ namespace P01_StudentSystem.Data.Models
         public int HomeworkId { get; set; }
 
         [Unicode(false)]
-        public string Content { get; set; }
+        public string? Content  { get; set; } = null!;
 
         [Required]
         public ContentType ContentType { get; set; }
@@ -28,13 +28,13 @@ namespace P01_StudentSystem.Data.Models
         [ForeignKey(nameof(Student))]
         public int StudentId { get; set; }
 
-        public virtual Student Student { get; set; }
+        public virtual Student Student { get; set; } = null!;
         //-------------------------------
 
         [ForeignKey(nameof(Course))]
         public int CourseId { get; set; }
 
-        public virtual Course Course { get; set; }
+        public virtual Course Course { get; set; } = null!;
 
 
     }

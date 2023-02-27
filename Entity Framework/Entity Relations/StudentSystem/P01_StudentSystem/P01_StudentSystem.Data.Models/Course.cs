@@ -12,7 +12,7 @@ namespace P01_StudentSystem.Data.Models
     {
         public Course()
         {
-                Students = new HashSet<Student>();
+                StudentsCourses = new HashSet<StudentCourse>() ;
                 Homeworks = new HashSet<Homework>();
                 Resources = new HashSet<Resource>();
         }
@@ -23,12 +23,12 @@ namespace P01_StudentSystem.Data.Models
         [Required]
         [Unicode(true)]
         [MaxLength(GlobalConstants.CourseNameMaxLength)]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         [Unicode(true)]
         [MaxLength]
         [AllowNull]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Required]
         public DateTime StartDate { get; set; }
@@ -39,13 +39,13 @@ namespace P01_StudentSystem.Data.Models
         [Required]
         public decimal Price { get; set; }
 
-        [InverseProperty("Courses")]
-        public virtual ICollection<Student> Students { get; set; }
 
-        public virtual ICollection<Resource> Resources { get; set; }
+        public virtual ICollection<StudentCourse> StudentsCourses { get; set; }
+
+        public virtual ICollection<Resource> Resources { get; set; } 
 
         public virtual ICollection<Homework> Homeworks { get; set; }
 
-        
+
     }
 }

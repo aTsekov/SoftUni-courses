@@ -10,29 +10,30 @@ namespace P01_StudentSystem.Data.Models
     {
         public Student()
         {
-            StudentCourse = new HashSet<StudentCourse>();
+            StudentsCourses = new HashSet<StudentCourse>();
+            Homeworks = new HashSet<Homework>();
         }
 
         [Key]
-        public int StudentId { get; set; }
+        public int StudentId { get; set; } 
 
         [Required]
         [MaxLength(GlobalConstants.StudentNameMaxLength)]
         [Unicode(true)]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         [StringLength(GlobalConstants.PhoneMaxMinLength,MinimumLength = GlobalConstants.PhoneMaxMinLength)] // the min and should not be here. 
         [Unicode(false)]
-        [AllowNull]
-        public string PhoneNumber { get; set; }
+        
+        public string? PhoneNumber { get; set; } = null!;
 
         [Required]
-        public DateTime RegisteredOn { get; set; }
+        public DateTime RegisteredOn { get; set; } 
 
-        public DateTime Birthday { get; set; }
+        public DateTime? Birthday { get; set; }
 
-        [InverseProperty("Students")]
-        public virtual ICollection<StudentCourse> StudentCourse { get; set; }
+      
+        public virtual ICollection<StudentCourse> StudentsCourses { get; set; } 
 
         public virtual ICollection<Homework> Homeworks { get; set; }
 

@@ -18,20 +18,20 @@ namespace P01_StudentSystem.Data.Models
         [Required]
         [Unicode(true)]
         [MaxLength(GlobalConstants.ResourceNameMaxLength)]
-        public string Name { get; set; }
+        public string Name { get; set; } = null!;
 
         [Unicode(false)]
         [MaxLength(GlobalConstants.ResourceNameMaxLength)]
-        public string Url { get; set; }
+        public string Url { get; set; } = null!;
 
         [Required]
         public ResourceType ResourceType { get; set; }
 
         //This will be FK
         [ForeignKey(nameof(Course))]
-        public int CourseId { get; set; }
+        public int CourseId { get; set; } 
 
-        public virtual Course Course { get; set; }
+        public virtual Course Course { get; set; } = null!;
 
     }
 }
