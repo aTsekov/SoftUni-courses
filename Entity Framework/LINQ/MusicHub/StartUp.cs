@@ -19,7 +19,8 @@ namespace MusicHub
 
             //Test your solutions here
 
-            Console.WriteLine(ExportAlbumsInfo(context, 9));
+            //Console.WriteLine(ExportAlbumsInfo(context, 9));
+            Console.WriteLine(ExportSongsAboveDuration(context, 4));
         }
 
         public static string ExportAlbumsInfo(MusicHubDbContext context, int producerId)
@@ -68,7 +69,42 @@ namespace MusicHub
 
         public static string ExportSongsAboveDuration(MusicHubDbContext context, int duration)
         {
-            throw new NotImplementedException();
+            
+            var sb = new StringBuilder();
+
+            var songs = context.Songs.AsEnumerable().Where(s => s.Duration.TotalSeconds > duration)
+                .Select(s => new
+            {
+                Name = s.Name,
+                Performers = s.SongPerformers.Select( sp => sp.Performer.FirstName + " " + sp.Performer.LastName)
+                    .OrderBy(p => p).ToList(),
+                WriterName = s.Writer.Name,
+                AlbumProducer = s.Album!.Producer!.Name,
+                Duration = s.Duration.ToString("c")
+            }).OrderBy( s=> s.Name).ThenBy( s=> s.WriterName).ToList();
+
+
+            int songNumber = 1;
+            foreach (var s in songs)
+            {
+                sb
+                    .AppendLine($"-Song #{songNumber}")
+                    .AppendLine($"---SongName: {s.Name}")
+                    .AppendLine($"---Writer: {s.WriterName}");
+                foreach (var performer in s.Performers)
+                {
+                    sb
+                        .AppendLine($"---Performer: {performer}");
+                }
+
+                sb
+                    .AppendLine($"---AlbumProducer: {s.AlbumProducer}")
+                    .AppendLine($"---Duration: {s.Duration}");
+
+                songNumber++;
+            }
+
+            return sb.ToString().TrimEnd();
         }
     }
 }
