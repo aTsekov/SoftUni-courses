@@ -20,7 +20,9 @@ namespace MusicHub.Data
         public DbSet<Song> Songs { get; set; }
         public DbSet<Writer> Writers { get; set; }
         public DbSet<SongPerformer> SongsPerformers { get; set; }
-        
+        public DbSet<Performer> Performers { get; set; }
+
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
