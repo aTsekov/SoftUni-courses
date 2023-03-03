@@ -10,5 +10,8 @@ namespace MusicHub.Data.Models
     {
         public const int SongNameMaxLength = 20;
         public const int AlbumNameMaxLength = 40;
+        public const int PerformerFirstAndLastName = 20;
+        public const int ProducerName = 30;
+        public const int WriterName = 20;
     }
 }

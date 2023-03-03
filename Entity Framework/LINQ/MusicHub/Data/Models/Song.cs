@@ -11,6 +11,10 @@ namespace MusicHub.Data.Models
 {
     public class Song
     {
+        public Song()
+        {
+            SongPerformers = new HashSet<SongPerformer>();
+        }
         [Key]
         public int Id { get; set; }
 
@@ -23,12 +27,19 @@ namespace MusicHub.Data.Models
 
         public Genre Genre { get; set; }
 
-        //[ForeignKey(nameof())]
+        [ForeignKey(nameof(Album))]
         public int? AlbumId{ get; set; }
 
-        //[ForeignKey(nameof())]
-        public int? WriterId { get; set; }
+        public virtual Album? Album { get; set; }
+
+        [ForeignKey(nameof(Writer))]
+        public int WriterId { get; set; }
+
+        public virtual Writer Writer { get; set; } = null!;
 
         public decimal Price { get; set; }
+
+        public virtual ICollection<SongPerformer> SongPerformers { get; set; }
+
     }
 }

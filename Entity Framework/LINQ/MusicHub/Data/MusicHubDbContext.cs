@@ -15,6 +15,13 @@ namespace MusicHub.Data
         {
         }
 
+        public DbSet<Producer> Producers { get; set; }
+        public DbSet<Album> Albums { get; set; }
+        public DbSet<Song> Songs { get; set; }
+        public DbSet<Writer> Writers { get; set; }
+        public DbSet<SongPerformer> SongsPerformers { get; set; }
+        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -28,8 +35,18 @@ namespace MusicHub.Data
         {
             builder.Entity<Song>(entity =>
             {
-                entity.Property((s => s.CreatedOn)) // Make sure that the type in SQL will be "DATE" only.
+                entity.Property(s => s.CreatedOn)// Make sure that the type in SQL will be "DATE" only.
                     .HasColumnType("date");
+            });
+
+            builder.Entity<Album>(entity =>
+            {
+                entity.Property(a => a.ReleaseDate).HasColumnType("date");
+            });
+
+            builder.Entity<SongPerformer>(entity => //Here we create a composite key of the mapping class.
+            {
+                entity.HasKey(sp => new { sp.PerformerId, sp.SongId });
             });
         }
     }
