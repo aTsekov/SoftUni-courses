@@ -8,7 +8,10 @@ namespace ProductShop
     {
         public ProductShopProfile()
         {
+            //Create the link between the DTO and the entity.
             this.CreateMap<ImportUserDto, User>();
+
+            this.CreateMap<ImportProductDto, Product>();
 
         }
     }

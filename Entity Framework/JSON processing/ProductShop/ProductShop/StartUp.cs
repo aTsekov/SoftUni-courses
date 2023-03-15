@@ -17,10 +17,16 @@
             ProductShopContext context = new ProductShopContext();
 
             //Read the json file. 
-            string inputJson = 
-               File.ReadAllText(@"../../../Datasets/users.json");
+            //string inputJson = 
+            //   File.ReadAllText(@"../../../Datasets/users.json");
 
-            string result = ImportUsers(context, inputJson);
+            //string result = ImportUsers(context, inputJson);
+
+            string inputJson = File.ReadAllText(@"../../../Datasets/products.json");
+
+            string result = ImportProducts(context, inputJson);
+
+
             Console.WriteLine(result);
         }
 
@@ -53,7 +59,32 @@
             return $"Successfully imported {validUsers.Count}";
         }
 
-       
+        //Problem 2
+
+        public static string ImportProducts(ProductShopContext context, string inputJson)
+        {
+
+            IMapper mapper = CreateMapper();
+
+            ImportProductDto [] productDtos = JsonConvert.DeserializeObject<ImportProductDto[]>(inputJson);
+
+            ICollection<Product> validProducts = new HashSet<Product>();
+
+            foreach (var productDto in productDtos)
+            {
+                Product product = mapper.Map<Product>(productDto);
+
+                validProducts.Add(product);
+            }
+
+            context.Products.AddRange(validProducts);
+            context.SaveChanges();
+
+            return $"Successfully imported {validProducts.Count}";
+        }
+
+
+
 
         private static IMapper CreateMapper()
         {

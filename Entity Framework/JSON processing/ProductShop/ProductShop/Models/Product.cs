@@ -1,4 +1,6 @@
-﻿namespace ProductShop.Models
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace ProductShop.Models
 {
     using System.Collections.Generic;
 
@@ -18,8 +20,9 @@
         public int SellerId { get; set; }
         public virtual User Seller { get; set; } = null!;
 
+        [AllowNull]
         public int? BuyerId { get; set; }
-        public virtual User Buyer { get; set; } = null!;
+        public virtual User? Buyer { get; set; }
 
         public virtual ICollection<CategoryProduct> CategoriesProducts { get; set; }
     }
