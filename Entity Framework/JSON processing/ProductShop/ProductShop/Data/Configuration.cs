@@ -3,6 +3,6 @@
     public static class Configuration
     {
         public const string ConnectionString =
-            @"Server=.;Database=ProductShop;Integrated Security=True";
+            @"Server=.;Database=ProductShop;User Id=sa;Password=SoftUn!2021;MultipleActiveResultSets=true;TrustServerCertificate=True";
     }
 }
