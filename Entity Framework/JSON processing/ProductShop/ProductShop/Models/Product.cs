@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace ProductShop.Models
+﻿namespace ProductShop.Models
 {
     using System.Collections.Generic;
 
@@ -8,7 +6,7 @@ namespace ProductShop.Models
     {
         public Product()
         {
-            CategoriesProducts = new List<CategoryProduct>();
+            this.CategoriesProducts = new HashSet<CategoryProduct>();
         }
 
         public int Id { get; set; }
@@ -20,7 +18,6 @@ namespace ProductShop.Models
         public int SellerId { get; set; }
         public virtual User Seller { get; set; } = null!;
 
-        [AllowNull]
         public int? BuyerId { get; set; }
         public virtual User? Buyer { get; set; }
 

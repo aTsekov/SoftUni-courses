@@ -55,12 +55,13 @@
                     .HasForeignKey(x => x.SellerId)
                     .OnDelete(DeleteBehavior.NoAction);
             });
-
-            modelBuilder.Entity<Product>(entity =>
-            {
-                entity.Property(p => p.BuyerId).IsRequired(false);
-
-            });
         }
     }
 }
+//modelBuilder.Entity<Product>(entity =>
+//            {
+//                entity.Property(p => p.BuyerId).IsRequired(false);
+
+//            });
+//        }
+    

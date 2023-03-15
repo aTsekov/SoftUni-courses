@@ -16,7 +16,7 @@
         {
             ProductShopContext context = new ProductShopContext();
 
-            //Read the json file. 
+            //Read the json file.
             //string inputJson = 
             //   File.ReadAllText(@"../../../Datasets/users.json");
 
@@ -66,7 +66,7 @@
 
             IMapper mapper = CreateMapper();
 
-            ImportProductDto [] productDtos = JsonConvert.DeserializeObject<ImportProductDto[]>(inputJson);
+            ImportProductDto[] productDtos = JsonConvert.DeserializeObject<ImportProductDto[]>(inputJson);
 
             ICollection<Product> validProducts = new HashSet<Product>();
 
@@ -81,6 +81,7 @@
             context.SaveChanges();
 
             return $"Successfully imported {validProducts.Count}";
+
         }
 
 
