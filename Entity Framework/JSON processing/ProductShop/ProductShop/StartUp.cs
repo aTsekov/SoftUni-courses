@@ -9,6 +9,7 @@
     using Data;
     using DTOs.Import;
     using Models;
+    using System.Linq;
 
     public class StartUp
     {
@@ -17,14 +18,20 @@
             ProductShopContext context = new ProductShopContext();
 
             //Read the json file.
-            //string inputJson = 
-            //   File.ReadAllText(@"../../../Datasets/users.json");
+            //P01
+            //string inputJson =File.ReadAllText(@"../../../Datasets/users.json");
 
-            //string result = ImportUsers(context, inputJson);
+            //P02
+            //string inputJson = File.ReadAllText(@"../../../Datasets/products.json");
 
-            string inputJson = File.ReadAllText(@"../../../Datasets/products.json");
+            //P03
+            //string inputJson = File.ReadAllText(@"../../../Datasets/categories.json");
 
-            string result = ImportProducts(context, inputJson);
+            //P04
+            string inputJson = File.ReadAllText(@"../../../Datasets/categories-products.json");
+
+
+            string result = ImportCategoryProducts(context, inputJson);
 
 
             Console.WriteLine(result);
@@ -84,6 +91,57 @@
 
         }
 
+        //Problem 3
+        public static string ImportCategories(ProductShopContext context, string inputJson)
+        {
+            IMapper mapper = CreateMapper();
+
+            ImportCategoryDto[] categoryDtos = JsonConvert.DeserializeObject<ImportCategoryDto[]>(inputJson);
+
+            ICollection < Category > validCategories = new HashSet<Category>();
+
+            foreach (var categoryDto in categoryDtos)
+            {
+
+                if (categoryDto.Name == null)
+                {
+                    continue;
+                }
+                Category category = mapper.Map<Category>(categoryDto);
+
+                validCategories.Add(category);
+
+            }
+
+            context.Categories.AddRange((validCategories));
+            context.SaveChanges();
+
+            return $"Successfully imported {validCategories.Count}";
+        }
+
+        //Problem 4
+        public static string ImportCategoryProducts(ProductShopContext context, string inputJson)
+        {
+            
+            ImportCategoryProductDto[] categoryProductDtos =
+                JsonConvert.DeserializeObject<ImportCategoryProductDto[]>(inputJson);
+
+            ICollection<CategoryProduct> validCategoryProducts = new HashSet<CategoryProduct>();
+
+            foreach (var cpd in categoryProductDtos)
+            {
+                CategoryProduct cp = new CategoryProduct();
+                cp.CategoryId = cpd.CategoryId;
+                cp.ProductId = cpd.ProductId;
+
+
+                validCategoryProducts.Add(cp);
+            }
+            context.AddRange(validCategoryProducts);
+            context.SaveChanges();
+
+            return $"Successfully imported {validCategoryProducts.Count}";
+        }
 
 
 
