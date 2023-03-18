@@ -1,4 +1,5 @@
-﻿using System.Threading.Channels;
+﻿using System.IO;
+using System.Threading.Channels;
 using AutoMapper;
 using CarDealer.Data;
 using CarDealer.DTOs.Import;
@@ -13,11 +14,16 @@ namespace CarDealer
         {
             using (CarDealerContext context = new CarDealerContext())
             {
-                context.Database.EnsureDeleted();
-                context.Database.EnsureCreated();
+                //context.Database.EnsureDeleted(); //use those only if there is a problem with the data and you need to re-import
+                //context.Database.EnsureCreated();
                 //P01
-                string inputJson = File.ReadAllText(@"../../../Datasets/suppliers.json");
-                Console.WriteLine(ImportSuppliers(context, inputJson));
+                //string inputJsonSuppliers = File.ReadAllText(@"../../../Datasets/suppliers.json");
+                //Console.WriteLine(ImportSuppliers(context, inputJsonSuppliers));
+
+                //P02
+                string inputJsonParts = File.ReadAllText(@"../../../Datasets/parts.json");
+                Console.WriteLine(ImportParts(context, inputJsonParts));
+
 
             }
 
@@ -53,6 +59,34 @@ namespace CarDealer
 
             return $"Successfully imported {validSuppliers.Count}.";
 
+        }
+
+        public static string ImportParts(CarDealerContext context, string inputJson)
+        {
+            IMapper mapper = CreateMapper();
+
+            ImportPartsDto[] partsDtos = JsonConvert.DeserializeObject<ImportPartsDto[]>(inputJson);
+
+            ICollection<Part> validParts = new HashSet<Part>();
+
+            var validIds = context.Suppliers.Select(s => s.Id).ToList();
+
+            foreach (var partDto in partsDtos)
+            {
+                //If the supplierId is not in the DB - it shold be skipped. 
+                if (!validIds.Contains(partDto.SupplierId))
+                {
+                    continue;
+                }
+
+                Part part = mapper.Map<Part>(partDto);
+                validParts.Add(part);
+                
+            }
+            context.AddRange(validParts);
+            context.SaveChanges();
+
+            return $"Successfully imported {validParts.Count}.";
         }
 
 

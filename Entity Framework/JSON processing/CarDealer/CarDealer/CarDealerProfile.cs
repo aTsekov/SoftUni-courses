@@ -11,6 +11,8 @@ namespace CarDealer
             //This is the link between the DTO and the entity when we import data in the DB.
             this.CreateMap<ImportSupplierDto, Supplier>();
 
+            this.CreateMap<ImportPartsDto,Part>();
+
         }
     }
 }
