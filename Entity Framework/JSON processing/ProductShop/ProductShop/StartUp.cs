@@ -33,16 +33,17 @@ namespace ProductShop
 
             //P04
             //string inputJson = File.ReadAllText(@"../../../Datasets/categories-products.json");
-            
+            //P05
             //string result = ImportCategoryProducts(context, inputJson);
 
             //Console.WriteLine(result);
-
+            //P06
             //Console.WriteLine(GetProductsInRange(context));
-
+            //P07
             //Console.WriteLine(GetSoldProducts(context));
 
-            Console.WriteLine(GetCategoriesByProductsCount(context));
+            //P08
+            Console.WriteLine(GetUsersWithProducts(context));
 
 
         }
@@ -239,6 +240,56 @@ namespace ProductShop
             var result = JsonConvert.SerializeObject(categories, Formatting.Indented);
             return result.ToString();
         }
+
+        //Problem 8
+        public static string GetUsersWithProducts(ProductShopContext context)
+            {
+                IContractResolver contractResolver = ConfigureCamelCaseNaming();
+
+                var users = context
+                    .Users
+                    .Where(u => u.ProductsSold.Any(p => p.Buyer != null))
+                    .Select(u => new
+                    {
+                        // UserDTO
+                        u.FirstName,
+                        u.LastName,
+                        u.Age,
+                        SoldProducts = new
+                        {
+                            // ProductWrapperDTO
+                            Count = u.ProductsSold
+                                .Count(p => p.Buyer != null),
+                            Products = u.ProductsSold
+                                .Where(p => p.Buyer != null)
+                                .Select(p => new
+                                {
+                                    // ProductDTO
+                                    p.Name,
+                                    p.Price
+                                })
+                                .ToArray()
+                        }
+                    })
+                    .OrderByDescending(u => u.SoldProducts.Count)
+                    .AsNoTracking()
+                    .ToArray();
+
+                var userWrapperDto = new
+                {
+                    UsersCount = users.Length,
+                    Users = users
+                };
+
+                return JsonConvert.SerializeObject(userWrapperDto,
+                    Formatting.Indented,
+                    new JsonSerializerSettings()
+                    {
+                        ContractResolver = contractResolver,
+                        NullValueHandling = NullValueHandling.Ignore
+                    });
+        }
+        
 
         private static IMapper CreateMapper()
         {
