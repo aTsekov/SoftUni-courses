@@ -13,7 +13,7 @@
 
         public string Model { get; set; } = null!;
 
-        public long TravelledDistance { get; set; } //This may cause a problem in some tasks for Judge
+        public long TraveledDistance { get; set; } //This may cause a problem in some tasks for Judge
 
         public ICollection<Sale> Sales { get; set; }  
 
