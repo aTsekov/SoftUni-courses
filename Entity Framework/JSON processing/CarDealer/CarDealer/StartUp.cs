@@ -55,7 +55,11 @@ namespace CarDealer
                 //Console.WriteLine(GetLocalSuppliers(context));
 
                 //P17
-                Console.WriteLine(GetCarsWithTheirListOfParts(context));
+                //Console.WriteLine(GetCarsWithTheirListOfParts(context));
+
+                //P18 
+
+                Console.WriteLine(GetTotalSalesByCustomer(context));
 
             }
 
@@ -288,6 +292,38 @@ namespace CarDealer
             }).ToList();
 
             var result = JsonConvert.SerializeObject(carsWithParts, Formatting.Indented);
+            return result;
+        }
+
+        //Problem18
+        public static string GetTotalSalesByCustomer(CarDealerContext context)
+        {
+            IContractResolver contractResolver = ConfigureCamelCaseNaming();
+            var customersWithCars = context.Customers
+                .Include(c => c.Sales)
+                .ThenInclude(c => c.Car)
+                .ThenInclude(c => c.PartsCars)
+                .ThenInclude(c => c.Part)
+                .Where(c => c.Sales.Count >= 1)
+                .ToArray()
+                .Select(c => new
+                {
+                    fullName = c.Name,
+                    boughtCars = c.Sales.Count,
+                    spentMoney = Math.Round(c.Sales.Sum(s => s.Car.PartsCars.Sum(pc => pc.Part.Price)),2)
+                })
+                .OrderByDescending(c => c.spentMoney)
+                .ThenByDescending(c => c.boughtCars)
+                .ToArray();
+
+
+
+            var result = JsonConvert.SerializeObject(customersWithCars,Formatting.Indented, 
+                new JsonSerializerSettings()
+                {
+                    ContractResolver = contractResolver
+                });
+
             return result;
         }
 
