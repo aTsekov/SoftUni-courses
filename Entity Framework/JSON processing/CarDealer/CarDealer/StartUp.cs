@@ -59,7 +59,10 @@ namespace CarDealer
 
                 //P18 
 
-                Console.WriteLine(GetTotalSalesByCustomer(context));
+                //Console.WriteLine(GetTotalSalesByCustomer(context));
+
+                //P19
+                Console.WriteLine(GetSalesWithAppliedDiscount(context));
 
             }
 
@@ -327,6 +330,34 @@ namespace CarDealer
             return result;
         }
 
+        //Problem 19
+        public static string GetSalesWithAppliedDiscount(CarDealerContext context)
+        {
+            var sales = context.Sales.Take(10)
+                .Select(s => new
+                {
+                    car = new
+                    {
+                        Make = s.Car.Make,
+                        Model = s.Car.Model,
+                        TraveledDistance = s.Car.TraveledDistance
+
+                    },
+                    customerName = s.Customer.Name,
+                    discount = s.Discount.ToString("F2"),
+                    price = s.Car.PartsCars.Sum(p => p.Part.Price).ToString("F2"),
+                    priceWithDiscount = (s.Car.PartsCars.Sum(pc => pc.Part.Price) * (1 - (s.Discount / 100))).ToString("F2")
+
+                     
+
+
+
+                }).ToArray();
+
+            var result = JsonConvert.SerializeObject(sales, Formatting.Indented);
+
+            return result;
+        }
 
         private static IMapper CreateMapper()
         {
