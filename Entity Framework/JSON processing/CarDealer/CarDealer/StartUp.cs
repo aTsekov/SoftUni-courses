@@ -4,11 +4,14 @@ using System.IO;
 using System.Threading.Channels;
 using AutoMapper;
 using CarDealer.Data;
+using CarDealer.DTOs.Export;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
 using Castle.Core.Resource;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure.Internal;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace CarDealer
 {
@@ -38,9 +41,13 @@ namespace CarDealer
                 //Console.WriteLine(ImportCustomers(context, inputJsonCustomers));
 
                 //P13
-                string inputJsonSales = File.ReadAllText(@"../../../Datasets/sales.json");
-                Console.WriteLine(ImportSales(context, inputJsonSales));
+                //string inputJsonSales = File.ReadAllText(@"../../../Datasets/sales.json");
+                //Console.WriteLine(ImportSales(context, inputJsonSales));
 
+                //P14
+                //Console.WriteLine(GetOrderedCustomers(context));
+
+                //P15
 
             }
 
@@ -198,6 +205,28 @@ namespace CarDealer
             return $"Successfully imported {validSales.Count}.";
         }
 
+        //Problem 14
+
+        public static string GetOrderedCustomers(CarDealerContext context)
+        {
+            IContractResolver contractResolver = ConfigureCamelCaseNaming();
+            var customers = context.Customers.OrderBy(c => c.BirthDate).ThenBy(c => c.IsYoungDriver).Select(
+                c => new ExportCustomersDto()
+                {
+                    Name = c.Name,
+                    BirthDate = c.BirthDate.ToString("dd/MM/yyyy",CultureInfo.InvariantCulture),
+                    IsYoungDriver = c.IsYoungDriver
+                }).AsNoTracking().ToList();
+
+            return JsonConvert.SerializeObject(customers); //, Formatting.Indented);
+
+
+
+        }
+
+        //Problem 15
+
+
         private static IMapper CreateMapper()
         {
             //In the Profile we made a link between the DTO and the Entity. Here we add the profile to the map configuration.
@@ -205,6 +234,14 @@ namespace CarDealer
             {
                 cfg.AddProfile<CarDealerProfile>();
             }));
+        }
+
+        private static IContractResolver ConfigureCamelCaseNaming()
+        {
+            return new DefaultContractResolver()
+            {
+                NamingStrategy = new CamelCaseNamingStrategy(false, true)
+            };
         }
     }
 }
