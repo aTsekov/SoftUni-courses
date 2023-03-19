@@ -48,6 +48,7 @@ namespace CarDealer
                 //Console.WriteLine(GetOrderedCustomers(context));
 
                 //P15
+                Console.WriteLine(GetCarsFromMakeToyota(context));
 
             }
 
@@ -225,6 +226,22 @@ namespace CarDealer
         }
 
         //Problem 15
+
+        public static string GetCarsFromMakeToyota(CarDealerContext context)
+        {
+            var toyotaCars = context.Cars.Where(c => c.Make == "Toyota").OrderBy(c => c.Model)
+                .ThenByDescending(c => c.TraveledDistance).Select(c => new
+                {
+                    Id = c.Id,
+                    Make = c.Make,
+                    Model = c.Model,
+                    TraveledDistance = c.TraveledDistance
+                }).AsNoTracking().ToList();
+
+            var results = JsonConvert.SerializeObject(toyotaCars,Formatting.Indented);
+
+            return results;
+        }
 
 
         private static IMapper CreateMapper()
