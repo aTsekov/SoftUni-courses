@@ -5,15 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace CarDealer.DTOs
+namespace CarDealer.DTOs.Import
 {
     [XmlType("Supplier")]
     public class ImportSupplierDTO
     {
-        [XmlElement("name")] 
+        [XmlElement("name")]
         public string Name { get; set; } = null!;
 
-        [XmlElement("isImporter")] 
-        public bool IsImporter { get; set; } 
+        [XmlElement("isImporter")]
+        public bool IsImporter { get; set; }
     }
 }
