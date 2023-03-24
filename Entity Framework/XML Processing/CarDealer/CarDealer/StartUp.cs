@@ -31,8 +31,13 @@ namespace CarDealer
             //Console.WriteLine(ImportCars(context,inputXml));
 
             //P12
-            string inputXml = File.ReadAllText(@"../../../Datasets/customers.xml");
-            Console.WriteLine(ImportCustomers(context,inputXml));
+            //string inputXml = File.ReadAllText(@"../../../Datasets/customers.xml");
+            //Console.WriteLine(ImportCustomers(context,inputXml
+
+            //P13
+            string inputXml = File.ReadAllText(@"../../../Datasets/sales.xml");
+            Console.WriteLine(ImportSales(context, inputXml));
+
 
         }
 
@@ -137,7 +142,6 @@ namespace CarDealer
         }
 
         //Problem 12
-
         public static string ImportCustomers(CarDealerContext context, string inputXml)
         {
             XmlHelper xmlHelper = new XmlHelper();
@@ -162,6 +166,35 @@ namespace CarDealer
             context.SaveChanges();
 
             return $"Successfully imported {validCustomers.Count}";
+        }
+
+        //Problem 13
+
+        public static string ImportSales(CarDealerContext context, string inputXml)
+        {
+            IMapper mapper = InitializeAutoMapper();
+            XmlHelper xmlHelper = new XmlHelper();
+
+            ImportSalesDto[] saleDtos = xmlHelper.Deserialize<ImportSalesDto[]>(inputXml, "Sales");
+            ICollection<Sale> validSales = new HashSet<Sale>();
+            ICollection<int> validCarIds = context.Cars.Select( c=> c.Id).ToList();
+            ICollection<int> validCustomerIds = context.Customers.Select( c=> c.Id).ToList();
+
+
+            foreach (var saleDto in saleDtos)
+            {
+                if (!validCarIds.Contains(saleDto.CarId) /*|| !validCustomerIds.Contains(saleDto.CustomerId)*/)
+                {
+                    continue;
+                }
+                Sale sale = mapper.Map<Sale>(saleDto);
+                validSales.Add(sale);
+                
+            }
+            context.Sales.AddRange(validSales);
+            context.SaveChanges();
+
+            return $"Successfully imported {validSales.Count}";
         }
         private static IMapper InitializeAutoMapper()
             => new Mapper(new MapperConfiguration(cfg =>
