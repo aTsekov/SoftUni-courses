@@ -6,6 +6,8 @@ using CarDealer.Utilities;
 using Castle.Core.Resource;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.IO;
+using AutoMapper.QueryableExtensions;
+using CarDealer.DTOs.Export;
 
 namespace CarDealer
 {
@@ -35,8 +37,12 @@ namespace CarDealer
             //Console.WriteLine(ImportCustomers(context,inputXml
 
             //P13
-            string inputXml = File.ReadAllText(@"../../../Datasets/sales.xml");
-            Console.WriteLine(ImportSales(context, inputXml));
+            //string inputXml = File.ReadAllText(@"../../../Datasets/sales.xml");
+            //Console.WriteLine(ImportSales(context, inputXml));
+
+            //P14
+
+            Console.WriteLine(GetCarsWithDistance(context));
 
 
         }
@@ -196,6 +202,25 @@ namespace CarDealer
 
             return $"Successfully imported {validSales.Count}";
         }
+
+        //Problem 14
+
+        public static string GetCarsWithDistance(CarDealerContext context)
+        {
+            IMapper mapper = InitializeAutoMapper();
+            XmlHelper xmlHelper = new XmlHelper();
+
+            var cars  = context.Cars.Where( c => c.TraveledDistance > 2000000)
+                .OrderBy(c => c.Make)
+                .ThenBy(c => c.Model)
+                .Take(10)
+                .ProjectTo<ExportCarWithDistanceDto>(mapper.ConfigurationProvider)
+                .ToArray();
+
+
+            return xmlHelper.Serialize<ExportCarWithDistanceDto[] >(cars, "cars");
+        }
+
         private static IMapper InitializeAutoMapper()
             => new Mapper(new MapperConfiguration(cfg =>
             {
