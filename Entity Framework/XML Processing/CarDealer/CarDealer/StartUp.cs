@@ -3,6 +3,7 @@ using CarDealer.Data;
 using CarDealer.DTOs.Import;
 using CarDealer.Models;
 using CarDealer.Utilities;
+using Castle.Core.Resource;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System.IO;
 
@@ -26,8 +27,12 @@ namespace CarDealer
             //Console.WriteLine(ImportParts(context, inputXml));
 
             //P11
-            string inputXml = File.ReadAllText(@"../../../Datasets/cars.xml");
-            Console.WriteLine(ImportCars(context,inputXml));
+            //string inputXml = File.ReadAllText(@"../../../Datasets/cars.xml");
+            //Console.WriteLine(ImportCars(context,inputXml));
+
+            //P12
+            string inputXml = File.ReadAllText(@"../../../Datasets/customers.xml");
+            Console.WriteLine(ImportCustomers(context,inputXml));
 
         }
 
@@ -129,6 +134,34 @@ namespace CarDealer
             context.Cars.AddRange(validCars);
             context.SaveChanges();
             return $"Successfully imported {validCars.Count}";
+        }
+
+        //Problem 12
+
+        public static string ImportCustomers(CarDealerContext context, string inputXml)
+        {
+            XmlHelper xmlHelper = new XmlHelper();
+
+            ImportCustomerDto[] customerDtos = xmlHelper.Deserialize<ImportCustomerDto[]>(inputXml, "Customers");
+
+            ICollection<Customer> validCustomers = new HashSet<Customer>();
+
+            foreach (var custDto in customerDtos)
+            {
+                Customer cust = new Customer()
+                {
+                    Name = custDto.Name,
+                    BirthDate = DateTime.Parse(custDto.BirthDate),
+                    IsYoungDriver = custDto.IsYoungDriver
+                };
+
+                validCustomers.Add(cust);
+            }
+
+            context.Customers.AddRange(validCustomers);
+            context.SaveChanges();
+
+            return $"Successfully imported {validCustomers.Count}";
         }
         private static IMapper InitializeAutoMapper()
             => new Mapper(new MapperConfiguration(cfg =>
