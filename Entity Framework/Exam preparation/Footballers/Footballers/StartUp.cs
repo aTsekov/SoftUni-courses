@@ -15,11 +15,11 @@ namespace Footballers
         {
             var context = new FootballersContext();
 
-            //var config = new MapperConfiguration(cfg =>
-            //{
-            //    cfg.AddProfile<FootballersProfile>();
-            //});
-            //var mapper = new Mapper(config);
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile<FootballersProfile>();
+            });
+            var mapper = new Mapper(config);
 
             ResetDatabase(context, shouldDropDatabase: true);
 
