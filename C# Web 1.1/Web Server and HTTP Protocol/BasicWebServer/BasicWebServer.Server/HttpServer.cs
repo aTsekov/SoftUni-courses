@@ -42,7 +42,7 @@ namespace BasicWebServer.Server
 
                 var networkStream = connection.GetStream(); //create the stream that is used to send and receive data.
 
-                WriteResponse(networkStream, "Hello from the server...");
+                WriteResponse(networkStream, "Hello from the server!");
 
                 connection.Close();
             }
