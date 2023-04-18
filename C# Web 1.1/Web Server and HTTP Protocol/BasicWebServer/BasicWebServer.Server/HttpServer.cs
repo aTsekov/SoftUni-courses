@@ -21,8 +21,9 @@ namespace BasicWebServer.Server
 
         public HttpServer(string ipAddress, int port)
         {
-            this.ipAddress = this.ipAddress;
+            this.ipAddress = IPAddress.Parse(ipAddress);
             this.port = port;
+            this.serverListener = new TcpListener(this.ipAddress, port);
         }
 
 
@@ -41,6 +42,9 @@ namespace BasicWebServer.Server
                 var connection = serverListener.AcceptTcpClient(); //This accepts a pending connection request
 
                 var networkStream = connection.GetStream(); //create the stream that is used to send and receive data.
+
+                var requestText = this.ReadRequest(networkStream);
+                Console.WriteLine(requestText);
 
                 WriteResponse(networkStream, "Hello from the server!");
 
@@ -70,6 +74,28 @@ Content-Length: {contentLength}
             networkStream.Write(responseBytes); //write the bytes into the stream. 
 
 
+        }
+
+        private string ReadRequest(NetworkStream networkStream)
+        {
+            var bufferLength = 1024;
+
+            var buffer = new byte[bufferLength];
+            var totalBytes = 0;
+            var requestBuilder = new StringBuilder();
+
+            do
+            {
+                var byteRead = networkStream.Read(buffer, 0, bufferLength);
+                totalBytes += byteRead;
+                if (totalBytes > 10 * 1024)
+                {
+                    throw new InvalidOperationException("Request is too large");
+                }
+                requestBuilder.Append(Encoding.UTF8.GetString(buffer, 0, byteRead));
+            } while (networkStream.DataAvailable);
+
+            return requestBuilder.ToString();
         }
     }
 }
