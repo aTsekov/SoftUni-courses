@@ -7,12 +7,10 @@ using BasicWebServer.Server.HTTP;
 
 namespace BasicWebServer.Server.Responses
 {
-    public class RedirectResponse :Response
+    public class HtmlResponse : ContentResponse
     {
-
-        public RedirectResponse(string location) : base(StatusCode.Found)
+        public HtmlResponse(string text) : base(text, ContentType.Html)
         {
-            this.Headers.Add(Header.Location, location);
         }
     }
 }
