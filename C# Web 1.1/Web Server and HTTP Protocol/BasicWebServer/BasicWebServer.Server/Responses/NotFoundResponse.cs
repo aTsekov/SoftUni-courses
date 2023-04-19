@@ -7,9 +7,9 @@ using BasicWebServer.Server.HTTP;
 
 namespace BasicWebServer.Server.Responses
 {
-    public class FoundResponse : Response
+    public class NotFoundResponse : Response
     {
-        public FoundResponse(): base (StatusCode.NotFound)
+        public NotFoundResponse(): base (StatusCode.NotFound)
         {
             
         }
