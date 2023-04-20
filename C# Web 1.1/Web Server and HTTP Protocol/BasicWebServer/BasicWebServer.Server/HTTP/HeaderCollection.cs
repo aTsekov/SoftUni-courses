@@ -16,10 +16,8 @@ namespace BasicWebServer.Server.HTTP
     {
         private readonly Dictionary<string, Header> headers;
 
-        public HeaderCollection()
-        {
-            this.headers = new Dictionary<string, Header>();
-        }
+        public HeaderCollection()=> this.headers = new Dictionary<string, Header>();
+        
 
         public int Count => this.headers.Count;
 
@@ -29,14 +27,10 @@ namespace BasicWebServer.Server.HTTP
             this.headers.Add(name, header);
         }
 
-        public IEnumerator<Header> GetEnumerator()
-        {
-            return this.headers.Values.GetEnumerator();
-        }
+        public IEnumerator<Header> GetEnumerator()=> this.headers.Values.GetEnumerator();
+        
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return this.GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator()=> this.GetEnumerator();
+        
     }
 }

@@ -18,7 +18,7 @@ namespace BasicWebServer.Server.HTTP
 
         public StatusCode StatusCode { get; init; }
 
-        public HeaderCollection Headers { get; set; } = new HeaderCollection();
+        public HeaderCollection Headers { get; } = new HeaderCollection();
 
         public string Body { get; set; }
 
