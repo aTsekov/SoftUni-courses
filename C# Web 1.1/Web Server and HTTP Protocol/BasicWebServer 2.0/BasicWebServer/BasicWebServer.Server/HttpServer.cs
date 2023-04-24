@@ -75,7 +75,7 @@ Content-Length: {contentLength}
 
                 networkStream.Write(responseBytes); // This line actually transfers/sends/writes our response to the browser.
 
-                //connection.Close();
+                connection.Close();
             }
         }
     }
