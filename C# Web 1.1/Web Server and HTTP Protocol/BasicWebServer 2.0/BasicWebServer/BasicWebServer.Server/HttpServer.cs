@@ -41,8 +41,11 @@ namespace BasicWebServer.Server
                 //Now when we have the connection we need to open a stream to the browser so we can visualize something.
                 var networkStream = connection.GetStream();
 
+                var requestText = this.ReadRequest(networkStream);
+                Console.WriteLine(requestText);
+
                 // This method actually transfers/sends/writes our response to the browser.
-                WriteResponse(networkStream, "Hello from the Server!");
+                //WriteResponse(networkStream, "Hello from the Server!");
 
                 connection.Close();
             }
@@ -77,6 +80,23 @@ Content-Length: {contentLength}
 
                 connection.Close();
             }
+        }
+
+        private string ReadRequest(NetworkStream networkStream)
+        {
+            var bufferLength = 1024;
+            var buffer = new byte[bufferLength];
+
+            var requestBuilder = new StringBuilder();
+
+            do
+            {
+                var bytesRead = networkStream.Read(buffer, 0, bufferLength);
+
+                requestBuilder.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
+            } while (networkStream.DataAvailable);
+
+           return requestBuilder.ToString();
         }
     }
 }
