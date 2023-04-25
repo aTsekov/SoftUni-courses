@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BasicWebServer.Server.HTTP
 {
-    public class HeaderCollection
+    public class HeaderCollection : IEnumerable<Header> //Implement the IEnumerable so we can iterate the headerCollection
     {
         private readonly Dictionary<string, Header> headers; // We will keep headers as a dictionary with the header name as a key and the header itself as a value, so that we can our searching in the headers is easier.
 
@@ -18,5 +19,11 @@ namespace BasicWebServer.Server.HTTP
             var header = new Header(name, value); //Create a new Header and add it to the dictionary.
             this.headers.Add(name, header);
         }
+
+        public IEnumerator<Header> GetEnumerator()
+            => this.headers.Values.GetEnumerator();
+
+        IEnumerator IEnumerable.GetEnumerator()
+            => this.GetEnumerator();
     }
 }

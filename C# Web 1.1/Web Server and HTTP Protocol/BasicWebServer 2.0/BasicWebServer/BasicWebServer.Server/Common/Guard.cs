@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BasicWebServer.Server
+namespace BasicWebServer.Server.Common
 {
     public static class Guard
     {
