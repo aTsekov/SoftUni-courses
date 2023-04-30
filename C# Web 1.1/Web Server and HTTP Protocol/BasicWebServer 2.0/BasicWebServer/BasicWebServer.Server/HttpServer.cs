@@ -6,6 +6,9 @@ using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using BasicWebServer.Server.HTTP;
+using BasicWebServer.Server.Responses;
+using BasicWebServer.Server.Routing;
 
 namespace BasicWebServer.Server
 {
@@ -18,13 +21,27 @@ namespace BasicWebServer.Server
         private readonly int port; // We would be providing the port in the Ctor
         private readonly TcpListener serverListener; // we would use this TCP listener in the Ctor to give it the IpAddress and the Port
 
+        private readonly RoutingTable routingTable;
 
-        public HttpServer(string ipAddress, int port)
+
+        public HttpServer(string ipAddress, int port, Action<IRoutingTable> routingTableConfiguration) // not sure why we use action delegate
         {
             this.ipAddress = IPAddress.Parse(ipAddress); //the field is = to the given value in the Ctor which will come from outside. 
             this.port = port;
 
             this.serverListener = new TcpListener(this.ipAddress, port);
+
+            routingTableConfiguration(this.routingTable = new RoutingTable());
+        }
+
+        public HttpServer(int port, Action<IRoutingTable> routingTable) :this("127.0.0.1", port, routingTable)
+        {
+            
+        }
+
+        public HttpServer(Action<IRoutingTable> routingTable) : this(8080, routingTable) 
+        {
+            
         }
 
         public void Start()
@@ -43,9 +60,12 @@ namespace BasicWebServer.Server
 
                 var requestText = this.ReadRequest(networkStream);
                 Console.WriteLine(requestText);
+                var request = Request.Parse(requestText);
+
+                var response = this.routingTable.MatchRequest(request); //use the Parse(string request) method of the Request class to parse the request to an HTTP request:
 
                 // This method actually transfers/sends/writes our response to the browser.
-                //WriteResponse(networkStream, "Hello from the Server!");
+                WriteResponse(networkStream, response);
 
                 connection.Close();
             }
@@ -53,33 +73,33 @@ namespace BasicWebServer.Server
             
         }
 
-        private void WriteResponse(NetworkStream networkStream, string message)
+        private void WriteResponse(NetworkStream networkStream, Response response)
         {
-            while (true)// Use the infinite loop so we can have multiple requests. 
-            {
-                var connection = serverListener.AcceptTcpClient();
+          //  while (true)// Use the infinite loop so we can have multiple requests. 
+           // {
+//                var connection = serverListener.AcceptTcpClient();
 
-                //Get the length of the message in bytes so it can be transferred. 
+//                //Get the length of the message in bytes so it can be transferred. 
 
-                var contentLength = Encoding.UTF8.GetByteCount(message);
+//                var contentLength = Encoding.UTF8.GetByteCount(message);
 
-                //1. The first line of the response contains the HTTP version and the status code. 
-                //2. On each new line is the headers - in this case the text type nad the text length, but there could be many variations. 
-                //3. This is the body - which is the actual content. 
-                var response = $@"HTTP/1.1 200 OK 
-Content-Type: text/plain; charset=UTF-8
-Content-Length: {contentLength}
+//                //1. The first line of the response contains the HTTP version and the status code. 
+//                //2. On each new line is the headers - in this case the text type nad the text length, but there could be many variations. 
+//                //3. This is the body - which is the actual content. 
+//                var response = $@"HTTP/1.1 200 OK 
+//Content-Type: text/plain; charset=UTF-8
+//Content-Length: {contentLength}
 
-{message}";
+//{message}";
 
 
                 //Transform the response in to bytes and this can be used with the networks stream. 
-                var responseBytes = Encoding.UTF8.GetBytes(response);
+                var responseBytes = Encoding.UTF8.GetBytes(response.ToString());
 
                 networkStream.Write(responseBytes); // This line actually transfers/sends/writes our response to the browser.
 
-                connection.Close();
-            }
+               // connection.Close();
+            //}
         }
 
         private string ReadRequest(NetworkStream networkStream)
