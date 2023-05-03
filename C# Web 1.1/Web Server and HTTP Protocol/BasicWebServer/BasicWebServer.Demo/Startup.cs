@@ -1,17 +1,22 @@
-﻿using BasicWebServer.Server;
-using BasicWebServer.Server.Responses;
+﻿using BasicWebServer.Demo.Services;
+using BasicWebServer.Server;
+using BasicWebServer.Server.Routing;
+using System.Threading.Tasks;
 
 namespace BasicWebServer.Demo
 {
     public class Startup
     {
-        static void Main()
-            => new HttpServer(routes => routes
-                    .MapGet("/", new TextResponse("Hello from the server!"))
-                    .MapGet("/HTML", new HtmlResponse("<h1> HTML response </h1>"))
-                    .MapGet("/Redirect", new RedirectResponse("https://softuni.org/")))
-                .Start();
+        public static async Task Main()
+        {
+            var server = new HttpServer(routes => routes
+               .MapControllers()
+               .MapStaticFiles());
 
+            server.ServiceCollection
+                .Add<UserService>();
 
+            await server.Start();
+        }
     }
 }

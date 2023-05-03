@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace BasicWebServer.Server.HTTP
 {
@@ -20,7 +17,11 @@ namespace BasicWebServer.Server.HTTP
 
         public HeaderCollection Headers { get; } = new HeaderCollection();
 
+        public CookieCollection Cookies { get; } = new CookieCollection();
+
         public string Body { get; set; }
+
+        public byte[] FileContent { get; set; }
 
         public override string ToString()
         {
@@ -33,12 +34,18 @@ namespace BasicWebServer.Server.HTTP
                 result.AppendLine(header.ToString());
             }
 
+            foreach (var cookie in this.Cookies)
+            {
+                result.AppendLine($"{Header.SetCookie}: {cookie}");
+            }
+
             result.AppendLine();
 
-            if (Equals(!string.IsNullOrEmpty((this.Body))))
+            if (!string.IsNullOrEmpty(this.Body))
             {
                 result.Append(this.Body);
             }
+
             return result.ToString();
         }
     }

@@ -1,53 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using BasicWebServer.Server.Common;
 using BasicWebServer.Server.HTTP;
+using BasicWebServer.Server.Common;
 using BasicWebServer.Server.Responses;
 
 namespace BasicWebServer.Server.Routing
 {
     public class RoutingTable : IRoutingTable
     {
-        private readonly Dictionary<Method, Dictionary<string, Response>> routes;
+        private readonly Dictionary<Method, Dictionary<string, Func<Request, Response>>> routes;
 
-        public RoutingTable()
+        public RoutingTable() => this.routes = new()
         {
-            this.routes = new()
-            {
-                [Method.Get] = new(),
-                [Method.Post] = new(),
-                [Method.Put] = new(),
-                [Method.Delete] = new()
-            };
-        }
+            [Method.Get] = new(StringComparer.InvariantCultureIgnoreCase),
+            [Method.Post] = new(StringComparer.InvariantCultureIgnoreCase),
+            [Method.Put] = new(StringComparer.InvariantCultureIgnoreCase),
+            [Method.Delete] = new(StringComparer.InvariantCultureIgnoreCase)
+        };
+
 
         public IRoutingTable Map(
-            string url,
-            Method method,
-            Response response)
-            => method switch
-            {
-                Method.Get => this.MapGet(url, response),
-                Method.Post => this.MapPost(url, response),
-                _ => throw new InvalidOperationException($"Method '{method}' is not supported.")
-            };
-
-        public IRoutingTable MapGet(string url, Response response)
+            Method method, 
+            string path, 
+            Func<Request, Response> responseFunction)
         {
-            Guard.AgainstNull(url, nameof(url));
-            Guard.AgainstNull(response, nameof(response));
-            this.routes[Method.Get][url] = response;
+            Guard.AgainstNull(path, nameof(path));
+            Guard.AgainstNull(responseFunction, nameof(responseFunction));
+
+            switch (method)
+            {
+                case Method.Get:
+                    return MapGet(path, responseFunction);
+                case Method.Post:
+                    return MapPost(path, responseFunction); 
+                case Method.Put:
+                case Method.Delete:
+                default:
+                    throw new ArgumentOutOfRangeException($"The method {nameof(method)} is not supported!");
+            }
+        }
+
+        private IRoutingTable MapGet(
+            string path,
+            Func<Request, Response> responseFunction)
+        {
+            Guard.AgainstDuplicatedKey(routes[Method.Get], path, "RoutingTable.Get");
+            routes[Method.Get][path] = responseFunction;
+
             return this;
         }
 
-        public IRoutingTable MapPost(string url, Response response)
+        private IRoutingTable MapPost(
+            string path,
+            Func<Request, Response> responseFunction)
         {
-            Guard.AgainstNull(url, nameof(url));
-            Guard.AgainstNull(response, nameof(response));
-            this.routes[Method.Post][url] = response;
+            Guard.AgainstDuplicatedKey(routes[Method.Post], path, "RoutingTable.Post");
+            routes[Method.Post][path] = responseFunction;
+
             return this;
         }
 
@@ -62,7 +71,9 @@ namespace BasicWebServer.Server.Routing
                 return new NotFoundResponse();
             }
 
-            return this.routes[requestMethod][requestUrl];
+            var responseFunction = this.routes[requestMethod][requestUrl];
+
+            return responseFunction(request);
         }
     }
 }
