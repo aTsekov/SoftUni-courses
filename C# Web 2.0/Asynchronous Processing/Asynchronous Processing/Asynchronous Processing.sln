@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PrintEventNumbers", "Asynch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SumEvens in Background", "SumEvens in Background\SumEvens in Background.csproj", "{6F714EF8-E262-47BF-BEEA-9DF898D30F52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chronometer", "Chronometer\Chronometer.csproj", "{2E147CA8-73E2-4C7A-A6C5-AB391938FB68}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6F714EF8-E262-47BF-BEEA-9DF898D30F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6F714EF8-E262-47BF-BEEA-9DF898D30F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6F714EF8-E262-47BF-BEEA-9DF898D30F52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E147CA8-73E2-4C7A-A6C5-AB391938FB68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E147CA8-73E2-4C7A-A6C5-AB391938FB68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E147CA8-73E2-4C7A-A6C5-AB391938FB68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E147CA8-73E2-4C7A-A6C5-AB391938FB68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
