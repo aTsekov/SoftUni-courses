@@ -12,8 +12,8 @@
 
                 if (line == "start")
                 {
-                    Task.Run(() =>
-                        { chronometer.Start(); });
+                    Task.Run(() => { chronometer.Start(); }); //The chronometer runs on a separate thread so it can measure the time. 
+                    //However whenever we type the command on the console, both threads are giving result. The second thread gives us the result and the main thread is responsive sow e can type on the console.
                 }
                 else if (line == "stop")
                 {
