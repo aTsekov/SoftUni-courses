@@ -37,7 +37,8 @@ namespace MVC_Intro.Controllers
         }
         public IActionResult NumbersToN(int count = 3)
         {
-            ViewBag.Count = count;
+           ViewBag.Count = count;
+
             return View();
         }
 

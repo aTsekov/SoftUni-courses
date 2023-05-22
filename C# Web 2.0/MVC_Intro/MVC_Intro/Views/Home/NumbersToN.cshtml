@@ -6,19 +6,15 @@
 <h2>@ViewBag.Title</h2>
 <ul>
 	
-	@for (int i = 1; i < ViewBag.Count; i++)
+	@for (int i = 1; i <= ViewBag.Count; i++)
 	{
 		<li>@i</li>
 	}
 
+	<form method = "post" asp-controller="Home" asp-action="NumbersToN">
+		<input name="count"></input>
+		<button type="submit">Click Me!</button>
+	</form>
+
 </ul>
-
-<form asp-controller="Home" asp-action="NumbersToN" method="post">
-<div>
-	<lablel> Number</lablel>
-<input  type="text" class="name" />
-</div>
-
-	
-</form>
 
