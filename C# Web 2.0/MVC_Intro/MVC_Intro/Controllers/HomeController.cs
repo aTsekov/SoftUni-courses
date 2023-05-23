@@ -15,6 +15,10 @@ namespace MVC_Intro.Controllers
 
         public IActionResult Index()
         {
+            //How to pass data from controller to the view
+            //1. Using mode => large set of data such as forms
+            //2. Using ViewBag => Random data using dynamic object
+            //3. Using ViewData => Random data using dictionary
 
             ViewBag.Message = "Hello Worold!";
             return View();
