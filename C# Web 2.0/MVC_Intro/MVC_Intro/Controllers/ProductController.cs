@@ -1,5 +1,7 @@
-﻿using System.Text.Json;
+﻿using System.Text;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
 using MVC_Intro.Models;
 
 namespace MVC_Intro.Controllers
@@ -65,6 +67,20 @@ namespace MVC_Intro.Controllers
 			}
 
 			return Content(text);// We need to use Content() because the action should return object.
+		}
+
+		public IActionResult AllAsTextFile()
+		{
+			StringBuilder sb = new StringBuilder();
+			foreach (var pr in _products)
+			{
+				sb.AppendLine($"Product {pr.Id}: {pr.Name} - {pr.Price} lv.");
+			}
+
+			Response.Headers.Add(HeaderNames.ContentDisposition, @"attachment;filename=products.txt");
+			//By adding the content disposition header and the additional value/setting "attachment" we make it possible for the file to be downloaded. Without "attachment" it will be opened by the browser in a new tab. 
+
+			return File(Encoding.UTF8.GetBytes(sb.ToString().TrimEnd()), "text/plain");
 		}
 	}
 }
