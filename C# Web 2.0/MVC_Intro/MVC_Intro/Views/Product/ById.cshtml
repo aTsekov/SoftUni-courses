@@ -1,0 +1,17 @@
+﻿@model ProductViewModel
+@{
+	ViewBag.Tiitle = "Product N. " + Model.Id;
+}
+@*@model with small letter is to give a link to the controller. Model with capital M is the current instance if the model. *@
+<div class="card">
+
+	<div class="card-header">@ViewBag.Title</div>
+	<div class="card-body">
+		<h5 class="card-title"> Product Name: @Model.Name </h5>
+		<p class ="card-text">Price: @Model.Price lv.</p>
+
+	</div>
+	
+	
+
+</div>

@@ -39,7 +39,7 @@ namespace MVC_Intro.Controllers
         {
             return View();
         }
-        public IActionResult NumbersToN(int count = 3)
+        public IActionResult NumbersToN(int count = -1)
         {
            ViewBag.Count = count;
 
