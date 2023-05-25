@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVC_Intro_Demo</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MVC_Intro</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -22,39 +22,41 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+	                    <li class="nav-item">
+		                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+	                    </li>
+	                    <li class="nav-item">
+		                    @*The asp-controller and asp-action tag helpers set the controller and action names of the page, which should
+		                    be accessed.*@
+		                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">About</a>
+	                    </li>
+	                    <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Numbers">Numbers</a>
+	                    </li>
+	                    <li class="nav-item">
+		                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="NumbersToN">NumbersToN</a>
+	                    </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="About">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Numbers">Numbers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="Home" asp-action="NumbersToN">NumbersToN</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <div class="dropdown">
-                                <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                                    Products
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="Product" asp-action="My-Products">All</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="Product" asp-action="AllAsJson">All (JSON)</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="Product" asp-action="AllAsText">All (Plain text)</a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" asp-controller="Product" asp-action="AllAsTextFile">All (Text file)</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
+                            <div class="nav-link text-dark">
+			                    <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown">
+				                    Products
+			                    </button>
+			                    <ul class="dropdown-menu">
+				                    <li>
+					                    <a class="dropdown-item" asp-controller="Product" asp-action="My-Products">All</a>
+				                    </li>
+				                    <li>
+					                    <a class="dropdown-item" asp-controller="Product" asp-action="AllAsJson">All (JSON)</a>
+				                    </li>
+				                    <li>
+					                    <a class="dropdown-item" asp-controller="Product" asp-action="AllAsText">All (Plain text)</a>
+				                    </li>
+				                    <li>
+					                    <a class="dropdown-item" asp-controller="Product" asp-action="AllAsTextFile">All (Text file)</a>
+				                    </li>
+			                    </ul>
+		                    </div>
+	                    </li>
                     </ul>
                 </div>
             </div>
