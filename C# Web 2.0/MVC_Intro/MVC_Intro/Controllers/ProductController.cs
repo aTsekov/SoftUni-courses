@@ -31,9 +31,21 @@ namespace MVC_Intro.Controllers
 
 		};
 
-		public IActionResult All()
+
+		//If we want to change the URL so the action is now the name of the method, but whatever it's in the Attribute [ActionName] 
+		//We should also change the name of the View to "My-Products"
+		[ActionName("My-Products")]
+		public IActionResult All(string keyword)
 		{
-			return View(_products);
+			if (string.IsNullOrWhiteSpace(keyword))
+			{
+				return View(_products);
+			}
+
+			IEnumerable<ProductViewModel> productsAfterSearch =
+				_products.Where(p => p.Name.ToLower().Contains(keyword)).ToList();
+
+			return View(productsAfterSearch);
 		}
 
 		public IActionResult ById(int id)
@@ -82,5 +94,6 @@ namespace MVC_Intro.Controllers
 
 			return File(Encoding.UTF8.GetBytes(sb.ToString().TrimEnd()), "text/plain");
 		}
+
 	}
 }
