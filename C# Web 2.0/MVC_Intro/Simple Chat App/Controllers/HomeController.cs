@@ -1,32 +1,34 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Simple_Chat_App.Models;
+
 using System.Diagnostics;
 
-namespace Simple_Chat_App.Controllers
+namespace MVC_Intro.Controllers
 {
-	public class HomeController : Controller
-	{
-		private readonly ILogger<HomeController> _logger;
+    public class HomeController : Controller
+    {
+        private readonly ILogger<HomeController> _logger;
 
-		public HomeController(ILogger<HomeController> logger)
-		{
-			_logger = logger;
-		}
+        public HomeController(ILogger<HomeController> logger)
+        {
+            _logger = logger;
+        }
 
-		public IActionResult Index()
-		{
-			return View();
-		}
+        public IActionResult Index()
+        {
+            //How to pass data from controller to the view
+            //1. Using mode => large set of data such as forms
+            //2. Using ViewBag => Random data using dynamic object
+            //3. Using ViewData => Random data using dictionary
 
-		public IActionResult Privacy()
-		{
-			return View();
-		}
+            ViewBag.Message = "Hello World!";
+            return View();
+        }
 
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-		}
-	}
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        
+    }
 }

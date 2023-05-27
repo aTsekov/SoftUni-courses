@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Simple_Chat_App.Models.Message;
 
 namespace Simple_Chat_App.Controllers
 {
@@ -8,17 +9,34 @@ namespace Simple_Chat_App.Controllers
 		private static List<KeyValuePair<string, string>> s_messages = new List<KeyValuePair<string, string>>();
 
 		//A "GET" method Show(), which returns a view with model (the model may hold the messages)
+		[HttpGet]
 		public IActionResult Show()
 		{
-			return View();
+			if (s_messages.Count() < 0)
+			{
+				return View(new ChatViewModel()); //If no messages return empty model
+			}
+			//else
+			var chatModel = new ChatViewModel()
+			{
+				Messages = s_messages.Select(m => new MessageViewModel()
+				{
+					Sender = m.Key,
+					MessageText = m.Value
+				}).ToList()
+			};
+
+			return View(chatModel);
 		}
 
 
 		//A "POST" method Send(), which accepts a model from the view and adds a message to the collection.
 		//Then, it redirects to the Show() action
 				[HttpPost]
-		public IActionResult Send()
+		public IActionResult Send(ChatViewModel chat)
 		{
+			var newMessage = chat.CurrentMessage;
+			s_messages.Add(new KeyValuePair<string, string>(newMessage.Sender, newMessage.MessageText));
 			return RedirectToAction("Show");
 		}
 
