@@ -5,7 +5,9 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC_Intro", "MVC_Intro\MVC_Intro.csproj", "{D7A0662C-C323-4250-AA03-953903928A00}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple Chat App", "Simple Chat App\Simple Chat App.csproj", "{CDED00A3-6383-402A-87AE-B2813CFF5736}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Simple Chat App", "Simple Chat App\Simple Chat App.csproj", "{CDED00A3-6383-402A-87AE-B2813CFF5736}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextSplitterApp", "TextSplitterApp\TextSplitterApp.csproj", "{B2684C93-C3CD-4D4D-9245-F3AE1A661DE6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{CDED00A3-6383-402A-87AE-B2813CFF5736}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDED00A3-6383-402A-87AE-B2813CFF5736}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDED00A3-6383-402A-87AE-B2813CFF5736}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2684C93-C3CD-4D4D-9245-F3AE1A661DE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2684C93-C3CD-4D4D-9245-F3AE1A661DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2684C93-C3CD-4D4D-9245-F3AE1A661DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2684C93-C3CD-4D4D-9245-F3AE1A661DE6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
