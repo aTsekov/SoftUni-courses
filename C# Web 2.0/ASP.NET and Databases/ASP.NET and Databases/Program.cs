@@ -1,3 +1,5 @@
+using ASP.NET_Core_Business_Logic.Contracts;
+using ASP.NET_Core_Business_Logic.Services;
 using ASP.NET_Core_Infrastructure.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,8 +16,8 @@ namespace ASP.NET_and_Databases
 			//Register the service in the Inversion of Control container needed for the DB context and link it with the Connection String located in appsettings.json
 			builder.Services.AddDbContext<ShopContext>(options =>
 				options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL")));
-			
 
+			builder.Services.AddScoped<IProductService, ProductService>(); //Add the services from the Business layer so they can be part of the inversion of control.
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
