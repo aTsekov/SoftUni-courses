@@ -1,9 +1,9 @@
-using ForumApp.Data.DataModels;
+using ForumApp.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace ForumApp
 {
-	public class Program
+    public class Program
 	{
 		public static void Main(string[] args)
 		{
@@ -12,8 +12,7 @@ namespace ForumApp
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
 			builder.Services.AddDbContext<ForumAppDbContext>(options =>
-			
-				options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL")));
+				options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL"))); //provide the DBContext and the connection string to the DI
 			
 
 			var app = builder.Build();

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ForumApp.Data.Common
 {
-	internal static class DataConstants
+	public static class DataConstants
 	{
-		internal static class Post
+		public static class PostConstants
 		{
 			public const int TitleMaxLength = 50;
 			public const int ContentMaxLength = 1500;

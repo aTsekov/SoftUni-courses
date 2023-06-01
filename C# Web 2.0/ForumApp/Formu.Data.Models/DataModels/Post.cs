@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using static ForumApp.Data.Common.DataConstants.PostConstants;
+using static ForumApp.Data.Common.DataConstants.Post;
 
 namespace ForumApp.Data.DataModels
 {
