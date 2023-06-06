@@ -11,7 +11,7 @@ namespace ForumApp.Core.BusinessLogic.Contracts
 	{
 		Task<List<PostViewModel>> GetAllPostsAsync();
 		Task AddPostAsync(PostFormModel model);
-		//Task EditProductAsync(ProductFormModel model);
-		//Task DeleteProductAsync(ProductFormModel model);
+		Task<PostFormModel> EditProductByIdAsync(string id);
+		Task DeleteProductAsync(PostFormModel model);
 	}
 }

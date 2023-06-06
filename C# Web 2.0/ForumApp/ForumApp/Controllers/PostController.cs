@@ -39,5 +39,22 @@ namespace ForumApp.Controllers
 			await postService.AddPostAsync(model);
 			return RedirectToAction(nameof(All));
 		}
+
+		
+		[HttpPost]
+		public async Task<IActionResult> Edit(string id)
+		{
+
+			try
+			{
+				var postModel = await this.postService.EditProductByIdAsync(id);
+
+				return View(postModel);
+			}
+			catch (Exception e)
+			{
+				return this.RedirectToAction("All", "Post");
+			}
+		}
 	}
 }

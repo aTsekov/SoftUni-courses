@@ -44,5 +44,21 @@ namespace ForumApp.Core.BusinessLogic.Services
 			await forumAppDbContext.SaveChangesAsync();
 
 		}
+
+		public async Task<PostFormModel> EditProductByIdAsync(string id)
+		{
+			Post postToEdit = await this.forumAppDbContext.Posts.FirstAsync(p => p.Id.ToString() == id);
+
+			return  new PostFormModel()
+			{
+				Title = postToEdit.Title,
+				Content = postToEdit.Content
+			};
+		}
+
+		public Task DeleteProductAsync(PostFormModel model)
+		{
+			throw new NotImplementedException();
+		}
 	}
 }
