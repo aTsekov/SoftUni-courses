@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using ForumApp.Core.BusinessLogic.Contracts;
 using ForumApp.Core.BusinessLogic.Models;
 using ForumApp.Data;
+using ForumApp.Data.DataModels;
 using Microsoft.EntityFrameworkCore;
 
 namespace ForumApp.Core.BusinessLogic.Services
@@ -29,6 +30,19 @@ namespace ForumApp.Core.BusinessLogic.Services
 				Content = p.Content
 
 			}).ToListAsync();
+		}
+
+		public async Task AddPostAsync(PostFormModel model)
+		{
+			var newPost = new Post()
+			{
+				Title = model.Title,
+				Content = model.Content
+			};
+
+			await this.forumAppDbContext.Posts.AddAsync(newPost);
+			await forumAppDbContext.SaveChangesAsync();
+
 		}
 	}
 }

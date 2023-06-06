@@ -10,7 +10,7 @@ namespace ForumApp.Core.BusinessLogic.Contracts
 	public interface IPostService
 	{
 		Task<List<PostViewModel>> GetAllPostsAsync();
-		//Task AddProductAsync(ProductFormModel model);
+		Task AddPostAsync(PostFormModel model);
 		//Task EditProductAsync(ProductFormModel model);
 		//Task DeleteProductAsync(ProductFormModel model);
 	}
