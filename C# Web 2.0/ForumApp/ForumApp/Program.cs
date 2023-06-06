@@ -1,3 +1,5 @@
+using ForumApp.Core.BusinessLogic.Contracts;
+using ForumApp.Core.BusinessLogic.Services;
 using ForumApp.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,6 +15,8 @@ namespace ForumApp
 			builder.Services.AddControllersWithViews();
 			builder.Services.AddDbContext<ForumAppDbContext>(options =>
 				options.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL"))); //provide the DBContext and the connection string to the DI
+			//Add the services from the Business layer so they can be part of the inversion of control.
+			builder.Services.AddScoped<IPostService, PostServices>();
 			
 
 			var app = builder.Build();
