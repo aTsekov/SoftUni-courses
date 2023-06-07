@@ -41,20 +41,56 @@ namespace ForumApp.Controllers
 		}
 
 		
-		[HttpPost]
+		
 		public async Task<IActionResult> Edit(string id)
 		{
 
 			try
 			{
-				var postModel = await this.postService.EditProductByIdAsync(id);
-
+				PostFormModel postModel = await this.postService.GetByIdForEditAndDelete(id);
 				return View(postModel);
 			}
 			catch (Exception e)
 			{
 				return this.RedirectToAction("All", "Post");
 			}
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Edit(string id, PostFormModel postModel)
+		{
+			if (!ModelState.IsValid)
+			{
+				return this.View(postModel);
+			}
+
+			try
+			{
+				await this.postService.EditByIdAsync(id, postModel);
+			}
+			catch (Exception)
+			{
+				ModelState.AddModelError(string.Empty, "Unexpected error occurred while updating your post!");
+
+				return View(postModel);
+			}
+
+			return RedirectToAction("All", "Post");
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> Delete(string id)
+		{
+			try
+			{
+				await this.postService.DeleteProductAsync(id);
+			}
+			catch (Exception)
+			{
+
+			}
+
+			return RedirectToAction("All", "Post");
 		}
 	}
 }

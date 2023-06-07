@@ -45,20 +45,34 @@ namespace ForumApp.Core.BusinessLogic.Services
 
 		}
 
-		public async Task<PostFormModel> EditProductByIdAsync(string id)
+		public async Task<PostFormModel> GetByIdForEditAndDelete(string id)
 		{
-			Post postToEdit = await this.forumAppDbContext.Posts.FirstAsync(p => p.Id.ToString() == id);
+			Post post = await this.forumAppDbContext.Posts.FirstAsync(p => p.Id.ToString() == id);
 
 			return  new PostFormModel()
 			{
-				Title = postToEdit.Title,
-				Content = postToEdit.Content
+				Title = post.Title,
+				Content = post.Content
 			};
 		}
 
-		public Task DeleteProductAsync(PostFormModel model)
+		public async Task EditByIdAsync(string id, PostFormModel postEditedModel)
 		{
-			throw new NotImplementedException();
+			Post postToEdit = await this.forumAppDbContext.Posts.FirstAsync(p => p.Id.ToString() == id);
+			postToEdit.Title = postEditedModel.Title;
+			postToEdit.Content = postToEdit.Content;
+
+			await this.forumAppDbContext.SaveChangesAsync();
+		}
+
+		public async Task DeleteProductAsync(string id)
+		{
+			Post postToDelete = await this.forumAppDbContext
+				.Posts
+				.FirstAsync(p => p.Id.ToString() == id);
+
+			this.forumAppDbContext.Posts.Remove(postToDelete);
+			await this.forumAppDbContext.SaveChangesAsync();
 		}
 	}
 }
