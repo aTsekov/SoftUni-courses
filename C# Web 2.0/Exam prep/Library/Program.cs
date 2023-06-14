@@ -1,4 +1,6 @@
+using Library.Contracts;
 using Library.Data;
+using Library.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -21,6 +23,8 @@ builder.Services.Configure<IdentityOptions>(options =>
 	options.Password.RequireUppercase = false;
     
 });
+
+builder.Services.AddScoped<IBookService, BookService>();
 
 var app = builder.Build();
 
