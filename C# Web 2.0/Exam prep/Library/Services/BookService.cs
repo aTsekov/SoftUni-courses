@@ -28,14 +28,19 @@ namespace Library.Services
 			}).ToListAsync();
 		}
 
-		public async Task<ICollection<MyBooksModel>> GetMyBooksAsync(string userId)
+		public Task<ICollection<MyBooksModel>> GetMyBooksAsync(string userId)
 		{
-			return await this.libraryDbContext.IdentityUsers.Where(ub => ub.CollectorId == userId)
-				.Select(b => new MyBooksModel
-				{
-
-				});
+			throw new NotImplementedException();
 		}
+
+		//public async Task<ICollection<MyBooksModel>> GetMyBooksAsync(string userId)
+		//{
+		//	//return await this.libraryDbContext.IdentityUsers.Where(ub => ub.CollectorId == userId)
+		//	//	.Select(b => new MyBooksModel
+		//	//	{
+
+		//	//	});
+		//}
 	}
 	
 	
