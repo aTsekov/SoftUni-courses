@@ -1,5 +1,6 @@
 import {useState} from "react"; // this is a hook and keeps the state of the component. 
 
+// eslint-disable-next-line no-unused-vars
 export default function Counter(props){
     const [count, setCount] = useState(0); // useState is React Hook that allows you to add state to a functional component. The 0 is only the initial state
     //of the value. after the first click it's ignored. 
